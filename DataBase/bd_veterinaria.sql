@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-08-2021 a las 23:29:11
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 8.0.9
+-- Tiempo de generación: 28-08-2021 a las 08:01:08
+-- Versión del servidor: 10.4.18-MariaDB
+-- Versión de PHP: 8.0.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bd_veterinaria`
+-- Base de datos: `veterinaria`
 --
 
 -- --------------------------------------------------------
@@ -75,23 +75,26 @@ CREATE TABLE `citas` (
 --
 
 CREATE TABLE `clientes` (
-  `ID_Cliente` int(6) NOT NULL,
-  `Identificacion_Cliente` varchar(15) NOT NULL,
-  `Nombre` varchar(15) NOT NULL,
+  `Id_Cliente` int(6) NOT NULL,
+  `Nombre` varchar(50) NOT NULL,
+  `Genero` varchar(50) NOT NULL,
   `Correo_Electronico` varchar(50) NOT NULL,
-  `Direccion_Casa` varchar(200) NOT NULL,
-  `Id_Usuario` int(6) NOT NULL
+  `Id_Usuario` int(6) NOT NULL,
+  `Estado` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`ID_Cliente`, `Identificacion_Cliente`, `Nombre`, `Correo_Electronico`, `Direccion_Casa`, `Id_Usuario`) VALUES
-(1, '0801-1990-45367', 'Jose Miguel Aco', 'jose.m.acosta1996@gmail.com', 'direccion de la casa de Jose', 1),
-(2, '0801-1994-63464', 'Luisa Maria Mar', 'luisamaria@gmail.com', 'direccion de la casa de Luisa', 2),
-(3, '0801-2001-56363', 'Glorin Rubio', 'stheprubio2000@gmail.com', 'direccion de la casa de Glorin', 3),
-(4, '0801-1990-34635', 'Josue Zelaya', 'josuezelaya0010@gmail.com', 'direccion de la casa de Josue', 4);
+INSERT INTO `clientes` (`Id_Cliente`, `Nombre`, `Genero`, `Correo_Electronico`, `Id_Usuario`, `Estado`) VALUES
+(1, 'Jose Miguel Acosta Carias ', 'MASCULINO', 'jose.m.acosta1996@gmail.com', 1, 0),
+(2, 'Luisa Maria Martinez Rodriguez', 'FEMENINO', 'luisamaria@gmail.com', 2, 0),
+(3, 'Glorin Rubio', 'FEMENINO', 'stheprubio2000@gmail.com', 3, 0),
+(4, 'Josue Zelaya', 'MASCULINO', 'josuezelaya0010@gmail.com', 4, 0),
+(14, 'Katherine Gabriela Meza', 'FEMENINO', 'Kath@safari.com', 5, 0),
+(48, 'Miguel Roberto Mendoza', 'MASCULINO', 'miguel@gmail.com', 83, 0),
+(49, 'Patricia Cubas', 'FEMENINO', 'patricia@gmail.com', 84, 0);
 
 -- --------------------------------------------------------
 
@@ -254,10 +257,11 @@ CREATE TABLE `mascotas` (
   `Id_Mascota` int(6) NOT NULL,
   `Id_Cliente` int(6) NOT NULL,
   `Nombre_Mascota` varchar(15) NOT NULL,
-  `Edad_Mascota` varchar(50) NOT NULL,
+  `Fecha_Mascota` date NOT NULL,
+  `Edad_Mascota` int(2) GENERATED ALWAYS AS (year(current_timestamp()) - year(`Fecha_Mascota`)) VIRTUAL,
   `Sexo` varchar(10) NOT NULL,
   `Id_Especie` int(6) NOT NULL,
-  `Descripcion_Mascota` varchar(200) NOT NULL,
+  `Id_Raza` int(6) NOT NULL,
   `Fecha_Registro` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -265,15 +269,18 @@ CREATE TABLE `mascotas` (
 -- Volcado de datos para la tabla `mascotas`
 --
 
-INSERT INTO `mascotas` (`Id_Mascota`, `Id_Cliente`, `Nombre_Mascota`, `Edad_Mascota`, `Sexo`, `Id_Especie`, `Descripcion_Mascota`, `Fecha_Registro`) VALUES
-(4, 1, 'Loly', '2', 'Hembra', 1, 'Color blanco con manchas cafe', '2021-08-18'),
-(5, 1, 'Tomy', '1', 'Macho', 1, 'perro de color marron', '2021-08-18'),
-(6, 1, 'Toty', '3', 'Macho', 2, 'perro my bonito y peludo', '2021-08-18'),
-(7, 2, 'Pongo', '1', 'Machsao', 1, 'el es de color negro con 2 manchas blanca', '2021-08-18'),
-(8, 2, 'Bethoven', '1', 'Macho', 1, 'muy lindo perro cafe con manchas blancas', '2021-08-18'),
-(9, 3, 'Negra', '1', 'Hembra', 2, 'ella es de color negro y linda', '2021-08-18'),
-(10, 4, 'Pelusa', '2', 'Hembra', 1, 'es muy peluda', '2021-08-18'),
-(11, 4, 'Marinero', '3', 'Macho', 1, 'le gusta el agua y es gris', '2021-08-18');
+INSERT INTO `mascotas` (`Id_Mascota`, `Id_Cliente`, `Nombre_Mascota`, `Fecha_Mascota`, `Sexo`, `Id_Especie`, `Id_Raza`, `Fecha_Registro`) VALUES
+(36, 1, 'Loly', '2021-01-15', 'Hembra', 1, 1, '2021-08-18'),
+(37, 1, 'Tomy', '2020-05-10', 'Macho', 1, 1, '2021-08-18'),
+(38, 1, 'Toty', '2020-03-30', 'Macho', 2, 17, '2021-08-18'),
+(39, 2, 'Pongo', '2019-08-17', 'Machsao', 1, 1, '2021-08-18'),
+(40, 2, 'Bethoven', '2020-07-10', 'Macho', 1, 1, '2021-08-18'),
+(41, 3, 'Negra', '2021-03-15', 'Hembra', 2, 18, '2021-08-18'),
+(42, 4, 'Pelusa', '2020-03-05', 'Hembra', 1, 5, '2021-08-18'),
+(43, 4, 'Marinero', '2020-06-08', 'Macho', 1, 6, '2021-08-18'),
+(56, 48, 'Perla', '2021-08-11', 'hembra', 2, 23, NULL),
+(57, 49, 'Peludo', '2021-07-26', 'macho', 1, 9, NULL),
+(58, 49, 'Jugueton', '2016-01-01', 'macho', 1, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -333,6 +340,48 @@ CREATE TABLE `proveedores` (
   `Telefono_Proveedor` int(8) NOT NULL,
   `Estado_Proveedor` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `razas`
+--
+
+CREATE TABLE `razas` (
+  `Id_Raza` int(6) NOT NULL,
+  `Id_Especie` int(6) NOT NULL,
+  `Nombre_Raza` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `razas`
+--
+
+INSERT INTO `razas` (`Id_Raza`, `Id_Especie`, `Nombre_Raza`) VALUES
+(1, 1, 'French Bulldogs'),
+(2, 1, 'Bulldogs'),
+(3, 1, 'Poodles '),
+(4, 1, 'Beagles'),
+(5, 1, 'Rottweilers'),
+(6, 1, 'Boxers'),
+(7, 1, 'Gran Danes'),
+(8, 1, 'Huskies Siberiano'),
+(9, 1, 'Doberman'),
+(10, 1, 'Schnauzers'),
+(11, 1, 'Terriers'),
+(12, 1, 'Pugs'),
+(13, 1, 'Chihuahuas'),
+(14, 1, 'Pastor Aleman'),
+(15, 1, 'Dalmatas'),
+(16, 1, 'Otros'),
+(17, 2, 'Persa'),
+(18, 2, 'Azul ruso'),
+(19, 2, 'Siamés'),
+(20, 2, 'Angora turco'),
+(21, 2, 'Siberiano'),
+(22, 2, 'Maine Coon'),
+(23, 2, 'Bengalí'),
+(24, 2, 'Otros');
 
 -- --------------------------------------------------------
 
@@ -425,10 +474,6 @@ INSERT INTO `tipo_especies` (`Id_Especie`, `Tipo_Especie`) VALUES
 (8, 'TORTUGA'),
 (9, 'SERPIENTE'),
 (10, 'LAGARTO'),
-(11, 'GUPPYS'),
-(12, 'TETRAS'),
-(13, 'PLATYS'),
-(14, 'BETA'),
 (15, 'RANAS O SAPOS'),
 (16, 'SALAMANDRAS O TRITONES'),
 (17, 'CECILIAS O APODOS'),
@@ -446,7 +491,8 @@ INSERT INTO `tipo_especies` (`Id_Especie`, `Tipo_Especie`) VALUES
 (29, 'ROTIFERO'),
 (30, 'GUSANO PLANO'),
 (31, 'MEDUSA O CORAL'),
-(32, 'ESPONJA');
+(32, 'ESPONJA'),
+(33, 'PEZ');
 
 -- --------------------------------------------------------
 
@@ -489,25 +535,28 @@ INSERT INTO `tipo_usuario` (`id_tipoUsuario`, `Tipo`) VALUES
 
 CREATE TABLE `usuarios` (
   `Id_Usuario` int(6) NOT NULL,
-  `Nickname` varchar(15) NOT NULL,
-  `Contraseña` varchar(25) NOT NULL,
+  `Username` varchar(15) NOT NULL,
+  `Clave` varchar(25) NOT NULL,
   `Fecha_Registro` date DEFAULT current_timestamp(),
-  `id_tipoUsuario` int(6) NOT NULL
+  `Id_TipoUsuario` int(6) NOT NULL,
+  `Ultima_Cita` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`Id_Usuario`, `Nickname`, `Contraseña`, `Fecha_Registro`, `id_tipoUsuario`) VALUES
-(1, 'Josea123', 'hola123', '2021-08-18', 1),
-(2, 'luisa2021', 'hola', '2021-08-18', 1),
-(3, 'itstephg', 'password', '2021-08-18', 1),
-(4, 'josuezguevara', '1234', '2021-08-18', 1),
-(5, 'admn', 'pass123', '2021-08-18', 2),
-(6, 'secre', 'pass123', '2021-08-18', 3),
-(7, 'vateri', 'pass123', '2021-08-18', 4),
-(8, 'ayuda', 'pass123', '2021-08-18', 5);
+INSERT INTO `usuarios` (`Id_Usuario`, `Username`, `Clave`, `Fecha_Registro`, `Id_TipoUsuario`, `Ultima_Cita`) VALUES
+(1, 'josea123', 'hola123', '2021-08-18', 1, NULL),
+(2, 'luisa2021', 'hola', '2021-08-18', 1, NULL),
+(3, 'itstephg', 'password', '2021-08-18', 1, NULL),
+(4, 'josuezguevara', '1234', '2021-08-18', 1, NULL),
+(5, 'admn', 'pass123', '2021-08-18', 2, NULL),
+(6, 'secre', 'pass123', '2021-08-18', 3, NULL),
+(7, 'vateri', 'pass123', '2021-08-18', 4, NULL),
+(8, 'ayuda', 'pass123', '2021-08-18', 5, NULL),
+(83, 'mroberto11', 'roberto123', '2021-08-27', 1, NULL),
+(84, 'pcubas123', 'cubas123', '2021-08-27', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -557,7 +606,7 @@ ALTER TABLE `citas`
 -- Indices de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`ID_Cliente`),
+  ADD PRIMARY KEY (`Id_Cliente`),
   ADD KEY `Id_Usuario` (`Id_Usuario`);
 
 --
@@ -649,7 +698,8 @@ ALTER TABLE `jaulas`
 ALTER TABLE `mascotas`
   ADD PRIMARY KEY (`Id_Mascota`),
   ADD KEY `Id_Especie` (`Id_Especie`),
-  ADD KEY `Id_Cliente` (`Id_Cliente`);
+  ADD KEY `Id_Cliente` (`Id_Cliente`),
+  ADD KEY `Id_Raza` (`Id_Raza`);
 
 --
 -- Indices de la tabla `personal`
@@ -679,6 +729,13 @@ ALTER TABLE `productos`
 ALTER TABLE `proveedores`
   ADD PRIMARY KEY (`Id_Proveedor`),
   ADD UNIQUE KEY `RTN_Proveedor` (`RTN_Proveedor`);
+
+--
+-- Indices de la tabla `razas`
+--
+ALTER TABLE `razas`
+  ADD PRIMARY KEY (`Id_Raza`),
+  ADD KEY `Id_Especie` (`Id_Especie`);
 
 --
 -- Indices de la tabla `recetas`
@@ -730,7 +787,7 @@ ALTER TABLE `tipo_usuario`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`Id_Usuario`),
-  ADD KEY `id_tipoUsuario` (`id_tipoUsuario`);
+  ADD KEY `id_tipoUsuario` (`Id_TipoUsuario`);
 
 --
 -- Indices de la tabla `ventas`
@@ -766,7 +823,7 @@ ALTER TABLE `citas`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `ID_Cliente` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id_Cliente` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`
@@ -832,7 +889,7 @@ ALTER TABLE `jaulas`
 -- AUTO_INCREMENT de la tabla `mascotas`
 --
 ALTER TABLE `mascotas`
-  MODIFY `Id_Mascota` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Id_Mascota` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT de la tabla `personal`
@@ -857,6 +914,12 @@ ALTER TABLE `productos`
 --
 ALTER TABLE `proveedores`
   MODIFY `Id_Proveedor` int(6) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `razas`
+--
+ALTER TABLE `razas`
+  MODIFY `Id_Raza` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `recetas`
@@ -886,7 +949,7 @@ ALTER TABLE `telefonos_clientes`
 -- AUTO_INCREMENT de la tabla `tipo_especies`
 --
 ALTER TABLE `tipo_especies`
-  MODIFY `Id_Especie` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `Id_Especie` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_servicios`
@@ -904,7 +967,7 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `Id_Usuario` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Id_Usuario` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- Restricciones para tablas volcadas
@@ -917,7 +980,7 @@ ALTER TABLE `cirugia`
   ADD CONSTRAINT `cirugia_ibfk_3` FOREIGN KEY (`Id_Personal`) REFERENCES `personal` (`Id_Personal`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cirugia_ibfk_4` FOREIGN KEY (`Id_Producto`) REFERENCES `productos` (`Id_Producto`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cirugia_ibfk_5` FOREIGN KEY (`Id_Cita`) REFERENCES `citas` (`Id_Cita`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cirugia_ibfk_7` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`id_mascota`),
+  ADD CONSTRAINT `cirugia_ibfk_7` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`Id_Mascota`),
   ADD CONSTRAINT `cirugia_ibfk_8` FOREIGN KEY (`Id_Servicio`) REFERENCES `servicios` (`id_servicio`);
 
 --
@@ -946,7 +1009,7 @@ ALTER TABLE `consulta`
   ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`Id_Personal`) REFERENCES `personal` (`Id_Personal`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `consulta_ibfk_3` FOREIGN KEY (`Id_Cita`) REFERENCES `citas` (`Id_Cita`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `consulta_ibfk_4` FOREIGN KEY (`Id_Receta`) REFERENCES `recetas` (`Id_Receta`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `consulta_ibfk_5` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`id_mascota`);
+  ADD CONSTRAINT `consulta_ibfk_5` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`Id_Mascota`);
 
 --
 -- Filtros para la tabla `contactos_proveedores`
@@ -975,7 +1038,7 @@ ALTER TABLE `detalle_venta`
 --
 ALTER TABLE `historial`
   ADD CONSTRAINT `historial_ibfk_3` FOREIGN KEY (`Id_Receta`) REFERENCES `recetas` (`Id_Receta`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `historial_ibfk_4` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`id_mascota`);
+  ADD CONSTRAINT `historial_ibfk_4` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`Id_Mascota`);
 
 --
 -- Filtros para la tabla `hospitalzacion`
@@ -984,7 +1047,7 @@ ALTER TABLE `hospitalzacion`
   ADD CONSTRAINT `hospitalzacion_ibfk_1` FOREIGN KEY (`Id_Personal`) REFERENCES `personal` (`Id_Personal`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `hospitalzacion_ibfk_3` FOREIGN KEY (`Id_Jaula`) REFERENCES `jaulas` (`Id_Jaula`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `hospitalzacion_ibfk_5` FOREIGN KEY (`Id_Producto`) REFERENCES `productos` (`Id_Producto`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hospitalzacion_ibfk_6` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`id_mascota`),
+  ADD CONSTRAINT `hospitalzacion_ibfk_6` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`Id_Mascota`),
   ADD CONSTRAINT `hospitalzacion_ibfk_7` FOREIGN KEY (`Id_Servicio`) REFERENCES `servicios` (`id_servicio`);
 
 --
@@ -992,7 +1055,8 @@ ALTER TABLE `hospitalzacion`
 --
 ALTER TABLE `mascotas`
   ADD CONSTRAINT `mascotas_ibfk_3` FOREIGN KEY (`Id_Especie`) REFERENCES `tipo_especies` (`Id_Especie`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `mascotas_ibfk_4` FOREIGN KEY (`Id_Cliente`) REFERENCES `clientes` (`ID_Cliente`);
+  ADD CONSTRAINT `mascotas_ibfk_4` FOREIGN KEY (`Id_Cliente`) REFERENCES `clientes` (`ID_Cliente`),
+  ADD CONSTRAINT `mascotas_ibfk_5` FOREIGN KEY (`Id_Raza`) REFERENCES `razas` (`Id_Raza`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `personal`
@@ -1007,6 +1071,12 @@ ALTER TABLE `productos`
   ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`Id_Producto`) REFERENCES `detalle_venta` (`Id_Producto`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`ID_Categoria`) REFERENCES `categoria_productos` (`Id_Categoria_Producto`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `productos_ibfk_3` FOREIGN KEY (`Id_Presentacion`) REFERENCES `presentaciones_producto` (`Id_Presentacion`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `razas`
+--
+ALTER TABLE `razas`
+  ADD CONSTRAINT `razas_ibfk_1` FOREIGN KEY (`Id_Especie`) REFERENCES `tipo_especies` (`Id_Especie`);
 
 --
 -- Filtros para la tabla `servicios`
@@ -1026,7 +1096,7 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `ventas`
   ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`Id_Cliente`) REFERENCES `clientes` (`ID_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`id_mascota`);
+  ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`Id_Mascota`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
