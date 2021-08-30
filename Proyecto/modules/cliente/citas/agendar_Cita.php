@@ -50,101 +50,121 @@
                         </div>
                     </div>
 
+                    <?php
+
+                    if (isset($_GET["value"])) { ?>
+
+                        <div class="agregar-exitoso">
+                            <i class="fas fa-check"></i> &nbsp; AGENDADO CORRECTAMENTE
+                        </div>
+                    <?php } ?>
+
                 </div>
                 <div class="agregar cliente">
-                    <div class="forma">
-                        <div class="personal cita">
-                            <div class="informacion-personal">
-                                AGENDAR CITA
-                            </div>
-                            <div class="line-horizontal">
-                            </div>
-                            <div class="info-personal">
-                                <div class="col">
-                                    <div class="params">ELEGIR MASCOTA
-                                    </div>
-                                    <div class="params">VETERINARIO
-                                    </div>
-                                    <div class="params">FECHA
-                                    </div>
+                    <form action="agendar.php">
+                        <div class="forma">
+                            <div class="personal cita">
+                                <div class="informacion-personal">
+                                    AGENDAR CITA
                                 </div>
-                                <div class="col inputs">
-                                    <div class="values">
-                                        <select name="" id="" class="selection" name="genero">
-                                            <option value="" disabled selected value>SELECCIONE</option>
-                                            <?php
-                                            include("../../conexion/conexion.php");
-                                            $idCliente = $_SESSION['idCliente'];
-                                            $query = "SELECT Nombre_Mascota FROM mascotas WHERE Id_Cliente  = '$idCliente'";
-                                            $result = mysqli_query($conn, $query);
-                                            while ($row = mysqli_fetch_array($result)) {
-                                                $nombreMascota = $row['Nombre_Mascota'];
-                                                echo "<option value='$nombreMascota'>$nombreMascota</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                        <div class="params-op">
-                                            OBLIGATORIO
+                                <div class="line-horizontal">
+                                </div>
+                                <div class="info-personal">
+                                    <div class="col">
+                                        <div class="params">ELEGIR MASCOTA
+                                        </div>
+                                        <div class="params">VETERINARIO
+                                        </div>
+                                        <div class="params">FECHA
                                         </div>
                                     </div>
-                                    <div class="values">
-                                        <select name="" id="" class="selection" name="genero">
-                                            <option value="" disabled selected value>SELECCIONE</option>
-                                            <option value="" value>Miguel Mondragon</option>
-                                        </select>
-                                        <div class="params-op">
-                                            OBLIGATORIO
+                                    <div class="col inputs">
+                                        <div class="values">
+                                            <select name="mascota" id="" class="selection" name="genero">
+                                                <option value="" disabled selected value>SELECCIONE</option>
+                                                <?php
+                                                include("../../conexion/conexion.php");
+                                                $idCliente = $_SESSION['idCliente'];
+                                                $query = "SELECT Nombre_Mascota, Id_Mascota FROM mascotas WHERE Id_Cliente  = '$idCliente'";
+                                                $result = mysqli_query($conn, $query);
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $nombreMascota = $row['Nombre_Mascota'];
+                                                    $idMascota = $row['Id_Mascota'];
+                                                    echo "<option value='$idMascota'>$nombreMascota</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                            <div class="params-op">
+                                                OBLIGATORIO
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="values">
-                                        <input type="date" name="fecha" id="fecha">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="params">HORARIO
-                                    </div>
-                                    <div class="params textareas">MOTIVO DE CITA
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="values">
-                                        <select name="" id="" class="selection" name="genero">
-                                            <option value="" disabled selected value>SELECCIONE</option>
-                                            <option value="">8:00 AM</option>
-                                            <option value="">9:00 AM</option>
-                                            <option value="">10:00 AM</option>
-                                            <option value="">11:00 AM</option>
-                                            <option value="">1:00 PM</option>
-                                            <option value="">2:00 PM</option>
-                                            <option value="">3:00 PM</option>
-                                            <option value="">4:00 PM</option>
+                                        <div class="values">
+                                            <select name="veterinario" id="" class="selection" name="genero">
+                                                <option value="" disabled selected value>SELECCIONE</option>
+                                                <?php
 
-                                        </select>
-                                        <div class="params-op">
-                                            OBLIGATORIO
+                                                $query = "SELECT p.Nombre, p.Id_Personal FROM personal AS p, usuarios AS u WHERE u.Id_TipoUsuario = 3 AND p.Id_Usuario = u.Id_Usuario ";
+                                                $result = mysqli_query($conn, $query);
+                                                while ($row = mysqli_fetch_array($result)) { ?>
+
+                                                    <option value=<?php echo $row['Id_Personal'] ?> value><?php echo $row['Nombre'] ?></option>
+
+                                                <?php  } ?>
+
+                                            </select>
+                                            <div class="params-op">
+                                                OBLIGATORIO
+                                            </div>
+                                        </div>
+                                        <div class="values">
+                                            <input type="date" name="fecha" id="fecha">
+                                            <div class="params-op">
+                                                OBLIGATORIO
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="values textareas">
-                                        <textarea name="motivo" id="motivo" cols="30" rows="5" spellcheck="false"></textarea>
-                                        <div class="params-op">
-                                            OBLIGATORIO
+                                    <div class="col">
+                                        <div class="params">HORARIO
+                                        </div>
+                                        <div class="params textareas">MOTIVO DE CITA
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="values">
+                                            <select name="horario" id="" class="selection" name="genero">
+                                                <option value="" disabled selected value>SELECCIONE</option>
+                                                <option value="8:00">8:00 AM</option>
+                                                <option value="9:00">9:00 AM</option>
+                                                <option value="10:00">10:00 AM</option>
+                                                <option value="11:00">11:00 AM</option>
+                                                <option value="13:00">1:00 PM</option>
+                                                <option value="14:00">2:00 PM</option>
+                                                <option value="15:00">3:00 PM</option>
+                                                <option value="16:00">4:00 PM</option>
+
+                                            </select>
+                                            <div class="params-op">
+                                                OBLIGATORIO
+                                            </div>
+                                        </div>
+                                        <div class="values textareas">
+                                            <textarea name="motivo" id="motivo" cols="30" rows="5" spellcheck="false"></textarea>
+                                            <div class="params-op">
+                                                OBLIGATORIO
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
+
                         </div>
-
-
-
-                    </div>
-
+                    </form>
                 </div>
             </div>
         </div>
-        <script src="/Proyecto/statics/js/cliente/cliente.js"></script>
+        <script src="/Proyecto/statics/js/cliente/agendar_Cita.js"></script>
         <script src="/Proyecto/statics/js/main.js"></script>
 </body>
 

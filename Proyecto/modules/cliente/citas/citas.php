@@ -85,24 +85,43 @@
                                 <th>HORA</th>
                                 <th>VETERINARIO</th>
                                 <th>ESTADO</th>
+                                <th>DESCRIPCION</th>
                             </thead>
                             <tbody>
-                                <tr class="filas" onclick="filas(event)">
-                                    <td>1</td>
-                                    <td>Tommy</td>
-                                    <td>25/08/2021</td>
-                                    <td>2:00 PM</td>
-                                    <td>Suyapa Mendoza</td>
-                                    <td>Pendiente</td>
-                                </tr>
-                                <tr class="filas" onclick="filas(event)">
-                                    <td>2</td>
-                                    <td>roberto</td>
-                                    <td>25/08/2021</td>
-                                    <td>2:00 PM</td>
-                                    <td>Suyapa Mendoza</td>
-                                    <td>Pendiente</td>
-                                </tr>
+                                <?php
+
+                                date_default_timezone_set('America/Tegucigalpa');
+
+                                include("../../conexion/conexion.php");
+
+                                $idCliente = $_SESSION['idCliente'];
+                                $query = "SELECT m.Nombre_Mascota, c.Id_Cita, c.Fecha_Cita, c.Hora_Cita, p.Nombre AS Veterinario, e.Estado_Cita, c.Motivo_Cita FROM citas AS c, mascotas AS m, personal AS p, estadocitas AS e WHERE c.Id_Cliente = $idCliente AND m.Id_Cliente = $idCliente AND c.Id_Veterinario = p.Id_Personal AND e.Id_EstadoCita = c.Id_EstadoCita";
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_array($result)) {
+                                    $idCita = $row['Id_Cita'];
+                                    $nombreMascota = $row['Nombre_Mascota'];
+                                    $fechaCita = $row['Fecha_Cita'];
+                                    $horaCita = $row['Hora_Cita'];
+                                    $veterinarioCita = $row['Veterinario'];
+                                    $estadoCita = $row['Estado_Cita'];
+                                    $descripcionCita = $row['Motivo_Cita'];
+
+                                    $DateAndTime = date('h:i a', strtotime($horaCita));
+                                ?>
+
+                                    <tr class="filas" onclick="filas(event)">
+                                        <td><?php echo $idCita ?></td>
+                                        <td><?php echo $nombreMascota ?></td>
+                                        <td><?php echo $fechaCita ?></td>
+                                        <td><?php echo $DateAndTime ?></td>
+                                        <td><?php echo $veterinarioCita ?></td>
+                                        <td><?php echo $estadoCita ?></td>
+                                        <td><?php echo $descripcionCita ?></td>
+                                    </tr>
+
+
+                                <?php } ?>
+
 
                             </tbody>
                         </table>
