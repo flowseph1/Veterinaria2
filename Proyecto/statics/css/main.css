@@ -792,7 +792,7 @@ header{
 }
 
 .tarjeta-container:nth-child(2n){
-    height: 290px;
+    height: 260px;
 
 }
 
@@ -814,7 +814,7 @@ header{
     flex-direction: row;
     flex-wrap: wrap;
     max-height: 230px;
-    width: 250px;
+    width: 260px;
     margin-top: 20px;
     overflow-y: auto;
 }
@@ -846,18 +846,17 @@ header{
 
 .notificacion{
     font-size: 10px;
-    border-radius: 22px;
+    border-radius: 10px;
     background-color: #f7f7f746;
     cursor: pointer;
     display: flex;
-    align-items: center;
     justify-content: center;
     margin: 10px;
     padding: 5px 10px 5px 10px;
-    max-height: 30px;
+    max-height: auto;
     transition: all 0.4s;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.205);
-
+    flex-direction: column;
 }
 
 
@@ -931,12 +930,9 @@ header{
 
 }
 
-.tarjetas{
-    margin: 20px 0 20px 0;
-}
-
 .notificaciones{
     flex-direction: row;
+    max-height: 153px;
 }
 
 ::-webkit-scrollbar{
@@ -1323,8 +1319,10 @@ input, select {
 .eliminacion-Cliente{
     padding: 5px 10px 5px 10px;
     background-color: #d16f6f;
+    font-size: 12px;
     color: #eeeeee;
     border-radius: 22px;
+    font-weight: 800;
     animation: inAndOut 4s ease-in-out forwards;
 }
 
@@ -1342,7 +1340,7 @@ input, select {
 }
 
 .tabla-contenedor{
-    width: 650px;
+    min-width: 650px;
     max-width: 780px;
     height: 480px;
     border-radius: 22px;
@@ -1379,4 +1377,35 @@ input, select {
 
 .tabla-general td, .tabla-general th{
     padding: 12.5px;
+}
+
+.pendiente{
+    padding: 5px;
+    background-color: #d1bf6f;
+    border-radius: 5px;
+    text-align:center;
+}
+
+.cancelada{
+    padding: 5px;
+    background-color: #d16f6f;
+    border-radius: 5px;
+    text-align:center;
+
+}
+
+.realizada{
+    padding: 5px;
+    background-color: #6fd17c;
+    border-radius: 5px;
+    text-align:center;
+
+}
+
+.negrita{
+    font-weight: 800;
+}
+
+.small{
+    font-size:8px
 }

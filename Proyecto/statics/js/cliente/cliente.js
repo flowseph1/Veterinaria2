@@ -56,8 +56,17 @@ function filas(event) {
     }
     event.currentTarget.style.backgroundColor = '#58585846';
     event.currentTarget.style.color = '#eeeeee';
-    bloqueoBoton.style.display = "none";
-    botonRojo.style.filter = 'opacity(1)';
+
+    let estadoCita = event.currentTarget.children[5].innerText;
+    if (estadoCita == 'Cancelada' || estadoCita == 'Realizada') {
+        bloqueoBoton.style.display = "block";
+        botonRojo.style.filter = 'opacity(0.4)';
+    }
+    else {
+        bloqueoBoton.style.display = "none";
+        botonRojo.style.filter = 'opacity(1)';
+    }
+
 
     //Guardar ID de cliente en input hidden.
     let clienteId = event.currentTarget.children[0].innerHTML;
@@ -88,9 +97,9 @@ buscador.addEventListener("keyup", () => {
 
     for (let index = 0; index < filas.length; index++) {
         let id = filas[index].children[0].textContent.toLowerCase();
-        let nombre = filas[index].children[1].textContent.toLowerCase();
+        let descripcion = filas[index].children[6].textContent.toLowerCase();
 
-        if (id.includes(value.toLowerCase()) || nombre.includes(value.toLowerCase())) {
+        if (id.includes(value.toLowerCase()) || descripcion.includes(value.toLowerCase())) {
             filas[index].style.display = "table-row";
         } else {
             filas[index].style.display = "none";

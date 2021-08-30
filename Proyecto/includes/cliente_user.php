@@ -8,16 +8,57 @@
             <div class="nombre"><?php echo $_SESSION['nombre'] ?></div>
         </div>
     </div>
+
+    <?php
+    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    if ($actual_link == 'http://localhost:3000/Proyecto/modules/cliente/cliente.php') {
+        include("../../modules/conexion/conexion.php");
+    } else {
+        include("../../../modules/conexion/conexion.php");
+    }
+    $idCliente = $_SESSION['idCliente'];
+    $query = "SELECT COUNT(Id_Cita) AS numeroCitas FROM citas WHERE Id_Cliente = $idCliente AND Id_EstadoCita = 1";
+    $resultado = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($resultado);
+
+    ?>
     <div class="tarjetas">
         <div class="tarjeta-container">
             <div class="noti">
                 <i class="fas fa-bell fa-2x"></i>
                 <div class="tarjeta-tittle">RECORDATORIOS</div>
-                <div class="noti-circulo">1</div>
-            </div>
+                <?php if ($row['numeroCitas'] > 0) { ?>
+                    <div class="noti-circulo"><?php echo $row['numeroCitas'] ?></div>
+                <?php } ?>
 
+
+            </div>
             <div class="tarjeta-content notificaciones">
-                <div class="notificacion">CITA ID: CITA-01</div>
+                <?php if ($row['numeroCitas'] == 0) { ?>
+                    Sin Recordatorios
+                <?php } ?>
+                <?php
+                $query = "SELECT c.Id_Cita, c.Fecha_Cita, m.Nombre_Mascota FROM citas AS c, mascotas AS m WHERE c.Id_Cliente = $idCliente AND c.Id_EstadoCita = 1 AND c.Id_Mascota = m.Id_Mascota";
+                $resultado = mysqli_query($conn, $query);
+                while ($row = mysqli_fetch_array($resultado)) { ?>
+                    <div class="notificacion"><span class="negrita">CITA # <?php echo $row['Id_Cita']; ?></span>
+
+
+                        <div>
+                            <span class="small">MASCOTA:</span>
+                            <?php echo $row['Nombre_Mascota']; ?>
+                        </div>
+                        <div>
+                            <span class="small">FECHA:</span>
+                            <?php
+                            $fechaCita = $row['Fecha_Cita'];
+                            $formatoFecha = date('d-m-Y', strtotime($fechaCita));
+                            echo $formatoFecha;
+                            ?>
+
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
 

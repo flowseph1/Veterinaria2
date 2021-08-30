@@ -55,6 +55,15 @@
 
                         </div>
                     </div>
+
+                    <?php
+
+                    if (isset($_GET["value"])) { ?>
+
+                        <div class="eliminacion-Cliente">
+                            <i class="fas fa-check"></i> &nbsp; CITA CANCELADA
+                        </div>
+                    <?php } ?>
                 </div>
                 <div class="tabla-contenedor">
                     <div class="descripcion">
@@ -64,7 +73,7 @@
                                     <i class="fas fa-search"></i>
                                 </div>
                                 <div class="cajaTexto-buscar">
-                                    <input type="text" spellcheck="false" placeholder="BUSCAR NOMBRE O ID" id="buscar">
+                                    <input type="text" spellcheck="false" placeholder="BUSCAR ID O DESCRIPCION DE CITA" id="buscar">
                                 </div>
                             </div>
                             <div class="limpiar" onclick="limpiar()">
@@ -95,7 +104,13 @@
                                 include("../../conexion/conexion.php");
 
                                 $idCliente = $_SESSION['idCliente'];
-                                $query = "SELECT m.Nombre_Mascota, c.Id_Cita, c.Fecha_Cita, c.Hora_Cita, p.Nombre AS Veterinario, e.Estado_Cita, c.Motivo_Cita FROM citas AS c, mascotas AS m, personal AS p, estadocitas AS e WHERE c.Id_Cliente = $idCliente AND m.Id_Cliente = $idCliente AND c.Id_Veterinario = p.Id_Personal AND e.Id_EstadoCita = c.Id_EstadoCita";
+                                $query = "SELECT c.Id_Cita, m.Nombre_Mascota, c.Fecha_Cita, c.Hora_Cita, p.Nombre AS Veterinario, e.Estado_Cita, c.Motivo_Cita
+                                FROM citas AS c, mascotas AS m, personal AS p, estadocitas AS e
+                                WHERE c.Id_Cliente = $idCliente
+                                AND m.Id_Cliente = $idCliente
+                                AND c.Id_Veterinario = p.Id_Personal
+                                AND c.Id_EstadoCita = e.Id_EstadoCita
+                                AND c.Id_Mascota = m.Id_Mascota";
                                 $result = mysqli_query($conn, $query);
                                 while ($row = mysqli_fetch_array($result)) {
                                     $idCita = $row['Id_Cita'];
@@ -106,16 +121,35 @@
                                     $estadoCita = $row['Estado_Cita'];
                                     $descripcionCita = $row['Motivo_Cita'];
 
-                                    $DateAndTime = date('h:i a', strtotime($horaCita));
+                                    $formatoFecha = date('d-m-Y', strtotime($fechaCita));
+                                    $formatoHora = date('h:i a', strtotime($horaCita));
                                 ?>
 
                                     <tr class="filas" onclick="filas(event)">
                                         <td><?php echo $idCita ?></td>
                                         <td><?php echo $nombreMascota ?></td>
-                                        <td><?php echo $fechaCita ?></td>
-                                        <td><?php echo $DateAndTime ?></td>
+                                        <td><?php echo $formatoFecha ?></td>
+                                        <td><?php echo $formatoHora ?></td>
                                         <td><?php echo $veterinarioCita ?></td>
-                                        <td><?php echo $estadoCita ?></td>
+                                        <td><?php
+
+                                            switch ($estadoCita) {
+                                                case 'Pendiente':
+                                                    echo "<div class='pendiente'> $estadoCita </div>";
+                                                    break;
+                                                case 'Cancelada':
+                                                    echo "<div class='cancelada'> $estadoCita </div>";
+                                                    break;
+                                                case 'Realizada':
+                                                    echo "<div class='realizada'> $estadoCita </div>";
+                                                    break;
+                                                default:
+                                                    echo "nada";
+                                                    break;
+                                            }
+
+
+                                            ?></td>
                                         <td><?php echo $descripcionCita ?></td>
                                     </tr>
 
@@ -133,28 +167,36 @@
 
         </div>
 
+        <input type="hidden" name="idCliente" id="IdElemento">
+
         <div class="eliminar">
             <div class="mensaje color-blanco-transparente">
 
                 <div class="eliminar-mensaje">
-                    ¿ESTA SEGURO QUE DESEA ELIMINAR A <span id="nombreClienteEliminado"></span> ?
+                    ¿Esta seguro que desea cancelar cita: <span id="nombreClienteEliminado"></span>
+                    a nombre de: <span id="nombreMascotaCita"></span>?
+
                 </div>
 
                 <div class="eliminar-buttons">
-                    <div class="default-btn color-rojo-hover">
-                        ELIMINAR
-                    </div>
-                    <div class="default-btn color-secudario-hover" onclick="cancelarEliminar()">
+                    <form action="cancelarCita.php" method="get" id="form2">
+                        <input type="hidden" name="idCita" id="idCita">
+                        <div class="default-btn color-rojo-hover" onclick="eliminarCliente()">
+                            ELIMINAR
+                        </div>
+                    </form>
+                    <div class="default-btn color-secundario-hover" onclick="cancelarEliminar()">
                         CANCELAR
                     </div>
                 </div>
             </div>
         </div>
-        <input type="hidden" name="idCliente" id="IdElemento">
+
     </div>
 
     <script src="/Proyecto/statics/js/cliente/cliente.js"></script>
     <script src="/Proyecto/statis/js/main.js"></script>
+    <script src="/Proyecto/statics/js/cliente/cita.js"></script>
 
 </body>
 
