@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-08-2021 a las 08:01:08
+-- Tiempo de generación: 30-08-2021 a las 20:02:47
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.5
 
@@ -62,11 +62,21 @@ CREATE TABLE `citas` (
   `Id_Cita` int(10) NOT NULL,
   `Id_Cliente` int(6) NOT NULL,
   `Id_Mascota` int(6) NOT NULL,
-  `Fecha_Cita` date NOT NULL,
+  `Id_Veterinario` int(6) NOT NULL,
+  `Fecha_Cita` date NOT NULL DEFAULT current_timestamp(),
   `Hora_Cita` time NOT NULL,
   `Motivo_Cita` varchar(200) NOT NULL,
-  `Id_EstadoCita` int(6) NOT NULL
+  `Id_EstadoCita` int(6) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `citas`
+--
+
+INSERT INTO `citas` (`Id_Cita`, `Id_Cliente`, `Id_Mascota`, `Id_Veterinario`, `Fecha_Cita`, `Hora_Cita`, `Motivo_Cita`, `Id_EstadoCita`) VALUES
+(6, 48, 56, 1, '2021-08-20', '13:00:00', 'Fractura', 1),
+(15, 48, 56, 1, '2021-08-20', '14:00:00', 'ddddddddd', 1),
+(16, 48, 56, 1, '2021-09-10', '09:00:00', 'General', 1);
 
 -- --------------------------------------------------------
 
@@ -180,14 +190,23 @@ CREATE TABLE `detalle_venta` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estadoscita`
+-- Estructura de tabla para la tabla `estadocitas`
 --
 
-CREATE TABLE `estadoscita` (
+CREATE TABLE `estadocitas` (
   `Id_EstadoCita` int(6) NOT NULL,
-  `Nombre_EstadoCita` varchar(15) NOT NULL,
-  `Descripcion_EstadoCita` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `Estado_Cita` varchar(20) NOT NULL,
+  `Descripcion_Cita` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `estadocitas`
+--
+
+INSERT INTO `estadocitas` (`Id_EstadoCita`, `Estado_Cita`, `Descripcion_Cita`) VALUES
+(1, 'Pendiente', 'Cita pendiente de consulta.'),
+(2, 'Realizada', 'Cita con consulta realizada correctamente.'),
+(3, 'Cancelada', 'Cita cancelada.');
 
 -- --------------------------------------------------------
 
@@ -291,12 +310,20 @@ INSERT INTO `mascotas` (`Id_Mascota`, `Id_Cliente`, `Nombre_Mascota`, `Fecha_Mas
 CREATE TABLE `personal` (
   `Id_Personal` int(6) NOT NULL,
   `Identificacion_Personal` varchar(15) NOT NULL,
-  `Nombre` varchar(15) NOT NULL,
+  `Nombre` varchar(30) NOT NULL,
   `Puesto_Trabajo` varchar(50) NOT NULL,
   `Area` int(6) NOT NULL,
   `Baja_Personal` binary(1) NOT NULL DEFAULT '0',
   `Id_Usuario` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `personal`
+--
+
+INSERT INTO `personal` (`Id_Personal`, `Identificacion_Personal`, `Nombre`, `Puesto_Trabajo`, `Area`, `Baja_Personal`, `Id_Usuario`) VALUES
+(1, '0801-1987-02355', 'Rodrigo Garcia Velasquez', 'Veterinario', 2, 0x30, 90),
+(4, '0505-1995-02546', 'Julia Madrigal', 'Ayudante', 2, 0x30, 92);
 
 -- --------------------------------------------------------
 
@@ -522,10 +549,9 @@ CREATE TABLE `tipo_usuario` (
 
 INSERT INTO `tipo_usuario` (`id_tipoUsuario`, `Tipo`) VALUES
 (1, 'Cliente'),
-(2, 'Adinistrador'),
+(2, 'Administrador'),
 (3, 'Veterinario'),
-(4, 'Secretario'),
-(5, 'Ayudante');
+(4, 'Ayudante');
 
 -- --------------------------------------------------------
 
@@ -552,11 +578,10 @@ INSERT INTO `usuarios` (`Id_Usuario`, `Username`, `Clave`, `Fecha_Registro`, `Id
 (3, 'itstephg', 'password', '2021-08-18', 1, NULL),
 (4, 'josuezguevara', '1234', '2021-08-18', 1, NULL),
 (5, 'admn', 'pass123', '2021-08-18', 2, NULL),
-(6, 'secre', 'pass123', '2021-08-18', 3, NULL),
-(7, 'vateri', 'pass123', '2021-08-18', 4, NULL),
-(8, 'ayuda', 'pass123', '2021-08-18', 5, NULL),
 (83, 'mroberto11', 'roberto123', '2021-08-27', 1, NULL),
-(84, 'pcubas123', 'cubas123', '2021-08-27', 1, NULL);
+(84, 'pcubas123', 'cubas123', '2021-08-27', 1, NULL),
+(90, 'veterinario1', 'pass123', '2021-08-30', 3, NULL),
+(92, 'Secretaria1', 'pass123', '2021-08-30', 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -598,9 +623,9 @@ ALTER TABLE `cirugia`
 --
 ALTER TABLE `citas`
   ADD PRIMARY KEY (`Id_Cita`),
-  ADD UNIQUE KEY `Id_EstadoCita` (`Id_EstadoCita`),
   ADD KEY `Id_Cliente` (`Id_Cliente`),
-  ADD KEY `Id_Mascota` (`Id_Mascota`);
+  ADD KEY `Id_Mascota` (`Id_Mascota`),
+  ADD KEY `Id_Veterinario` (`Id_Veterinario`);
 
 --
 -- Indices de la tabla `clientes`
@@ -652,9 +677,9 @@ ALTER TABLE `detalle_venta`
   ADD KEY `Id_Servicio` (`Id_Servicio`);
 
 --
--- Indices de la tabla `estadoscita`
+-- Indices de la tabla `estadocitas`
 --
-ALTER TABLE `estadoscita`
+ALTER TABLE `estadocitas`
   ADD PRIMARY KEY (`Id_EstadoCita`);
 
 --
@@ -706,6 +731,7 @@ ALTER TABLE `mascotas`
 --
 ALTER TABLE `personal`
   ADD PRIMARY KEY (`Id_Personal`),
+  ADD UNIQUE KEY `Id_Usuario_2` (`Id_Usuario`),
   ADD KEY `Id_Usuario` (`Id_Usuario`);
 
 --
@@ -817,7 +843,7 @@ ALTER TABLE `cirugia`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `Id_Cita` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Cita` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
@@ -856,10 +882,10 @@ ALTER TABLE `detalle_venta`
   MODIFY `Id_Detalle_Venta` int(6) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `estadoscita`
+-- AUTO_INCREMENT de la tabla `estadocitas`
 --
-ALTER TABLE `estadoscita`
-  MODIFY `Id_EstadoCita` int(6) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `estadocitas`
+  MODIFY `Id_EstadoCita` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `fabricantes`
@@ -895,7 +921,7 @@ ALTER TABLE `mascotas`
 -- AUTO_INCREMENT de la tabla `personal`
 --
 ALTER TABLE `personal`
-  MODIFY `Id_Personal` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Personal` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `presentaciones_producto`
@@ -967,7 +993,7 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `Id_Usuario` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `Id_Usuario` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- Restricciones para tablas volcadas
@@ -988,7 +1014,9 @@ ALTER TABLE `cirugia`
 --
 ALTER TABLE `citas`
   ADD CONSTRAINT `citas_ibfk_3` FOREIGN KEY (`Id_Cliente`) REFERENCES `clientes` (`ID_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `citas_ibfk_4` FOREIGN KEY (`Id_EstadoCita`) REFERENCES `estadoscita` (`Id_EstadoCita`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `citas_ibfk_4` FOREIGN KEY (`Id_EstadoCita`) REFERENCES `estadocitas` (`Id_EstadoCita`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `citas_ibfk_5` FOREIGN KEY (`Id_Veterinario`) REFERENCES `personal` (`Id_Personal`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `citas_ibfk_6` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`Id_Mascota`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `clientes`
