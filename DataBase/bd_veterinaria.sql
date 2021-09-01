@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-08-2021 a las 20:02:47
+-- Tiempo de generación: 01-09-2021 a las 04:25:11
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.5
 
@@ -75,8 +75,39 @@ CREATE TABLE `citas` (
 
 INSERT INTO `citas` (`Id_Cita`, `Id_Cliente`, `Id_Mascota`, `Id_Veterinario`, `Fecha_Cita`, `Hora_Cita`, `Motivo_Cita`, `Id_EstadoCita`) VALUES
 (6, 48, 56, 1, '2021-08-20', '13:00:00', 'Fractura', 1),
-(15, 48, 56, 1, '2021-08-20', '14:00:00', 'ddddddddd', 1),
-(16, 48, 56, 1, '2021-09-10', '09:00:00', 'General', 1);
+(18, 48, 56, 1, '2021-08-19', '15:00:00', 'Revision General', 3),
+(19, 48, 56, 1, '2021-08-12', '16:00:00', 'Control de Cirugia', 3),
+(20, 48, 56, 1, '2021-08-13', '13:00:00', 'Problemas', 3),
+(21, 48, 56, 1, '2021-08-19', '10:00:00', 'dolor', 3),
+(22, 48, 56, 1, '2021-08-11', '10:00:00', 'prueba1', 3),
+(23, 48, 56, 1, '2021-08-26', '09:00:00', 'General', 3),
+(24, 48, 56, 1, '2021-08-28', '09:00:00', 'asdasd', 3),
+(25, 48, 56, 1, '2021-09-02', '13:00:00', 'asdasdasd', 3),
+(26, 48, 56, 1, '2021-08-10', '11:00:00', 'asdasdasd', 3),
+(27, 48, 56, 1, '2021-08-11', '11:00:00', 'asdasd', 3),
+(28, 48, 56, 1, '2021-08-20', '09:00:00', 'asdasd', 3),
+(29, 48, 56, 1, '2021-08-18', '11:00:00', 'asdasd', 3),
+(30, 48, 56, 1, '2021-08-12', '10:00:00', 'ASDASD', 3),
+(31, 48, 56, 1, '2021-09-17', '09:00:00', 'Dolor ', 3),
+(32, 48, 56, 1, '2021-08-21', '11:00:00', 'asdasd', 1),
+(33, 48, 56, 1, '2021-09-11', '10:00:00', 'Caida', 3),
+(34, 48, 56, 1, '2021-10-21', '08:00:00', 'asdasd', 3),
+(35, 48, 56, 1, '2021-08-11', '09:00:00', 'asdas', 3),
+(36, 1, 37, 1, '2021-08-18', '13:00:00', 'asdasd', 3),
+(37, 1, 37, 1, '2021-08-19', '10:00:00', 'asdasd', 3),
+(38, 1, 38, 1, '2021-08-19', '11:00:00', 'asdasd', 3),
+(39, 1, 37, 1, '2021-09-02', '10:00:00', 'asdasd', 3),
+(40, 49, 57, 1, '2021-09-10', '13:00:00', 'Dolor', 1),
+(41, 49, 58, 1, '2021-09-28', '09:00:00', 'Quebradura', 1),
+(42, 1, 36, 1, '2021-09-15', '11:00:00', 'Golpe en cola', 3),
+(43, 1, 38, 1, '2021-09-16', '13:00:00', 'Revision General', 3),
+(44, 1, 36, 1, '2021-08-12', '11:00:00', 'asdasd', 3),
+(45, 1, 37, 1, '2021-09-03', '11:00:00', 'asdasdasd', 3),
+(46, 1, 37, 1, '2021-09-17', '09:00:00', 'n/a', 3),
+(47, 1, 38, 1, '2021-09-02', '10:00:00', 'ASDASDASD', 3),
+(48, 1, 36, 1, '2021-08-19', '09:00:00', 'aaaaaa', 3),
+(49, 1, 37, 1, '2021-08-07', '11:00:00', 'Dolor abdominal', 3),
+(50, 1, 37, 1, '2021-09-30', '11:00:00', 'Nuevo', 1);
 
 -- --------------------------------------------------------
 
@@ -385,14 +416,14 @@ CREATE TABLE `razas` (
 --
 
 INSERT INTO `razas` (`Id_Raza`, `Id_Especie`, `Nombre_Raza`) VALUES
-(1, 1, 'French Bulldogs'),
+(1, 1, 'Fr. Bulldogs'),
 (2, 1, 'Bulldogs'),
 (3, 1, 'Poodles '),
 (4, 1, 'Beagles'),
 (5, 1, 'Rottweilers'),
 (6, 1, 'Boxers'),
 (7, 1, 'Gran Danes'),
-(8, 1, 'Huskies Siberiano'),
+(8, 1, 'Husk Siberiano'),
 (9, 1, 'Doberman'),
 (10, 1, 'Schnauzers'),
 (11, 1, 'Terriers'),
@@ -843,7 +874,7 @@ ALTER TABLE `cirugia`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `Id_Cita` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Id_Cita` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
@@ -1083,7 +1114,7 @@ ALTER TABLE `hospitalzacion`
 --
 ALTER TABLE `mascotas`
   ADD CONSTRAINT `mascotas_ibfk_3` FOREIGN KEY (`Id_Especie`) REFERENCES `tipo_especies` (`Id_Especie`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `mascotas_ibfk_4` FOREIGN KEY (`Id_Cliente`) REFERENCES `clientes` (`ID_Cliente`),
+  ADD CONSTRAINT `mascotas_ibfk_4` FOREIGN KEY (`Id_Cliente`) REFERENCES `clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `mascotas_ibfk_5` FOREIGN KEY (`Id_Raza`) REFERENCES `razas` (`Id_Raza`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
