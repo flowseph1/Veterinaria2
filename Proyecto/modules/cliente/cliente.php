@@ -35,7 +35,7 @@
             </div>
           </div>
 
-          <div class="opcion cliente" onclick="location.href = '../administrador/admin_Cliente/admin_cliente.php'">
+          <div class="opcion cliente" onclick="location.href = '#'">
             <div class="titulo">
               <div class="tituloPrincipal">CONSULTAS</div>
             </div>
@@ -44,7 +44,7 @@
             </div>
           </div>
 
-          <div class="opcion cliente" onclick="location.href = '../administrador/admin_Cliente/admin_cliente.php'">
+          <div class="opcion cliente" onclick="location.href = '../cliente/mascotas/mascotas.php'">
             <div class="titulo">
               <div class="tituloPrincipal">MASCOTAS</div>
             </div>

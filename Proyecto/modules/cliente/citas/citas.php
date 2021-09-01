@@ -110,7 +110,8 @@
                                 AND m.Id_Cliente = $idCliente
                                 AND c.Id_Veterinario = p.Id_Personal
                                 AND c.Id_EstadoCita = e.Id_EstadoCita
-                                AND c.Id_Mascota = m.Id_Mascota";
+                                AND c.Id_Mascota = m.Id_Mascota
+                                ORDER BY c.Fecha_Cita DESC";
                                 $result = mysqli_query($conn, $query);
                                 while ($row = mysqli_fetch_array($result)) {
                                     $idCita = $row['Id_Cita'];
@@ -192,11 +193,11 @@
             </div>
         </div>
 
-    </div>
 
-    <script src="/Proyecto/statics/js/cliente/cliente.js"></script>
-    <script src="/Proyecto/statis/js/main.js"></script>
-    <script src="/Proyecto/statics/js/cliente/cita.js"></script>
+
+        <script src="/Proyecto/statics/js/cliente/cliente.js"></script>
+        <script src="/Proyecto/statics/js/cliente/cita.js"></script>
+        <script src="/Proyecto/statics/js/tabla.js"></script>
 
 </body>
 

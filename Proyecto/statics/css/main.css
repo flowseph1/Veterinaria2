@@ -61,10 +61,9 @@
     }
   }
 
-
-body{
+  html, body {
     margin: 0;
-    padding: 0;
+    height: 100%;
 }
 
 .main{
@@ -638,8 +637,8 @@ header{
 }
 
 .logo img{
-    object-fit: contain;
-    width: 200px;
+    object-fit: cover;
+    width: 190px;
     height: auto;
     margin: 20px 0 20px 0;
 }
@@ -689,8 +688,10 @@ header{
 
 .fondo{
     width: 100%;
-    max-height: 100%;
-    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    min-height: 100%;
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 70%);
+
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -857,6 +858,7 @@ header{
     transition: all 0.4s;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.205);
     flex-direction: column;
+    position: relative;
 }
 
 
@@ -1161,6 +1163,7 @@ header{
     align-items: center;
     flex-direction: column;
     width: 108px;
+    position: relative;
 }
 
 .mascota-opciones{
@@ -1408,4 +1411,130 @@ input, select {
 
 .small{
     font-size:8px
+}
+
+.iconCita{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.contenedor-mascotas{
+    width: 820px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+
+}
+
+.perfil-mascotas{
+    width: 200px;
+    height: 100%;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+}
+
+.info-mascotas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.col-mascota{
+    font-size:10px;
+    margin: 5px;
+
+}
+
+.titulo-mascotas{
+    font-weight: 900;
+    font-size: 20px;
+    text-align: left;
+    width: 100%;
+
+}
+
+.identificador{
+    font-weight: 800;
+}
+
+.col-mascota div{
+    margin: 5px;
+    max-height: min-content;
+}
+
+.result div{
+    background-color: #58585846;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #eeeeee;
+    font-weight: 400;
+    padding: 0 2px 0 2px;
+}
+
+
+.editar-mascota{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    color: #58585846;
+}
+
+.editar-mascota:hover{
+    color: #585858bd;
+}
+
+.botones-mascotas{
+    margin-top: 5px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.boton-eliminar-mascotas{
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 5px;
+}
+
+.boton-historial-mascotas{
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 5px;
+    margin-bottom: 8px;
+
+}
+
+.contenedor-default{
+    width: max-content;
+    height: max-content;
+    margin-top: 20px;
+    border-radius: 22px;
+    background-color: #f7f7f746;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.205);
 }

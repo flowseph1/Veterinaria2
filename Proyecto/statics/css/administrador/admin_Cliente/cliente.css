@@ -389,13 +389,6 @@ body{
     color: #eeeeee;
 }
 
-.line-horizontal{
-    width: 100%;
-    height: 1px;
-    background-color: #f7f7f746;
-    margin: 10px 0 10px 0;
-}
-
 .tabla-mascotas{
     flex: 1 0;
     width: 90%;

@@ -38,7 +38,8 @@
                     Sin Recordatorios
                 <?php } ?>
                 <?php
-                $query = "SELECT c.Id_Cita, c.Fecha_Cita, m.Nombre_Mascota FROM citas AS c, mascotas AS m WHERE c.Id_Cliente = $idCliente AND c.Id_EstadoCita = 1 AND c.Id_Mascota = m.Id_Mascota";
+                $query = "SELECT c.Id_Cita, c.Fecha_Cita, m.Nombre_Mascota FROM citas AS c, mascotas AS m WHERE c.Id_Cliente = $idCliente AND c.Id_EstadoCita = 1 AND c.Id_Mascota = m.Id_Mascota
+                ORDER BY c.Fecha_Cita ASC";
                 $resultado = mysqli_query($conn, $query);
                 while ($row = mysqli_fetch_array($resultado)) { ?>
                     <div class="notificacion"><span class="negrita">CITA # <?php echo $row['Id_Cita']; ?></span>
@@ -57,6 +58,11 @@
                             ?>
 
                         </div>
+
+                        <div class="iconCita">
+                            <?php echo "<i class='far fa-calendar-check'></i>" ?>
+                        </div>
+
                     </div>
                 <?php } ?>
             </div>
@@ -111,7 +117,7 @@
                                 <?php echo $_SESSION['mascotas'][$i] ?>
                             </div>
                         </div>
-                        <div class="mascota-info">
+                        <div class="mascotaOpciones">
                             <div class="mascota-opciones color-blanco-transparente">
                                 <div class="mascota-opcion color-secundario-hover">
                                     AGENDAR CITA

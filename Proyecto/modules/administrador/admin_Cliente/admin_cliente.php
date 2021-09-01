@@ -80,7 +80,7 @@
 
 
                 </div>
-                <div class="clientes">
+                <div class="tabla-contenedor">
                     <div class="descripcion">
                         <div class="herramientas">
                             <div class="buscador">
@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="tabla-clientes">
-                        <table id="tb-cliente" class="tabla">
+                        <table id="tb-cliente" class="tabla-general">
                             <thead>
                                 <th>ID</th>
                                 <th>NOMBRE</th>
