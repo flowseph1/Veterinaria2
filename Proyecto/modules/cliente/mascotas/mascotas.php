@@ -42,13 +42,36 @@
                     <div class="line">
 
                     </div>
+                    <?php
+                    include("../../conexion/conexion.php");
 
+                    if (isset($_GET['value'])) {
+                        $valor = $_GET['value'];
+                        switch ($valor) {
+                            case 1:
+                                echo "<div class='eliminacion-Cliente'>
+                                <i class='fas fa-check'></i> &nbsp; MASCOTA ELIMINADA
+                                </div>";
+                                break;
+                            case 2:
+                                echo "<div class='alerta-mascota'>
+                                <i class='fas fa-exclamation-circle'></i> &nbsp; MASCOTA TIENE CITA PENDIENTE
+                                </div>";
+                                break;
+
+                            default:
+                                # code...
+                                break;
+                        }
+                    }
+
+                    ?>
                 </div>
                 <div class="contenedor-mascotas">
 
                     <?php
 
-                    include("../../conexion/conexion.php");
+
                     $idCliente = $_SESSION['idCliente'];
 
                     $query = "SELECT m.Nombre_Mascota, m.Sexo, m.Edad_Mascota, m.Fecha_Mascota, m.Id_Mascota, te.Tipo_Especie, m.Fecha_Registro, r.Nombre_Raza
@@ -128,7 +151,7 @@
                                                 echo "1 año";
                                                 break;
                                             default:
-                                                echo $row['Edad_Mascota'] . "años";
+                                                echo $row['Edad_Mascota'] . " años";
                                                 break;
                                         }
 
@@ -163,10 +186,15 @@
                                             LIMIT 1";
                                         $resultado2 = mysqli_query($conn, $query2);
                                         $row2 = mysqli_fetch_array($resultado2);
-                                        $date = date("d-m-Y", strtotime($row2['Fecha_Cita']));
-                                        echo $date;
+                                        if (isset($row2['Fecha_Cita'])) {
+                                            $date = date("d-m-Y", strtotime($row2['Fecha_Cita']));
+                                            echo $date;
+                                        } else {
+                                            echo 'Sin Cita';
+                                        }
 
                                         ?>
+                                        <input type="hidden" id="idMascotaEliminar" value="<?php echo $idMascota ?>">
                                     </div>
 
                                 </div>
@@ -178,7 +206,7 @@
                                 <div class="boton-historial-mascotas color-secundario">
                                     <i class="fas fa-history"></i> &nbsp; HISTORIAL
                                 </div>
-                                <div class="boton-eliminar-mascotas color-rojo-hover">
+                                <div class="boton-eliminar-mascotas color-rojo-hover" onclick="accionEliminar(event)">
                                     <i class="fas fa-times"></i> &nbsp; ELIMINAR
                                 </div>
 
@@ -197,20 +225,18 @@
 
         </div>
 
-        <input type="hidden" name="idCliente" id="IdElemento">
 
         <div class="eliminar">
             <div class="mensaje color-blanco-transparente">
 
                 <div class="eliminar-mensaje">
-                    ¿Esta seguro que desea cancelar cita: <span id="nombreClienteEliminado"></span>
-                    a nombre de: <span id="nombreMascotaCita"></span>?
-
+                    ¿Esta seguro que desea eliminar a: <span id="mascotaEliminar"></span>?
                 </div>
 
                 <div class="eliminar-buttons">
-                    <form action="cancelarCita.php" method="get" id="form2">
-                        <input type="hidden" name="idCita" id="idCita">
+                    <form action="eliminarMascotas.php" method="get" id="form2">
+                        <input type="hidden" name="idMascota" id="idMascota">
+                        <input type="hidden" name="nombreMascota" id="inputNombreMascota">
                         <div class="default-btn color-rojo-hover" onclick="eliminarCliente()">
                             ELIMINAR
                         </div>
@@ -225,8 +251,7 @@
 
 
         <script src="/Proyecto/statics/js/cliente/cliente.js"></script>
-        <script src="/Proyecto/statis/js/main.js"></script>
-        <script src="/Proyecto/statics/js/cliente/cita.js"></script>
+        <script src="/Proyecto/statics/js/cliente/mascotas.js"></script>
 
 </body>
 

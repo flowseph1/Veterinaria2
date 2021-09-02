@@ -61,7 +61,7 @@
                 </div>
                 <div class="contenedor-default">
                     <div class="forma">
-                        <form action="agregarCliente.php" id="formularioAgregar" method="POST">
+                        <form action="agregarMascotasDB.php" id="formularioAgregar" method="POST">
                             <div class=" personal">
                                 <div class="informacion-personal">
                                     INFORMACION MASCOTA
@@ -121,7 +121,63 @@
                                     </div>
                                     <div class="col inputs">
                                         <div class="values">
-                                            <input type="text" spellcheck="false" name="especie">
+                                            <select name="especie" id="especie" class="selection entrada">
+                                                <option value="" disabled selected value>SELECCIONE</option>
+                                                <optgroup label="MAMIFEROS">
+                                                    <option value="1">PERRO</option>
+                                                    <option value="2">GATO</option>
+                                                    <option value="3">HAMSTER</option>
+                                                    <option value="4">CONEJO</option>
+                                                    <option value="5">CABALLO</option>
+                                                    <option value="6">OTRO MAMIFERO</option>
+                                                </optgroup>
+                                                <optgroup label="REPTILES">
+                                                    <option value="7">IGUANA</option>
+                                                    <option value="8">CAMALEON</option>
+                                                    <option value="9">TORTUGA</option>
+                                                    <option value="10">SERPIENTE</option>
+                                                    <option value="11">LAGARTO</option>
+                                                    <option value="12">OTRO REPTIL</option>
+                                                </optgroup>
+                                                <optgroup label="PECES">
+                                                    <option value="13">GUPPYS</option>
+                                                    <option value="14">TETRAS</option>
+                                                    <option value="15">PLATYS</option>
+                                                    <option value="16">BETA</option>
+                                                    <option value="17">OTRO PEZ</option>
+                                                </optgroup>
+                                                <optgroup label="ANFIBIOS">
+                                                    <option value="18">RANAS O SAPOS</option>
+                                                    <option value="19">SALAMANDRAS O TRITONES</option>
+                                                    <option value="20">CECILIAS O APODOS</option>
+                                                    <option value="21">OTRO ANFIBIO</option>
+                                                </optgroup>
+                                                <optgroup label="ARACNIDOS">
+                                                    <option value="22">ARAÑA</option>
+                                                    <option value="23">ESCORPION</option>
+                                                    <option value="24">OTRO ARACNIDO</option>
+                                                </optgroup>
+                                                <optgroup label="INSECTOS">
+                                                    <option value="25">HORMIGA</option>
+                                                    <option value="26">ABEJA</option>
+                                                    <option value="27">AVISPA</option>
+                                                    <option value="28">CHINCHE</option>
+                                                    <option value="29">CUCARACHA</option>
+                                                    <option value="30">MARIPOSA</option>
+                                                    <option value="31">OTRO INSECTO</option>
+                                                </optgroup>
+                                                <optgroup label="OTROS">
+                                                    <option value="32">CANGREJO O CAMARON</option>
+                                                    <option value="33">ESTRELLA O ERIZOS</option>
+                                                    <option value="34">CARACOL, ALMEJA O PULPOS</option>
+                                                    <option value="35">LOMBRIZ O GUSANO MARINO</option>
+                                                    <option value="36">ROTIFERO</option>
+                                                    <option value="37">GUSANO PLANO</option>
+                                                    <option value="38">MEDUSA O CORAL</option>
+                                                    <option value="39">ESPONJA</option>
+                                                </optgroup>
+
+                                            </select>
                                             <div class="params-op">
                                                 OBLIGATORIO
                                             </div>
@@ -130,7 +186,9 @@
                                             </div>
                                         </div>
                                         <div class="values">
-                                            <input type="text" spellcheck="false" name="raza">
+                                            <select name="raza" id="raza" class="selection entrada">
+                                                <option value="" disabled selected value>SELECCIONE</option>
+                                            </select>
                                             <div class="params-op">
                                                 OBLIGATORIO
                                             </div>
@@ -162,6 +220,7 @@
         </div>
         <script src="/Proyecto/statics/js/main.js"></script>
         <script src="/Proyecto/statics/js/cliente/cliente.js"></script>
+        <script src="/Proyecto/statics/js/cliente/agregar_Mascota.js"></script>
 </body>
 
 </html>

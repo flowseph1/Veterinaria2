@@ -1420,16 +1420,15 @@ input, select {
 }
 
 .contenedor-mascotas{
-    width: 820px;
+    width: 850px;
     height: auto;
     display: flex;
     align-items: center;
-    justify-content:space-between;
-
+    overflow-x: auto;
 }
 
 .perfil-mascotas{
-    width: 200px;
+    min-width: 200px;
     height: 100%;
     border-radius: 22px;
     display: flex;
@@ -1438,6 +1437,7 @@ input, select {
     flex-direction: column;
     padding: 20px;
     position: relative;
+    margin: 20px;
 }
 
 .info-mascotas{
@@ -1537,4 +1537,14 @@ input, select {
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.205);
+}
+
+.alerta-mascota{
+    padding: 5px 10px 5px 10px;
+    background-color: #d1bf6f;
+    font-size: 12px;
+    color: #eeeeee;
+    border-radius: 22px;
+    font-weight: 800;
+    animation: inAndOut 4s ease-in-out forwards;
 }
