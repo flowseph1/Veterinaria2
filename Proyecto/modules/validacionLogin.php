@@ -43,6 +43,13 @@ if ($row == 1) { // Si hay una fila, existe el usuario y contra.
         array_push($idEspecie, $especie);
     }
 
+    //Consulta para obtener informacion del veterinario.
+    $query = "SELECT * FROM personal WHERE Id_Usuario = '$idUsuario' AND Puesto_Trabajo='Veterinario'";
+    $result = mysqli_query($conn, $query); // Ejecucion de Query.
+    //Almacenando informacion del veterinario.
+    $idVeterinario = $rows['Id_Personal'];
+    $nombreVet = $rows['Nombre'];
+
     // Direccionamiento de usuario.
     switch ($tipoUsuario) {
         case '1':
@@ -59,6 +66,13 @@ if ($row == 1) { // Si hay una fila, existe el usuario y contra.
             $_SESSION['nombre'] = $nombre;
             header("Location: administrador/administrador.php");
             break;
+
+        case '3':
+            session_start();
+            $_SESSION['idVeterinario'] = $idVeterinario;
+            $_SESSION['nombreVet'] = $nombreVet;
+                header("Location: veterinario/veterinario.php");
+                break;
 
         default:
             echo "nada";
