@@ -21,7 +21,6 @@
     $resultado = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($resultado);
     ?>
-
     <div class="tarjetas">
         <div class="tarjeta-container">
             <div class="noti">
