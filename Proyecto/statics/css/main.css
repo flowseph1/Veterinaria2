@@ -861,12 +861,13 @@ header{
     position: relative;
 }
 
+.notificacion div{
+    display: flex;
+    align-items: center;
+}
 
-
-.notificacion:hover{
-    color: #eeeeee;
-    background-color: #838383;
-    font-weight: 800;
+.notificacion div i{
+    margin: 5px;
 }
 
 .btnUser-salir{
@@ -1133,7 +1134,7 @@ header{
 
 
 .color-secundario-hover:hover{
-    background-color: #363636a9;
+    background-color: #36363669;
     color: #eeeeee
 }
 
@@ -1249,14 +1250,6 @@ header{
     cursor: default;
     animation: inAndOut 10s ease-in-out;
     animation-fill-mode: forwards;
-}
-
-
-form{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 }
 
 .alerta{
@@ -1405,6 +1398,13 @@ input, select {
 
 }
 
+.consulta-pendiente{
+    padding: 5px;
+    background-color: #6fced1;
+    border-radius: 5px;
+    text-align:center;
+}
+
 .negrita{
     font-weight: 800;
 }
@@ -1528,16 +1528,50 @@ input, select {
 }
 
 .contenedor-default{
-    width: max-content;
-    height: max-content;
     margin-top: 20px;
     border-radius: 22px;
     background-color: #f7f7f746;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.205);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(auto, auto);
+    grid-template-areas:
+
+    "uno uno"
+    "dos tres"
+    "cuatro cinco"
+    "cuatro seis"
+    ;
+
+    grid-gap: 20px  ;
+    position: relative;
+
 }
+
+.contenedor-default > div{
+    width: 100%;
+}
+
+.contenedor-default div:nth-child(1){
+    grid-area: uno;
+}
+.contenedor-default div:nth-child(2){
+    grid-area: dos;
+}
+.contenedor-default div:nth-child(3){
+    grid-area: tres;
+}
+.contenedor-default div:nth-child(4){
+    grid-area: cuatro;
+}
+.contenedor-default div:nth-child(5){
+    grid-area: cinco;
+}
+.contenedor-default div:nth-child(6){
+    grid-area: seis;
+}
+
 
 .alerta-mascota{
     padding: 5px 10px 5px 10px;
@@ -1547,4 +1581,239 @@ input, select {
     border-radius: 22px;
     font-weight: 800;
     animation: inAndOut 4s ease-in-out forwards;
+}
+
+.alerta-exito{
+    padding: 5px 10px 5px 10px;
+    background-color: #6fd17c;
+    font-size: 12px;
+    color: #eeeeee;
+    border-radius: 22px;
+    font-weight: 800;
+    animation: inAndOut 4s ease-in-out forwards;
+}
+
+.alerta-warning{
+    padding: 5px 10px 5px 10px;
+    background-color: #d16f6f;
+    font-size: 12px;
+    color: #eeeeee;
+    border-radius: 22px;
+    font-weight: 800;
+    animation: inAndOut 4s ease-in-out forwards;
+}
+
+.selectHistorial{
+    margin-right: 20px;
+    outline: none;
+    border-radius: 22px;
+    height:30px;
+    width: 130px;
+    border: none;
+}
+
+.historial-titulo{
+    font-weight: 800;
+    font-size:12px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content:space-between;
+}
+
+.historial-info{
+    font-size: 10px;
+    display: flex;
+    justify-content:space-between;
+}
+
+.historial-columna{
+    display: flex;
+    flex-direction: column;
+}
+
+.valueBox{
+    background-color: #5858586c;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #eeeeee;
+    font-weight: 400;
+    padding: 0 5px 0 5px;
+    white-space: nowrap;
+}
+
+.historial-columna div{
+    margin: 4px
+}
+
+.historial-value{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.textarea{
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    max-width: 80px;
+    min-width: 80px;
+    min-height: 60px;
+    max-height: 60px;
+    font-family: 'Gowun Dodum', sans-serif;
+    background-color: #f7f7f7bd;
+    padding: 10px;
+    font-size: 10px;
+}
+
+.textarea::-webkit-scrollbar{
+    display: none;
+}
+
+.custom-radio input{
+    display: none;
+}
+
+.custom-radio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.radio-button > i{
+    opacity: 0;
+}
+
+.radio-button{
+    margin-right: 5px;
+    background-color: #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-radio input:checked + .radio-button > i {
+    opacity: 1;
+}
+
+.historial-div{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.col-alteraciones{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.col-alteraciones-principal{
+    display: flex;
+    flex-direction: row;
+}
+
+.radiobutons{
+    display: flex;
+    flex-direction: row;
+}
+
+.radiobutons label{
+    margin-right: 10px;
+}
+
+.paciente-param{
+    font-size: 11px;
+}
+
+.mucosa-info{
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+}
+
+.mucosa-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.mucosa-col{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.historial-comentario{
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    min-width: 80px;
+    min-height: 60px;
+    max-height: 60px;
+    width: 90%;
+    font-family: 'Gowun Dodum', sans-serif;
+    background-color: #f7f7f7bd;
+    padding: 10px;
+    font-size: 12px;
+    text-align: left;
+    align-items: baseline;
+}
+
+.contenedor-default2{
+    margin-top: 20px;
+    border-radius: 22px;
+    background-color: #f7f7f746;
+    padding: 20px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.205);
+    width: fit-content;
+}
+
+.inputHistorial{
+    width: 20px;
+    height: 15px;
+    font-size: 10px;
+}
+
+.historial-opcion{
+    padding: 5px;
+    width: fit-content;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 10px;
+    display: grid;
+    display: flex;
+    margin-right: 10px;
+    flex-direction: column;
+    color: #363636;
+    position: relative;
+}
+
+.historial-opcion-fecha{
+    display: flex;
+    flex-direction: row;
+}
+
+.historial-opcion-id{
+    display: flex;
+    flex-direction: row;
+}
+
+.value{
+    font-weight: 800;
+}
+
+.historial-opcion-icon{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+
+}
+
+.botones{
+    min-height: 50px;
 }

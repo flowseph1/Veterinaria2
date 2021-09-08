@@ -58,3 +58,13 @@ const boton = document.querySelector(".boton.verde");
 boton.addEventListener('click', () => {
     form.submit();
 })
+
+
+const inputMascota = document.querySelector("#inputMascota").value;
+
+const option = document.querySelector("option[value='" + inputMascota + "']");
+option.selected = true;
+
+
+
+

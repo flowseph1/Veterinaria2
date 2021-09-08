@@ -17,38 +17,27 @@
 <body>
     <div class="fondo">
 
-        <?php include("../../../includes/cliente_header.php") ?>
+        <?php include("../../../includes/auxiliar_header.php") ?>
 
         <div class="main-user">
 
-            <?php include("../../../includes/cliente_user.php") ?>
+            <?php include("../../../includes/auxiliar_user.php") ?>
 
             <div class="contenedor">
                 <div class="titulo-opcion">
-                    <div class="motivo">CITAS</div>
-                    <div class="atras" onclick="location.href = '../cliente.php'">
+                    <div class="motivo">PRE-CLINICA</div>
+                    <div class="atras" onclick="location.href = '../auxiliar.php'">
                         ATRAS
                     </div>
                 </div>
                 <div class="botones">
-                    <div class="boton verde" onclick="location.href = '../citas/agendar_Cita.php'">
-                        <div class="image">
-                            <i class="far fa-calendar-plus"></i>
-                        </div>
-                        <div class="texto">
-                            AGENDAR CITA
-                        </div>
-                    </div>
-                    <div class="line">
-
-                    </div>
                     <div class="bloqueo-boton-general">
-                        <div class="boton rojo" id="eliminar" onclick="accionEliminar()">
+                        <div class="boton verde" id="preclinica">
                             <div class="image">
-                                <i class="fas fa-times"></i>
+                                <i class="fas fa-notes-medical"></i>
                             </div>
                             <div class="texto">
-                                CANCELAR CITA
+                                HACER PRECLINICA
                             </div>
                         </div>
                         <div class="bloqueo-boton">
@@ -56,12 +45,16 @@
                         </div>
                     </div>
 
+                    <div class="line">
+
+                    </div>
+
                     <?php
 
-                    if (isset($_GET["value"])) { ?>
+                    if (isset($_GET["historial"])) { ?>
 
-                        <div class="alerta-warning">
-                            <i class="far fa-calendar-minus"></i>&nbsp; CITA CANCELADA
+                        <div class="alerta-exito">
+                            <i class="fas fa-check"></i></i>&nbsp; PRE-CLINICA REALIZADA CORRECTAMENTE
                         </div>
                     <?php } ?>
                 </div>
@@ -89,8 +82,9 @@
                         <table id="tb-cliente" class="tabla-general">
                             <thead>
                                 <th>ID CITA</th>
+                                <th>CLIENTE</th>
                                 <th>MASCOTA</th>
-                                <th>FECHA CITA</th>
+                                <th>FECHA</th>
                                 <th>HORA</th>
                                 <th>VETERINARIO</th>
                                 <th>ESTADO</th>
@@ -104,17 +98,19 @@
                                 include("../../conexion/conexion.php");
 
                                 $idCliente = $_SESSION['idCliente'];
-                                $query = "SELECT c.Id_Cita, m.Nombre_Mascota, c.Fecha_Cita, c.Hora_Cita, p.Nombre AS Veterinario, e.Estado_Cita, c.Motivo_Cita
-                                FROM citas AS c, mascotas AS m, personal AS p, estadocitas AS e
-                                WHERE c.Id_Cliente = $idCliente
-                                AND m.Id_Cliente = $idCliente
+                                $query = "SELECT c.Id_Cita, cl.Nombre, cl.Id_Cliente ,m.Nombre_Mascota, c.Fecha_Cita, c.Hora_Cita, p.Nombre AS Veterinario, e.Estado_Cita, c.Motivo_Cita
+                                FROM citas AS c, mascotas AS m, personal AS p, clientes AS cl, estadocitas AS e
+                                WHERE c.Id_Cliente = m.Id_Cliente
+                                AND c.Id_Cliente = cl.Id_Cliente
                                 AND c.Id_Veterinario = p.Id_Personal
                                 AND c.Id_EstadoCita = e.Id_EstadoCita
                                 AND c.Id_Mascota = m.Id_Mascota
-                                ORDER BY c.Fecha_Cita DESC";
+                                ORDER BY c.Fecha_Cita ASC";
                                 $result = mysqli_query($conn, $query);
                                 while ($row = mysqli_fetch_array($result)) {
                                     $idCita = $row['Id_Cita'];
+                                    $nombreCliente = $row['Nombre'];
+                                    $idCliente = $row['Id_Cliente'];
                                     $nombreMascota = $row['Nombre_Mascota'];
                                     $fechaCita = $row['Fecha_Cita'];
                                     $horaCita = $row['Hora_Cita'];
@@ -128,6 +124,7 @@
 
                                     <tr class="filas" onclick="filas(event)">
                                         <td><?php echo $idCita ?></td>
+                                        <td><?php echo $nombreCliente ?></td>
                                         <td><?php echo $nombreMascota ?></td>
                                         <td><?php echo $formatoFecha ?></td>
                                         <td><?php echo $formatoHora ?></td>
@@ -171,36 +168,12 @@
 
         </div>
 
-        <input type="hidden" name="idCliente" id="IdElemento">
-
-        <div class="eliminar">
-            <div class="mensaje color-blanco-transparente">
-
-                <div class="eliminar-mensaje">
-                    ¿Esta seguro que desea cancelar cita: <span id="nombreClienteEliminado"></span>
-                    a nombre de: <span id="nombreMascotaCita"></span>?
-
-                </div>
-
-                <div class="eliminar-buttons">
-                    <form action="cancelarCita.php" method="get" id="form2">
-                        <input type="hidden" name="idCita" id="idCita">
-                        <div class="default-btn color-rojo-hover" onclick="eliminarCliente()">
-                            ELIMINAR
-                        </div>
-                    </form>
-                    <div class="default-btn color-secundario-hover" onclick="cancelarEliminar()">
-                        CANCELAR
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <input type="hidden" name="" id="IdElemento">
 
 
         <script src="/Proyecto/statics/js/cliente/cliente.js"></script>
         <script src="/Proyecto/statics/js/cliente/cita.js"></script>
-        <script src="/Proyecto/statics/js/tabla.js"></script>
+        <script src="/Proyecto/statics/js/auxiliar/auxiliar.js"></script>
 
 </body>
 

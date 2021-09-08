@@ -19,6 +19,8 @@ if (!isset($row['Id_EstadoCita'])) {
 
     $index = array_search($nombreMascota, $_SESSION['mascotas']);
     array_splice($_SESSION['mascotas'], $index, 1);
+    array_splice($_SESSION['idMascotas'], $index, 1);
+    array_splice($_SESSION['especies'], $index, 1);
 
     header("Location: mascotas.php?value=1");
 } else {

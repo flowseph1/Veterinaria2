@@ -35,7 +35,7 @@
             </div>
           </div>
 
-          <div class="opcion cliente" onclick="location.href = '#'">
+          <div class="opcion cliente" onclick="location.href = '../cliente/consulta/consulta.php'">
             <div class="titulo">
               <div class="tituloPrincipal">CONSULTAS</div>
             </div>
@@ -53,7 +53,16 @@
             </div>
           </div>
 
-          <div class="opcion cliente" onclick="location.href = '../administrador/admin_Cliente/admin_cliente.php'">
+          <div class="opcion cliente" onclick="location.href = '../cliente/historial/historial.php'">
+            <div class="titulo">
+              <div class="tituloPrincipal">HISTORIAL</div>
+            </div>
+            <div class="icono">
+              <i class="fas fa-history fa-4x"></i>
+            </div>
+          </div>
+
+          <div class="opcion cliente" onclick="location.href = '../cliente/perfil/perfil.php'">
             <div class="titulo">
               <div class="tituloPrincipal">PERFIL</div>
             </div>

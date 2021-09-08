@@ -54,7 +54,7 @@
 
                     if (isset($_GET["value"])) { ?>
 
-                        <div class="agregar-exitoso">
+                        <div class="alerta-exito">
                             <i class="fas fa-check"></i> &nbsp; AGENDADO CORRECTAMENTE
                         </div>
                     <?php } ?>
@@ -80,9 +80,12 @@
                                     </div>
                                     <div class="col inputs">
                                         <div class="values">
-                                            <select name="mascota" id="" class="selection" name="genero">
+                                            <select name="mascota" id="mascotas" class="selection" name="genero">
                                                 <option value="" disabled selected value>SELECCIONE</option>
                                                 <?php
+
+                                                $mascota = $_GET['idMascota'];
+
                                                 include("../../conexion/conexion.php");
                                                 $idCliente = $_SESSION['idCliente'];
                                                 $query = "SELECT Nombre_Mascota, Id_Mascota FROM mascotas WHERE Id_Cliente  = '$idCliente'";
@@ -93,6 +96,7 @@
                                                     echo "<option value='$idMascota'>$nombreMascota</option>";
                                                 }
                                                 ?>
+                                                <input type="hidden" name="" value="<?php echo $mascota; ?>" id="inputMascota">
                                             </select>
                                             <div class="params-op">
                                                 OBLIGATORIO

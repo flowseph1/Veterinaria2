@@ -18,5 +18,11 @@ $resultado = mysqli_query($conn, $query);
 if (!$resultado) {
     die("Error");
 } else {
+    //Obtener ID de mascota.
+    $query2 = "SELECT Id_Mascota FROM mascotas ORDER BY Id_Mascota DESC LIMIT 1";
+    $resultado2 = mysqli_query($conn, $query2);
+    $row2 = mysqli_fetch_array($resultado2);
+    $idMascota = $row2['Id_Mascota'];
+    array_push($_SESSION['idMascotas'], $idMascota);
     header("Location:  agregarMascotas.php?value=1");
 }

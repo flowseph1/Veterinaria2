@@ -1,8 +1,12 @@
+
+const botonVerde = document.querySelector(".boton.verde");
+botonVerde.style.filter = 'opacity(0.4)';
+
 //Tabla Click
 function filas(event) {
     const filas = document.getElementsByClassName("filas");
     const bloqueoBoton = document.querySelector(".bloqueo-boton");
-    const botonRojo = document.querySelector(".boton.rojo");
+    const botonVerde = document.querySelector(".boton.verde");
     for (let index = 0; index < filas.length; index++) {
         filas[index].style.backgroundColor = '';
         filas[index].style.color = '';
@@ -10,22 +14,25 @@ function filas(event) {
     event.currentTarget.style.backgroundColor = '#58585846';
     event.currentTarget.style.color = '#eeeeee';
 
-    let estadoCita = event.currentTarget.children[5].innerText;
+    let estadoCita = event.currentTarget.children[6].innerText;
     if (estadoCita == 'Cancelada' || estadoCita == 'Realizada'
         || estadoCita == 'Preclinica') {
         bloqueoBoton.style.display = "block";
-        botonRojo.style.filter = 'opacity(0.4)';
+        botonVerde.style.filter = 'opacity(0.4)';
     }
     else {
         bloqueoBoton.style.display = "none";
-        botonRojo.style.filter = 'opacity(1)';
+        botonVerde.style.filter = 'opacity(1)';
     }
 
 
-    //Guardar ID de cliente en input hidden.
-    let clienteId = event.currentTarget.children[0].innerHTML;
+    //Se agrega ID cita como valor en onClick de boton.
+    const preclinica = document.querySelector("#preclinica");
+    let citaId = event.currentTarget.children[0].innerHTML;
     const idCliente = document.getElementById("IdElemento");
-    idCliente.value = clienteId;
+    idCliente.value = citaId;
+    let link = "historialClinico.php?cita=" + citaId;
+    preclinica.setAttribute("onclick", "location.href = '" + link + "'");
     //editar.setAttribute("onclick", "location.href = '../admin_Cliente/admin_editarCliente.php?idCliente=" + clienteId);
     //eliminar.setAttribute("onclick", "location.href = '../admin_Cliente/admin_eliminarCliente.php?idCliente=" + clienteId);
 }
@@ -71,7 +78,7 @@ totalFilas.innerHTML = numFilas;
 const todasFilas = document.querySelectorAll(".filas");
 document.addEventListener("click", (event) => {
     const bloqueoBoton = document.querySelector(".bloqueo-boton");
-    const botonRojo = document.querySelector(".boton.rojo");
+    const botonRojo = document.querySelector(".boton.verde");
     var cond;
     todasFilas.forEach((item) => {
         if (item.contains(event.target)) {

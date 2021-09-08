@@ -42,7 +42,7 @@
                 ORDER BY c.Fecha_Cita ASC";
                 $resultado = mysqli_query($conn, $query);
                 while ($row = mysqli_fetch_array($resultado)) { ?>
-                    <div class="notificacion"><span class="negrita">CITA # <?php echo $row['Id_Cita']; ?></span>
+                    <div class="notificacion color-secundario-hover"><span class="negrita">CITA # <?php echo $row['Id_Cita']; ?></span>
 
 
                         <div>
@@ -82,7 +82,7 @@
                         <div>
                             SIN MASCOTAS
                         </div>
-                        <div class="default-btn color-secundario-hover">
+                        <div class="default-btn color-secundario-hover" onclick="location.href='/Proyecto/modules/cliente/mascotas/agregarMascotas.php'">
                             <i class="fas fa-plus-circle fa-2x"></i> &nbsp; AGREGA
                         </div>
 
@@ -119,13 +119,14 @@
                         </div>
                         <div class="mascotaOpciones">
                             <div class="mascota-opciones color-blanco-transparente">
-                                <div class="mascota-opcion color-secundario-hover">
+                                <div class="mascota-opcion color-secundario-hover" onclick="agendarCita(event)">
                                     AGENDAR CITA
+                                    <input type="hidden" id="idMascota" value="<?php echo $_SESSION['idMascotas'][$i]; ?>">
                                 </div>
-                                <div class="mascota-opcion color-secundario-hover">
+                                <div class="mascota-opcion color-secundario-hover" onclick="historialMascota(event)">
                                     HISTORIAL
                                 </div>
-                                <div class="mascota-opcion color-secundario-hover">
+                                <div class="mascota-opcion color-secundario-hover" onclick="editarMascota(event)">
                                     EDITAR MASCOTA
                                 </div>
                             </div>

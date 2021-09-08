@@ -46,3 +46,25 @@ document.addEventListener("click", (event) => {
 
 })
 
+
+
+const agendarCita = (event) => {
+    //Se agrega idMascota a boton de agregarCita en Mascotas
+    const idMascota = document.querySelectorAll("#idMascota");
+    const tarjetaContent = document.querySelectorAll(".tarjeta-content");
+    const parent = event.currentTarget.parentNode.parentNode.parentNode;
+
+    let index = Array.from(tarjetaContent[1].children).indexOf(parent);
+    //Obtener index de ids Mascotas
+    location.href = "/Proyecto/modules/cliente/citas/agendar_Cita.php?idMascota=" + idMascota[index].value;
+}
+
+const historialMascota = (event) => {
+    //Se agrega idMascota a boton de agregarCita en Mascotas
+    const idMascota = document.querySelectorAll("#idMascota");
+    const tarjetaContent = document.querySelectorAll(".tarjeta-content");
+    const parent = event.currentTarget.parentNode.parentNode.parentNode;
+
+    let index = Array.from(tarjetaContent[1].children).indexOf(parent);
+    location.href = "/Proyecto/modules/cliente/historial/historial.php?mascota=" + idMascota[index].value + "&historial=last";
+}

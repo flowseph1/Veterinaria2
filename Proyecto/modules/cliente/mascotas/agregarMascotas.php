@@ -59,7 +59,7 @@
                     <?php } ?>
 
                 </div>
-                <div class="contenedor-default">
+                <div class="contenedor-default2">
                     <div class="forma">
                         <form action="agregarMascotasDB.php" id="formularioAgregar" method="POST">
                             <div class=" personal">
