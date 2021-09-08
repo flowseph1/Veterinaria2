@@ -4,24 +4,24 @@
             <i class="fas fa-user fa-4x"></i>
         </div>
         <div class="info">
-            <div class="puesto">CLIENTE</div>
-            <div class="nombre"><?php echo $_SESSION['nombre'] ?></div>
+            <div class="puesto">VETERINARIO</div>
+            <div class="nombre"><?php echo $_SESSION['nombreVet'] ?></div>
         </div>
     </div>
 
     <?php
     $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    if ($actual_link == 'http://localhost:3000/Proyecto/modules/cliente/cliente.php') {
+    if ($actual_link == 'http://localhost:3000/Proyecto/modules/veterinario/veterinario.php') {
         include("../../modules/conexion/conexion.php");
     } else {
         include("../../../modules/conexion/conexion.php");
     }
-    $idCliente = $_SESSION['idCliente'];
-    $query = "SELECT COUNT(Id_Cita) AS numeroCitas FROM citas WHERE Id_Cliente = $idCliente AND Id_EstadoCita = 1";
+    $idVeterinario = $_SESSION['idVeterinario'];
+    $query = "SELECT COUNT(Id_Cita) AS numeroCitas FROM citas WHERE Id_Veterinario = $idVeterinario AND Id_EstadoCita = 1";
     $resultado = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($resultado);
     ?>
-    
+
     <div class="tarjetas">
         <div class="tarjeta-container">
             <div class="noti">
@@ -38,12 +38,10 @@
                     Sin Recordatorios
                 <?php } ?>
                 <?php
-                $query = "SELECT c.Id_Cita, c.Fecha_Cita, m.Nombre_Mascota FROM citas AS c, mascotas AS m WHERE c.Id_Cliente = $idCliente AND c.Id_EstadoCita = 1 AND c.Id_Mascota = m.Id_Mascota
-                ORDER BY c.Fecha_Cita ASC";
+                $query = "SELECT c.Id_Cita, c.Fecha_Cita, m.Nombre_Mascota FROM citas AS c, mascotas AS m WHERE c.Id_Veterinario=$idVeterinario AND c.Id_EstadoCita = 1 AND c.Id_Mascota = m.Id_Mascota ORDER BY c.Fecha_Cita ASC;";
                 $resultado = mysqli_query($conn, $query);
-                while ($row = mysqli_fetch_array($resultado)) { ?>
-                    <div class="notificacion color-secundario-hover"><span class="negrita">CITA # <?php echo $row['Id_Cita']; ?></span>
-
+                while ($row = mysqli_fetch_array($resultado)) {?>
+                    <div class="notificacion"><span class="negrita">CITA # <?php echo $row['Id_Cita']; ?></span>
 
                         <div>
                             <span class="small">MASCOTA:</span>
@@ -71,30 +69,35 @@
         <div class="tarjeta-container">
             <div class="noti">
                 <i class="fas fa-paw fa-2x"></i>
-                <div class="tarjeta-tittle">MASCOTAS</div>
+                <div class="tarjeta-tittle">PACIENTES</div>
             </div>
 
             <div class="tarjeta-content">
-
-                <?php if (count($_SESSION['mascotas']) == 0) { ?>
-
+            <?php
+                $query = "SELECT m.Nombre_Mascota, a.Nombre, m.Id_Especie FROM citas AS c, mascotas AS m, clientes AS a WHERE c.Id_Veterinario = $idVeterinario AND c.Id_EstadoCita = 1 AND c.Id_Mascota = m.Id_Mascota And m.Id_Cliente = a.Id_Cliente";
+                $resultado = mysqli_query($conn, $query);
+                if (!$resultado) { ?>
                     <div class="agregar-mascota">
                         <div>
                             SIN MASCOTAS
                         </div>
-                        <div class="default-btn color-secundario-hover" onclick="location.href='/Proyecto/modules/cliente/mascotas/agregarMascotas.php'">
+                        <div class="default-btn color-secundario-hover">
                             <i class="fas fa-plus-circle fa-2x"></i> &nbsp; AGREGA
                         </div>
 
                     </div>
-                <?php } ?>
-                <?php for ($i = 0; $i < count($_SESSION['mascotas']); $i++) { ?>
+                <?php } 
+                while ($row = mysqli_fetch_array($resultado)) { 
+                $row_cnt = mysqli_num_rows($resultado);
+                $nombreMascota = $row['Nombre_Mascota'];
+                $nombreCliente = $row['Nombre'];
+                $especie = $row['Id_Especie']; ?>
                     <div class="mascota-main">
                         <div class="mascota-info">
                             <div class="mascota-perfil color-blanco-transparente color-secundario-hover">
                                 <div class="mascota-imagen">
                                     <?php
-                                    switch ($_SESSION['especies'][$i]) {
+                                    switch ($especie) {
                                         case '1':
                                             echo "<i class='fas fa-dog fa-3x'></i>";
                                             break;
@@ -114,26 +117,25 @@
                                 </div>
                             </div>
                             <div class="mascota-nombre">
-                                <?php echo $_SESSION['mascotas'][$i] ?>
+                                <?php echo $nombreMascota?>
                             </div>
                         </div>
                         <div class="mascotaOpciones">
                             <div class="mascota-opciones color-blanco-transparente">
-                                <div class="mascota-opcion color-secundario-hover" onclick="agendarCita(event)">
-                                    AGENDAR CITA
-                                    <input type="hidden" id="idMascota" value="<?php echo $_SESSION['idMascotas'][$i]; ?>">
+                                <div class="mascota-opcion color-secundario-hover">
+                                <?php $nombreCliente ?>   
                                 </div>
-                                <div class="mascota-opcion color-secundario-hover" onclick="historialMascota(event)">
-                                    HISTORIAL
+                                <div class="mascota-opcion color-secundario-hover">
+                                AGENDAR CITA
                                 </div>
-                                <div class="mascota-opcion color-secundario-hover" onclick="editarMascota(event)">
-                                    EDITAR MASCOTA
+                                <div class="mascota-opcion color-secundario-hover">
+                                HISTORIAL
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                <?php } ?>
+                <?php  } ?>
             </div>
         </div>
     </div>
