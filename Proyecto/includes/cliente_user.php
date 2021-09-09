@@ -20,8 +20,8 @@
     $query = "SELECT COUNT(Id_Cita) AS numeroCitas FROM citas WHERE Id_Cliente = $idCliente AND Id_EstadoCita = 1";
     $resultado = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($resultado);
-
     ?>
+    
     <div class="tarjetas">
         <div class="tarjeta-container">
             <div class="noti">
