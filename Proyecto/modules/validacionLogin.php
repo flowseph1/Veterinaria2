@@ -104,6 +104,7 @@ if ($row == 1) { // Si hay una fila, existe el usuario y contra.
             session_start();
             $_SESSION['idVeterinario'] = $idVeterinario;
             $_SESSION['nombreVet'] = $nombre;
+            $_SESSION['idUsuario'] = $idUsuario;
             header("Location: veterinario/veterinario.php");
             break;    
 

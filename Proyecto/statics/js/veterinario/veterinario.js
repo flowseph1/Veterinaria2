@@ -70,3 +70,38 @@ const eliminarCliente = () => {
     const formulario = document.querySelector("#form2");
     formulario.submit();
 }
+
+//Alerta
+const mostrarAlerta = (item) => {
+    item.style.display = "Block";
+}
+
+const alerta = document.querySelectorAll(".input-alerta");
+
+alerta.forEach((item) => {
+    item.addEventListener("animationend", () => {
+        item.style.display = "none";
+    })
+});
+
+
+//Accion formulario.
+const formulario = document.querySelector("#formularioAgregar");
+const boton = document.querySelector(".boton.verde");
+boton.addEventListener("click", () => {
+    formulario.submit();
+})
+
+//Click en submit formulario
+const form = document.querySelector("form");
+const boton = document.querySelector(".boton.verde");
+
+boton.addEventListener('click', () => {
+    form.submit();
+})
+
+
+const inputMascota = document.querySelector("#inputMascota").value;
+
+const option = document.querySelector("option[value='" + inputMascota + "']");
+option.selected = true;

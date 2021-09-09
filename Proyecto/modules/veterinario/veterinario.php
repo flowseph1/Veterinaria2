@@ -38,7 +38,7 @@
               <i class="far fa-calendar-alt fa-4x"></i>
             </div>
           </div>
-
+<!--
           <div class="opcion enfermedades" onclick="location.href = '../veterinario/veteri_Enfermedades/veteri_Enfermedad.php'">
             <div class="titulo">
               <div class="tituloPrincipal">ENFERMEDADES</div>
@@ -47,7 +47,7 @@
               <i class="fas fa-viruses fa-4x"></i>
             </div>
           </div>
-
+-->
           <div class="opcion cirugia" onclick="location.href = '../veterinario/veteri_Cirugias/veteri_Cirugia.php'">
             <div class="titulo">
               <div class="tituloPrincipal">CIRUGIAS</div>

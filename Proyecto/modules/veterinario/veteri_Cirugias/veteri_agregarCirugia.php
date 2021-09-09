@@ -55,107 +55,102 @@
                     <div class="forma">
                         <div class="personal">
                             <div class="informacion-personal">
-                                INFORMACION PERSONAL
+                                Agregar Cirugía
                             </div>
                             <div class="line-horizontal">
                             </div>
                             <div class="info-personal">
                                 <div class="col">
-                                    <div class="params">ID CIRUGIA
+                                    <div class="params">MASCOTA
                                     </div>
-                                    <div class="params">ID MASCOTA
-                                    </div>
-                                    <div class="params">ID PERSONAL
+                                    <div class="params">SERVICIO
                                     </div>
                                     <div class="params">MOTIVO
-                                    </div>
-                                    <div class="params">DESCRIPCION
-                                    </div>
-                                    <div class="params">ID SERVICIO
+                                    <div class="params-op">
+                                                OBLIGATORIO
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="col inputs">
                                     <div class="values">
-                                        <input type="text" spellcheck="false" name="nombre">
+                                            <select name="mascota" id="" class="selection" >
+                                                <option value="" disabled selected value>SELECCIONE</option>
+                                                <?php
+                                                include("../../conexion/conexion.php");
+                                                $idVeterinario = $_SESSION['idVeterinario'];
+                                                $query = "SELECT DISTINCT m.Id_Mascota,m.Nombre_Mascota FROM citas AS c, mascotas AS m, clientes AS a WHERE c.Id_EstadoCita = 1 AND c.Id_Mascota = m.Id_Mascota And m.Id_Cliente = a.Id_Cliente AND c.Id_Cliente=a.Id_Cliente AND c.Id_Veterinario =$idVeterinario";
+                                                $result = mysqli_query($conn, $query);
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $nombreMascota = $row['Nombre_Mascota'];
+                                                    $idMascota = $row['Id_Mascota'];
+                                                    echo "<option value='$idMascota'>$nombreMascota</option>";
+                                                }
+                                                ?>
+                                            </select>
                                         <div class="params-op">
                                             OBLIGATORIO
                                         </div>
                                     </div>
                                     <div class="values">
-                                        <input type="email" spellcheck="false" name="correo">
+                                        <select name="servicio" id="" class="selection" >
+                                            <option value="" disabled selected value>SELECCIONE</option>
+                                                    <?php
+                                                    include("../../conexion/conexion.php");
+                                                    $idVeterinario = $_SESSION['idVeterinario'];
+                                                    $query = "SELECT id_servicio, Nombre_Servicio FROM servicios WHERE Id_Tipo_Servicio=2;";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                        $nombreServicio = $row['Nombre_Servicio'];
+                                                        $idServicio = $row['id_servicio'];
+                                                        echo "<option value='$idServicio'>$nombreServicio</option>";
+                                                    }
+                                                  ?>
+                                        </select>
                                         <div class="params-op">
                                             OBLIGATORIO
                                         </div>
                                     </div>
+                                    
                                     <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
+                                        <textarea name="motivo" id="motivo" cols="30" rows="5" spellcheck="false"></textarea>
+                                        &nbsp&nbsp
                                     </div>
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
-                                    </div>
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
-                                    </div>
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
-                                    </div>
+                                    &nbsp&nbsp
                                 </div>
                                 <div class="col">
-                                    <div class="params">ID PRODUCTO
-                                    </div>
-                                    <div class="params">ID CITA
-                                    </div>
+                                     
+                                    
                                     <div class="params">FECHA DE CIRUGIA
                                     </div>
                                     <div class="params">HORA DE CIRUGIA
-                                    </div>
-                                    <div class="params">BAJA DE CIRUGIA
                                     </div>
                                 </div>
                                 
                                 <div class="col">
                                     <div class="values">
-                                        <input type="text" spellcheck="false" name="usuario">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
+                                    <input type="date" name="fecha" id="fecha">
+                                            <div class="params-op">
+                                                OBLIGATORIO
+                                            </div>
                                     </div>
                                     <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
+                                    <select name="horario" id="" class="selection" >
+                                                <option value="" disabled selected value>SELECCIONE</option>
+                                                <option value="8:00">8:00 AM</option>
+                                                <option value="9:00">9:00 AM</option>
+                                                <option value="10:00">10:00 AM</option>
+                                                <option value="11:00">11:00 AM</option>
+                                                <option value="13:00">1:00 PM</option>
+                                                <option value="14:00">2:00 PM</option>
+                                                <option value="15:00">3:00 PM</option>
+                                                <option value="16:00">4:00 PM</option>
+
+                                            </select>
                                         <div class="params-op">
                                             OBLIGATORIO
                                         </div>
                                     </div>
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
-                                    </div>
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
-                                    </div>
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -167,8 +162,9 @@
                 </div>
             </div>
         </div>
-        <script src="/Veterinaria/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
-        <script src="/Veterinaria/Proyecto/statics/js/administrador/admin_cliente/admin_agregarCliente.js"></script>
+        <script src="/Proyecto/statics/js/veterinario/veterinario.js"></script>
+        <script src="/Proyecto/statics/js/main.js"></script>
+        <script src="/Proyecto/statics/js/tabla.js"></script>
 </body>
 
 </html>

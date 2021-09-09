@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-09-2021 a las 04:25:11
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.5
+-- Tiempo de generación: 09-09-2021 a las 22:56:53
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,6 +31,25 @@ CREATE TABLE `categoria_productos` (
   `Id_Categoria_Producto` int(6) NOT NULL,
   `Nombre_Categoria` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `categoria_productos`
+--
+
+INSERT INTO `categoria_productos` (`Id_Categoria_Producto`, `Nombre_Categoria`) VALUES
+(1, 'Antibióticos'),
+(2, 'Analgésicos '),
+(3, 'Antiinflamatorios'),
+(4, 'Antieméticos '),
+(5, 'Anestésicos'),
+(6, 'Fungicidas'),
+(7, 'Insecticidas'),
+(8, 'Tranquilizantes'),
+(9, 'Vitaminas y minerales'),
+(10, 'Sueros de administración '),
+(11, 'Coagulantes'),
+(12, 'Desparasitantes'),
+(13, 'Diuréticos');
 
 -- --------------------------------------------------------
 
@@ -354,7 +373,8 @@ CREATE TABLE `personal` (
 
 INSERT INTO `personal` (`Id_Personal`, `Identificacion_Personal`, `Nombre`, `Puesto_Trabajo`, `Area`, `Baja_Personal`, `Id_Usuario`) VALUES
 (1, '0801-1987-02355', 'Rodrigo Garcia Velasquez', 'Veterinario', 2, 0x30, 90),
-(4, '0505-1995-02546', 'Julia Madrigal', 'Ayudante', 2, 0x30, 92);
+(4, '0505-1995-02546', 'Julia Madrigal', 'Ayudante', 2, 0x30, 92),
+(5, '0801-1980-23849', 'Verónica Hernández', 'Secretaria', 3, 0x30, 94);
 
 -- --------------------------------------------------------
 
@@ -367,6 +387,17 @@ CREATE TABLE `presentaciones_producto` (
   `Descripcion_Presentacion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `presentaciones_producto`
+--
+
+INSERT INTO `presentaciones_producto` (`Id_Presentacion`, `Descripcion_Presentacion`) VALUES
+(1, 'Comprimido o bolo oral'),
+(2, 'Gotas oftálmicas u óticas'),
+(3, 'Para Administración  Parenteral '),
+(4, 'Inyectable (Metafilaxis o Profilaxis)'),
+(5, 'Para diluir ');
+
 -- --------------------------------------------------------
 
 --
@@ -375,14 +406,37 @@ CREATE TABLE `presentaciones_producto` (
 
 CREATE TABLE `productos` (
   `Id_Producto` int(6) NOT NULL,
-  `Codigo_Producto` varchar(20) NOT NULL,
   `Nombre_Producto` varchar(25) NOT NULL,
+  `Codigo_Producto` varchar(20) DEFAULT NULL,
   `Id_Presentacion` int(6) NOT NULL,
   `ID_Categoria` int(6) NOT NULL,
-  `Cantidad_Producto` int(6) NOT NULL,
+  `Laboratorio` varchar(20) DEFAULT NULL,
+  `ActivoPrincipal` varchar(20) DEFAULT NULL,
+  `Precio_Venta` float NOT NULL,
   `Fecha_Vencimiento` date NOT NULL,
-  `Precio_Venta` float NOT NULL
+  `Cantidad_Producto` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`Id_Producto`, `Nombre_Producto`, `Codigo_Producto`, `Id_Presentacion`, `ID_Categoria`, `Laboratorio`, `ActivoPrincipal`, `Precio_Venta`, `Fecha_Vencimiento`, `Cantidad_Producto`) VALUES
+(3, 'Amoxibactin', NULL, 1, 1, 'Dechra', 'Amoxicilina', 250, '2023-11-30', 10),
+(4, 'Baytril sabor', NULL, 1, 1, 'Bayer', 'enrofloxacino', 550, '2023-12-31', 100),
+(5, 'Cefaseptin', NULL, 1, 1, 'Vetoquinol', 'Cefalexina', 900, '2023-11-30', 100),
+(6, 'Lincos-pectin', NULL, 4, 1, 'Zoetis-pfizer', 'Lincomicina (hidrocl', 350, '2023-12-31', 1),
+(7, 'Tirsanicol inyectable 250', '160136', 4, 1, 'Fatro', 'Tianfenicol', 355, '2023-11-30', 1),
+(8, 'Cobactan 2,5% 100ml', '210011', 4, 1, 'MSD grans animals', 'Cefquinoma', 500, '2023-12-31', 1),
+(9, 'Hidrotil 1000mg/g', '410034', 5, 1, 'SP VETERINARIA', 'tilosina', 700, '2023-11-30', 1),
+(10, 'Neomicina labiana 500mg/g', '8435101802543', 5, 1, 'Labiana', 'Neomicina', 1350, '2023-12-31', 1),
+(11, 'Aceprovet 15mg/ml', '8437010344169', 2, 5, 'Fatro Ibérica', 'Acepromacina maleato', 790, '2023-11-30', 1),
+(12, 'Anesketin 100mg/ml', NULL, 4, 5, 'Dechra', 'Ketamina', 550, '2023-12-31', 1),
+(13, 'Propofol envase clinico', '4030539140874', 4, 5, 'BBraun', 'propofol 10mg/ml', 1200, '2023-11-30', 1),
+(14, 'Isoflutek', '8436047670692', 5, 5, 'Karizoo', 'isoflurano 1000mg/g', 1500, '2023-12-31', 1),
+(15, 'Lactadiet calostro 1005 g', NULL, 1, 9, 'Opko Health Spain/Ph', 'leche,omega 3,6 y vi', 3560, '2025-01-31', 134),
+(16, 'Vitamina k1 10mg/ml', '3700454547843', 4, 9, 'Ecuphar', 'Vitamina K1 (Fitomen', 2700, '2025-12-31', 6),
+(17, 'A2-cat allergy hypoallerg', '3561963601675', 1, 9, 'Virbac', 'Tapioca, proteínas ,', 2300, '2025-01-31', 1);
 
 -- --------------------------------------------------------
 
@@ -475,12 +529,33 @@ CREATE TABLE `roles_usuario` (
 --
 
 CREATE TABLE `servicios` (
+  `id_servicio` int(6) NOT NULL,
   `Nombre_Servicio` varchar(50) NOT NULL,
   `Precio_Servicio` int(11) NOT NULL,
   `Id_Tipo_Servicio` int(6) NOT NULL,
-  `Id_Personal` int(6) NOT NULL,
-  `id_servicio` int(6) NOT NULL
+  `Id_Personal` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `servicios`
+--
+
+INSERT INTO `servicios` (`id_servicio`, `Nombre_Servicio`, `Precio_Servicio`, `Id_Tipo_Servicio`, `Id_Personal`) VALUES
+(3, 'Urianálisis', 80, 1, 4),
+(4, 'Citología', 1100, 1, 4),
+(5, 'Hemograma', 110, 1, 4),
+(6, 'Muestra Fecal', 500, 1, 4),
+(7, 'Esterilización o castración', 1500, 2, 1),
+(8, 'Obstrucción intestinal', 2500, 2, 4),
+(9, 'Operación de hernias', 2200, 2, 1),
+(10, 'Operación de cataratas', 2500, 2, 4),
+(11, 'Cirugías traumatológicas', 1200, 2, 4),
+(12, 'Cirugía tumoral / oncológica', 5000, 2, 1),
+(13, 'Cirugía maxilofacial', 1800, 2, 1),
+(14, 'Cirugía reconstructiva', 5200, 2, 1),
+(15, 'Cirugía de urgencias', 2300, 2, 1),
+(16, 'Canalización y administración medicamento', 100, 3, 4),
+(17, 'Hospitalización (Por Hora) ', 100, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -563,6 +638,16 @@ CREATE TABLE `tipo_servicios` (
   `Tipo_Servicio` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `tipo_servicios`
+--
+
+INSERT INTO `tipo_servicios` (`Id_Tipo_Servicio`, `Tipo_Servicio`) VALUES
+(1, 'Muestras'),
+(2, 'Cirugía'),
+(3, 'Administrar Medicamento'),
+(4, 'Hospitalización ');
+
 -- --------------------------------------------------------
 
 --
@@ -582,7 +667,8 @@ INSERT INTO `tipo_usuario` (`id_tipoUsuario`, `Tipo`) VALUES
 (1, 'Cliente'),
 (2, 'Administrador'),
 (3, 'Veterinario'),
-(4, 'Ayudante');
+(4, 'Ayudante'),
+(5, 'Secretaria');
 
 -- --------------------------------------------------------
 
@@ -612,7 +698,8 @@ INSERT INTO `usuarios` (`Id_Usuario`, `Username`, `Clave`, `Fecha_Registro`, `Id
 (83, 'mroberto11', 'roberto123', '2021-08-27', 1, NULL),
 (84, 'pcubas123', 'cubas123', '2021-08-27', 1, NULL),
 (90, 'veterinario1', 'pass123', '2021-08-30', 3, NULL),
-(92, 'Secretaria1', 'pass123', '2021-08-30', 4, NULL);
+(92, 'Ayudante1', 'pass123', '2021-08-30', 4, NULL),
+(94, 'Secretaria1', 'pass123', '2021-09-09', 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -656,7 +743,8 @@ ALTER TABLE `citas`
   ADD PRIMARY KEY (`Id_Cita`),
   ADD KEY `Id_Cliente` (`Id_Cliente`),
   ADD KEY `Id_Mascota` (`Id_Mascota`),
-  ADD KEY `Id_Veterinario` (`Id_Veterinario`);
+  ADD KEY `Id_Veterinario` (`Id_Veterinario`),
+  ADD KEY `citas_ibfk_4` (`Id_EstadoCita`);
 
 --
 -- Indices de la tabla `clientes`
@@ -777,8 +865,7 @@ ALTER TABLE `presentaciones_producto`
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`Id_Producto`),
   ADD KEY `ID_Categoria` (`ID_Categoria`),
-  ADD KEY `Id_Presentacion` (`Id_Presentacion`),
-  ADD KEY `Id_Presentacion_2` (`Id_Presentacion`);
+  ADD KEY `Id_Presentacion` (`Id_Presentacion`);
 
 --
 -- Indices de la tabla `proveedores`
@@ -862,7 +949,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `categoria_productos`
 --
 ALTER TABLE `categoria_productos`
-  MODIFY `Id_Categoria_Producto` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Categoria_Producto` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `cirugia`
@@ -952,19 +1039,19 @@ ALTER TABLE `mascotas`
 -- AUTO_INCREMENT de la tabla `personal`
 --
 ALTER TABLE `personal`
-  MODIFY `Id_Personal` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id_Personal` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `presentaciones_producto`
 --
 ALTER TABLE `presentaciones_producto`
-  MODIFY `Id_Presentacion` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Presentacion` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `Id_Producto` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Producto` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
@@ -994,7 +1081,7 @@ ALTER TABLE `roles_usuario`
 -- AUTO_INCREMENT de la tabla `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `id_servicio` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_servicio` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `telefonos_clientes`
@@ -1012,7 +1099,7 @@ ALTER TABLE `tipo_especies`
 -- AUTO_INCREMENT de la tabla `tipo_servicios`
 --
 ALTER TABLE `tipo_servicios`
-  MODIFY `Id_Tipo_Servicio` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Tipo_Servicio` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
@@ -1024,7 +1111,7 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `Id_Usuario` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `Id_Usuario` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- Restricciones para tablas volcadas
@@ -1044,7 +1131,7 @@ ALTER TABLE `cirugia`
 -- Filtros para la tabla `citas`
 --
 ALTER TABLE `citas`
-  ADD CONSTRAINT `citas_ibfk_3` FOREIGN KEY (`Id_Cliente`) REFERENCES `clientes` (`ID_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `citas_ibfk_3` FOREIGN KEY (`Id_Cliente`) REFERENCES `clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `citas_ibfk_4` FOREIGN KEY (`Id_EstadoCita`) REFERENCES `estadocitas` (`Id_EstadoCita`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `citas_ibfk_5` FOREIGN KEY (`Id_Veterinario`) REFERENCES `personal` (`Id_Personal`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `citas_ibfk_6` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`Id_Mascota`) ON DELETE CASCADE ON UPDATE CASCADE;
@@ -1127,7 +1214,6 @@ ALTER TABLE `personal`
 -- Filtros para la tabla `productos`
 --
 ALTER TABLE `productos`
-  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`Id_Producto`) REFERENCES `detalle_venta` (`Id_Producto`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`ID_Categoria`) REFERENCES `categoria_productos` (`Id_Categoria_Producto`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `productos_ibfk_3` FOREIGN KEY (`Id_Presentacion`) REFERENCES `presentaciones_producto` (`Id_Presentacion`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -1148,13 +1234,13 @@ ALTER TABLE `servicios`
 -- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_tipoUsuario`) REFERENCES `tipo_usuario` (`id_tipoUsuario`);
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`Id_TipoUsuario`) REFERENCES `tipo_usuario` (`id_tipoUsuario`);
 
 --
 -- Filtros para la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`Id_Cliente`) REFERENCES `clientes` (`ID_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`Id_Cliente`) REFERENCES `clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`Id_Mascota`);
 COMMIT;
 

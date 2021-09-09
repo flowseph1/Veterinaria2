@@ -9,7 +9,7 @@
           <div class="content-navbar" onclick="location.href = '/Proyecto/index.php'">
             <a href="/Proyecto/index.php">INICIO</a>
           </div>
-          <div class="content-navbar" onclick="">
+          <div class="content-navbar" onclick="location.href = '/Proyecto/modules/veterinario/perfil/perfil.php'">
             <a href="">PERFIL</a>
           </div>
           <div class="content-navbar" onclick="location.href = '/Proyecto/modules/veterinario/veterinario.php'">

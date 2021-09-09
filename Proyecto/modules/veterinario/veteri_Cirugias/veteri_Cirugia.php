@@ -61,6 +61,15 @@
                     </div>
                     <div class="difuminacion">
 
+                    
+                    <?php
+                    if (isset($_GET["value"])) { ?>
+
+                        <div class="agregar-exitoso">
+                            <i class="fas fa-check"></i> &nbsp; AGREGADO CORRECTAMENTE
+                        </div>
+                    <?php } ?>
+
                     </div>
                 </div>
                 <div class="clientes">
@@ -86,36 +95,52 @@
                     <div class="tabla-clientes">
                         <table id="tb-cliente" class="tabla">
                             <thead>
-                                <th>ID CIRUGIA</th>
-                                <th>ID MASCOTA</th>
-                                <th>ID PERSONAL</th>
+                                <th>ID </th>
+                                <th>MASCOTA</th>
                                 <th>MOTIVO</th>
                                 <th>DESCRIPCION</th>
-                                <th>ID SERVICIO</th>
-                                <th>ID PRODUCTO</th>
                                 <th>ID CITA</th>
-                                <th>FECHA CIRUGIA</th>
-                                <th>HORA CIRUGIA</th>
-                                <th>BAJA CIRUGIA</th>
+                                <th>FECHA </th>
+                                <th>HORA </th>
+                                <th>ESTADO</th>
                             </thead>
                             <tbody>
-                                <tr class="filas" onclick="filas(event)">
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                </tr>
+                            <?php
+                                include("../../conexion/conexion.php");
+
+                                $idVeterinario = $_SESSION['idVeterinario'];
+                                $query = "SELECT a.Id_Cirugia, c.Nombre_Mascota,a.Motivo_Cirugia,d.Tipo_Servicio, b.Id_Cita ,a.Fecha_Cirugia, a.Hora_Cirugia,a.Baja_Cirugia
+                                FROM  cirugia AS a, citas AS b, mascotas AS c, tipo_servicios d
+                                WHERE a.Id_Mascota= c.Id_Mascota AND b.Id_Mascota=c.Id_Mascota AND d.Id_Tipo_Servicio=a.Id_Servicio AND b.Id_Veterinario=$idVeterinario ;";
+                                $result = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        $Id_Cirugia = $row['Id_Cirugia'];
+                                        $nombreMascota = $row['Nombre_Mascota'];
+                                        $motivo = $row['Motivo_Cirugia'];
+                                        $descripcion = $row['Tipo_Servicio'];
+                                        $Id_Cita = $row['Id_Cita'];
+                                        $fecha = $row['Fecha_Cirugia'];
+                                        $hora = $row['Hora_Cirugia'];
+                                        $Baja_Cirugia = $row['Baja_Cirugia'];
+
+                                        $formatoFecha = date('d-m-Y', strtotime($fecha));
+                                        $formatoHora = date('h:i a', strtotime($hora));
+                            ?>
+
+                                        <tr class="filas" onclick="filas(event)">
+                                            <td><?php echo $Id_Cirugia ?></td>
+                                            <td><?php echo $nombreMascota ?></td>
+                                            <td><?php echo $motivo ?></td>
+                                            <td><?php echo $descripcion ?></td>
+                                            <td><?php echo $IdCita ?></td>
+                                            <td><?php echo $fecha ?></td>
+                                            <td><?php echo $hora ?></td>
+                                            <td><?php echo $Baja_Cirugia ?></td>
+                                        </tr>
 
 
 
-
+                                        <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -145,7 +170,8 @@
         </div>
     </div>
 
-    <script src="/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
+    <script src="/Proyecto/statics/js/veterinario/veterinario.js"></script>
+    <script src="/Proyecto/statics/js/tabla.js"></script>
 </body>
 
 </html>
