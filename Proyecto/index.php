@@ -37,24 +37,27 @@
                 <div class="galeria-port">
                     <div class="imagen-port">
                         <img src="statics/img/poster.png" alt="">
+                        <a class="ligthtbox" href="statics/img/poster.png">
                         <div class="hover-galeria">
                             <img src="statics/imgimg/icono1.png" alt="">
                             <p>Ir a Anuncio</p>
-                        </div>
+                        </div></a>
                     </div>
                     <div class="imagen-port">
                         <img src="statics/img/poster2.png" alt="">
+                        <a href="statics/img/poster2.png">
                         <div class="hover-galeria">
                             <img src="statics/imgimg/icono1.png" alt="">
                             <p>Ir a Anuncio</p>
-                        </div>
+                        </div></a>
                     </div>
                     <div class="imagen-port">
                         <img src="statics/img/poster3.png" alt="">
+                        <a href="statics/img/poster3.png">
                         <div class="hover-galeria">
                             <img src="statics/imgimg/icono1.png" alt="">
                             <p>Ir a Anuncio</p>
-                        </div>
+                        </div></a>
                     </div>
                   </div>
                     </div>

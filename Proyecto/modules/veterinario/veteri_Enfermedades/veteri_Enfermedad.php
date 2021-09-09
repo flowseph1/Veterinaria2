@@ -133,7 +133,7 @@
         </div>
     </div>
 
-    <script src="/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
+    <script src="/Proyecto/statics/js/veterinario/veterinario.js"></script>
 </body>
 
 </html>

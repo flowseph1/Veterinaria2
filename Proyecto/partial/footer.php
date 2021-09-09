@@ -13,8 +13,9 @@
                 <p></p>
             </div>
         </div>
-        <img src="statics/img/Logo1.svg" alt="" style="width: 25%;padding-left: 50%;padding-top: 1%;"/>
+        <img src="/Proyecto/statics/img/Logo1.svg" alt="" style="width: 25%;padding-left: 50%;padding-top: 1%;"/>
     </footer>
+    <script src="/Proyecto/statics/js/main.js"></script>
 </body>
 
 </html>

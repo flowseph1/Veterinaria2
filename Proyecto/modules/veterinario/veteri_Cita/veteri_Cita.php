@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="botones">
-                    <div class="boton verde" onclick="location.href = '../veteri_Cita/veteri_agregarCita.php'">
+                    <div class="boton verde" onclick="location.href = '../veteri_Cita/veteri_agendarCita.php'">
                         <div class="image">
                         <i class="far fa-calendar-plus"></i>
                         </div>
@@ -56,14 +56,21 @@
                             <i class="fas fa-times"></i>
                         </div>
                         <div class="texto">
-                            ELIMINAR
+                            CANCELAR CITA
                         </div>
                     </div>
                     <div class="difuminacion">
+                    <?php
 
+                        if (isset($_GET["value"])) { ?>
+
+                     <div class="eliminacion-Cliente">
+                     <i class="fas fa-check"></i> &nbsp; CITA CANCELADA
+                     </div>
+                        <?php } ?>
                     </div>
                 </div>
-                <div class="clientes">
+                <div class="tabla-contenedor">
                     <div class="descripcion">
                         <div class="herramientas">
                             <div class="buscador">
@@ -87,24 +94,71 @@
                         <table id="tb-cliente" class="tabla">
                             <thead>
                                 <th>ID CITA</th>
-                                <th>ID MASCOTA</th>
-                                <th>ID CLIENTE</th>
+                                <th>MASCOTA</th>
                                 <th>FECHA CITA</th>
                                 <th>HORA</th>
-                                <th>MOTIVO</th>
                                 <th>ESTADO</th>
-
+                                <th>DESCRIPCION</th>
                             </thead>
                             <tbody>
+                            <?php
+
+                                date_default_timezone_set('America/Tegucigalpa');
+
+                                include("../../conexion/conexion.php");
+
+                                $idVeterinario = $_SESSION['idVeterinario'];
+                                $query = "SELECT c.Id_Cita, m.Nombre_Mascota, c.Fecha_Cita, c.Hora_Cita, e.Estado_Cita, c.Motivo_Cita
+                                FROM citas AS c, mascotas AS m, personal AS p, estadocitas AS e
+                                WHERE C.Id_Veterinario = $idVeterinario
+                                AND m.Id_Cliente = c.Id_Cliente
+                                AND c.Id_Veterinario = p.Id_Personal
+                                AND c.Id_EstadoCita = e.Id_EstadoCita
+                                AND c.Id_Mascota = m.Id_Mascota
+                                ORDER BY c.Fecha_Cita DESC";
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_array($result)) {
+                                    $idCita = $row['Id_Cita'];
+                                    $nombreMascota = $row['Nombre_Mascota'];
+                                    $fechaCita = $row['Fecha_Cita'];
+                                    $horaCita = $row['Hora_Cita'];
+                                    $estadoCita = $row['Estado_Cita'];
+                                    $descripcionCita = $row['Motivo_Cita'];
+
+                                    $formatoFecha = date('d-m-Y', strtotime($fechaCita));
+                                    $formatoHora = date('h:i a', strtotime($horaCita));
+                            ?>
+
                                 <tr class="filas" onclick="filas(event)">
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
+                                    <td><?php echo $idCita ?></td>
+                                    <td><?php echo $nombreMascota ?></td>
+                                    <td><?php echo $formatoFecha ?></td>
+                                    <td><?php echo $formatoHora ?></td>
+                                    <td><?php
+
+                                        switch ($estadoCita) {
+                                            case 'Pendiente':
+                                                echo "<div class='pendiente'> $estadoCita </div>";
+                                                break;
+                                            case 'Cancelada':
+                                                echo "<div class='cancelada'> $estadoCita </div>";
+                                                break;
+                                            case 'Realizada':
+                                                echo "<div class='realizada'> $estadoCita </div>";
+                                                break;
+                                            default:
+                                                echo "nada";
+                                                break;
+                                        }
+
+
+                                        ?></td>
+                                    <td><?php echo $descripcionCita ?></td>
                                 </tr>
+
+
+                            <?php } ?>
+
                             </tbody>
                         </table>
                     </div>
@@ -134,7 +188,9 @@
         </div>
     </div>
 
-    <script src="/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
+    <script src="/Proyecto/statics/js/veterinario/veterinario.js"></script>
+    <script src="/Proyecto/statics/js/cliente/cita.js"></script>
+    <script src="/Proyecto/statics/js/tabla.js"></script>
 </body>
 
 </html>

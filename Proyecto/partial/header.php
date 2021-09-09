@@ -8,14 +8,14 @@
     <title>Safari || Paguina Principal</title>
     <link rel="shortcut icon" href="statics/img/Logo1.svg" type="image/x-icon">
     <link rel="stylesheet" href="statics/css/estilo.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
 </head>
 
 <body>
     <header>
-      <img src="static/img/Logo1.svg" alt="" style="width: 25%;padding-left: 10%;padding-top: 1%;"/>
+        <img src="/Proyecto/statics/img/Logo1.svg" alt="" style="width: 25%;padding-left: 10%;padding-top: 1%;"/>
         <nav>
-          
             <a href="index.php">Inicio </a>
             <a href="historia.php">Historia</a>
             <a href="modules/registro.php">Registrarse</a>

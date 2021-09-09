@@ -98,6 +98,7 @@
     </div>
 
     <script src="../../statics/js/administrador/administrador.js"></script>
+    <script src="../../statics/js/veterinario/veterinario.js"></script>
 </body>
 
 </html>

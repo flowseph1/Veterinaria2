@@ -21,7 +21,6 @@ if ($row == 1) { // Si hay una fila, existe el usuario y contra.
     $tipoUsuario = $array['Id_TipoUsuario']; // Se guarda Tipo de Usuario en variable $tipoUsuario.
     $idUsuario = $array['Id_Usuario']; // Se guarda ID de Usuario en variable $idUsuario.
 
-<<<<<<< Updated upstream
     if ($tipoUsuario == 1) {
         //Consulta para obtener informacion del cliente.
         $query = "SELECT * FROM clientes WHERE Id_Usuario = '$idUsuario'";
@@ -81,37 +80,6 @@ if ($row == 1) { // Si hay una fila, existe el usuario y contra.
 
 
 
-=======
-    //Consulta para obtener informacion del cliente.
-    $query = "SELECT * FROM clientes WHERE Id_Usuario = '$idUsuario'";
-    $result = mysqli_query($conn, $query); // Ejecucion de Query.
-    $row = mysqli_fetch_array($result); // Obteniendo resultados de query.
-
-    //Almacenando informacion del cliente.
-    $nombre = $row['Nombre'];
-    $idCliente = $row['Id_Cliente'];
-
-    // Consulta para obtener informacion de mascota del cliente.
-    $query = "SELECT * FROM mascotas WHERE Id_Cliente = '$idCliente'";
-    $result = mysqli_query($conn, $query); // Ejecucion de Query.
-    $mascotas = array(); //Arreglo de mascotas;
-    $idEspecie = array(); //Arreglo de especies;
-    while ($rows = mysqli_fetch_array($result)) {
-        //Almacenando informacion de mascotas.
-        $nombreMascota = $rows['Nombre_Mascota'];
-        $especie = $rows['Id_Especie'];
-        array_push($mascotas, $nombreMascota);
-        array_push($idEspecie, $especie);
-    }
-
-    //Consulta para obtener informacion del veterinario.
-    $query = "SELECT * FROM personal WHERE Id_Usuario =$idUsuario AND Puesto_Trabajo='Veterinario'";
-    $result = mysqli_query($conn, $query); // Ejecucion de Query.
-    $row = mysqli_fetch_array($result); // Obteniendo resultados de query.
-    //Almacenando informacion del veterinario.
-    $idVeterinario = $row['Id_Personal'];
-    $nombreVet = $row['Nombre'];
->>>>>>> Stashed changes
 
     // Direccionamiento de usuario.
     switch ($tipoUsuario) {

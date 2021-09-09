@@ -73,7 +73,7 @@
 
             <div class="tarjeta-content">
             <?php
-                $query = "SELECT m.Nombre_Mascota, a.Nombre, m.Id_Especie FROM citas AS c, mascotas AS m, clientes AS a WHERE c.Id_Veterinario = $idVeterinario AND c.Id_EstadoCita = 1 AND c.Id_Mascota = m.Id_Mascota And m.Id_Cliente = a.Id_Cliente";
+                $query = "SELECT DISTINCT m.Nombre_Mascota, a.Nombre, m.Id_Especie FROM citas AS c, mascotas AS m, clientes AS a WHERE c.Id_Veterinario = $idVeterinario AND c.Id_EstadoCita = 1 AND c.Id_Mascota = m.Id_Mascota And m.Id_Cliente = a.Id_Cliente AND c.Id_Cliente=a.Id_Cliente";
                 $resultado = mysqli_query($conn, $query);
                 if (!$resultado) { ?>
                     <div class="agregar-mascota">
@@ -121,9 +121,7 @@
                         </div>
                         <div class="mascotaOpciones">
                             <div class="mascota-opciones color-blanco-transparente">
-                                <div class="mascota-opcion color-secundario-hover">
-                                <?php $nombreCliente ?>   
-                                </div>
+                                <?php echo $nombreCliente ?>   
                                 <div class="mascota-opcion color-secundario-hover">
                                 AGENDAR CITA
                                 </div>

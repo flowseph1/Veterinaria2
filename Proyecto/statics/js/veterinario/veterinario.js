@@ -51,7 +51,6 @@ document.addEventListener("click", (event) => {
 const cancelarEliminar = () => {
     const eliminar = document.querySelector(".eliminar");
     eliminar.style.display = "none";
-
 }
 
 //Funcion para aparecer cuadro de dialogo para eliminar cliente.
