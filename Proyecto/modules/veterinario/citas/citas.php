@@ -195,8 +195,7 @@
 
 
 
-        <script src="/Proyecto/statics/js/cliente/cliente.js"></script>
-        <script src="/Proyecto/statics/js/cliente/cita.js"></script>
+        <script src="/Proyecto/statics/js/veterinario/veterinario.js"></script>
         <script src="/Proyecto/statics/js/tabla.js"></script>
 
 </body>

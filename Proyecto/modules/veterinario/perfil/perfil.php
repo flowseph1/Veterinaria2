@@ -105,7 +105,7 @@
 
                                             <div class="values">
 
-                                              <input type="text" spellcheck="false" name="id" value="<?php echo $$Id?>">
+                                              <input type="text" spellcheck="false" name="id" value="<?php echo $Id?>">
                                                 <div class="params-op">
                                                     OBLIGATORIO
                                                 </div>
@@ -137,7 +137,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="values">
-                                                    <input type="text" spellcheck="false" name="password" value="<?php echo $clave ?>">
+                                                    <input type="password" spellcheck="false" name="password" value="<?php echo $clave ?>">
                                                     <div class=" params-op">
                                                         OBLIGATORIO
                                                     </div>

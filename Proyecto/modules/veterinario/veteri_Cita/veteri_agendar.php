@@ -8,7 +8,7 @@ $idMascota =  $_GET['mascota'];
 $fecha = $_GET['fecha'];
 $horario = $_GET['horario'];
 $motivo = $_GET['motivo'];
-$idCliente = $_GET['mascota'];
+$idCliente = $_GET['cliente'];
 $idVeterinario = $_SESSION['idVeterinario'];
 
 $query = "INSERT INTO citas VALUES ('', $idCliente, $idMascota, $idVeterinario, '$fecha', '$horario', '$motivo', DEFAUsLT)";
