@@ -78,6 +78,15 @@ if ($row == 1) { // Si hay una fila, existe el usuario y contra.
         $nombre = $row['Nombre'];
     }
 
+    if ($tipoUsuario == 6) {
+        //Obtener informacion de personal.
+        $query = "SELECT Id_Personal, Nombre FROM personal WHERE Id_Usuario = $idUsuario";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_array($result);
+        $idPersonal = $row['Id_Personal'];
+        $nombre = $row['Nombre'];
+    }
+
 
 
 
@@ -113,6 +122,13 @@ if ($row == 1) { // Si hay una fila, existe el usuario y contra.
             $_SESSION['nombre'] = $nombre;
             $_SESSION['idPersonal'] = $idPersonal;
             header("Location: auxiliar/auxiliar.php");
+            break;
+
+        case '6':
+            session_start();
+            $_SESSION['nombre'] = $nombre;
+            $_SESSION['idPersonal'] = $idPersonal;
+            header("Location: secretaria/secretaria.php");
             break;
         default:
             echo "nada";

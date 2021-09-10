@@ -203,7 +203,8 @@
                             </div>
 
                             <div class="botones-mascotas">
-                                <div class="boton-historial-mascotas color-secundario">
+
+                                <div class="boton-historial-mascotas color-secundario" onclick="historial(<?php echo $idMascota ?>)">
                                     <i class="fas fa-history"></i> &nbsp; HISTORIAL
                                 </div>
                                 <div class="boton-eliminar-mascotas color-rojo-hover" onclick="accionEliminar(event)">

@@ -45,3 +45,9 @@ const boton2 = document.querySelector(".default-btn.color-rojo-hover");
 boton2.addEventListener("click", () => {
     formulario2.submit();
 })
+
+const historial = (idMascota) => {
+
+    location.href = '/Proyecto/modules/cliente/historial/historial.php?mascota=' + idMascota + "&historial=last";
+
+}
