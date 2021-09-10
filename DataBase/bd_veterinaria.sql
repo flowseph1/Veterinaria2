@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-09-2021 a las 04:25:11
+-- Tiempo de generación: 10-09-2021 a las 05:27:46
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.5
 
@@ -74,40 +74,12 @@ CREATE TABLE `citas` (
 --
 
 INSERT INTO `citas` (`Id_Cita`, `Id_Cliente`, `Id_Mascota`, `Id_Veterinario`, `Fecha_Cita`, `Hora_Cita`, `Motivo_Cita`, `Id_EstadoCita`) VALUES
-(6, 48, 56, 1, '2021-08-20', '13:00:00', 'Fractura', 1),
-(18, 48, 56, 1, '2021-08-19', '15:00:00', 'Revision General', 3),
-(19, 48, 56, 1, '2021-08-12', '16:00:00', 'Control de Cirugia', 3),
-(20, 48, 56, 1, '2021-08-13', '13:00:00', 'Problemas', 3),
-(21, 48, 56, 1, '2021-08-19', '10:00:00', 'dolor', 3),
-(22, 48, 56, 1, '2021-08-11', '10:00:00', 'prueba1', 3),
-(23, 48, 56, 1, '2021-08-26', '09:00:00', 'General', 3),
-(24, 48, 56, 1, '2021-08-28', '09:00:00', 'asdasd', 3),
-(25, 48, 56, 1, '2021-09-02', '13:00:00', 'asdasdasd', 3),
-(26, 48, 56, 1, '2021-08-10', '11:00:00', 'asdasdasd', 3),
-(27, 48, 56, 1, '2021-08-11', '11:00:00', 'asdasd', 3),
-(28, 48, 56, 1, '2021-08-20', '09:00:00', 'asdasd', 3),
-(29, 48, 56, 1, '2021-08-18', '11:00:00', 'asdasd', 3),
-(30, 48, 56, 1, '2021-08-12', '10:00:00', 'ASDASD', 3),
-(31, 48, 56, 1, '2021-09-17', '09:00:00', 'Dolor ', 3),
-(32, 48, 56, 1, '2021-08-21', '11:00:00', 'asdasd', 1),
-(33, 48, 56, 1, '2021-09-11', '10:00:00', 'Caida', 3),
-(34, 48, 56, 1, '2021-10-21', '08:00:00', 'asdasd', 3),
-(35, 48, 56, 1, '2021-08-11', '09:00:00', 'asdas', 3),
-(36, 1, 37, 1, '2021-08-18', '13:00:00', 'asdasd', 3),
-(37, 1, 37, 1, '2021-08-19', '10:00:00', 'asdasd', 3),
-(38, 1, 38, 1, '2021-08-19', '11:00:00', 'asdasd', 3),
-(39, 1, 37, 1, '2021-09-02', '10:00:00', 'asdasd', 3),
-(40, 49, 57, 1, '2021-09-10', '13:00:00', 'Dolor', 1),
-(41, 49, 58, 1, '2021-09-28', '09:00:00', 'Quebradura', 1),
-(42, 1, 36, 1, '2021-09-15', '11:00:00', 'Golpe en cola', 3),
-(43, 1, 38, 1, '2021-09-16', '13:00:00', 'Revision General', 3),
-(44, 1, 36, 1, '2021-08-12', '11:00:00', 'asdasd', 3),
-(45, 1, 37, 1, '2021-09-03', '11:00:00', 'asdasdasd', 3),
-(46, 1, 37, 1, '2021-09-17', '09:00:00', 'n/a', 3),
-(47, 1, 38, 1, '2021-09-02', '10:00:00', 'ASDASDASD', 3),
-(48, 1, 36, 1, '2021-08-19', '09:00:00', 'aaaaaa', 3),
-(49, 1, 37, 1, '2021-08-07', '11:00:00', 'Dolor abdominal', 3),
-(50, 1, 37, 1, '2021-09-30', '11:00:00', 'Nuevo', 1);
+(56, 1, 78, 1, '2021-09-10', '09:00:00', 'Dolor', 4),
+(58, 48, 80, 1, '2021-09-10', '10:00:00', 'Caida', 4),
+(59, 1, 81, 1, '2021-09-30', '13:00:00', 'Problemas Respiratorios', 4),
+(60, 48, 80, 1, '2021-10-01', '09:00:00', 'Revision General', 4),
+(61, 1, 78, 1, '2021-11-12', '09:00:00', 'Consulta General', 4),
+(62, 1, 78, 1, '2021-09-07', '15:00:00', 'Mordida de perro.', 4);
 
 -- --------------------------------------------------------
 
@@ -129,13 +101,34 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`Id_Cliente`, `Nombre`, `Genero`, `Correo_Electronico`, `Id_Usuario`, `Estado`) VALUES
-(1, 'Jose Miguel Acosta Carias ', 'MASCULINO', 'jose.m.acosta1996@gmail.com', 1, 0),
+(1, 'Jose Miguel Acosta Carias', 'MASCULINO', 'jose.m.acosta1996@gmail.com', 1, 0),
 (2, 'Luisa Maria Martinez Rodriguez', 'FEMENINO', 'luisamaria@gmail.com', 2, 0),
 (3, 'Glorin Rubio', 'FEMENINO', 'stheprubio2000@gmail.com', 3, 0),
 (4, 'Josue Zelaya', 'MASCULINO', 'josuezelaya0010@gmail.com', 4, 0),
 (14, 'Katherine Gabriela Meza', 'FEMENINO', 'Kath@safari.com', 5, 0),
 (48, 'Miguel Roberto Mendoza', 'MASCULINO', 'miguel@gmail.com', 83, 0),
 (49, 'Patricia Cubas', 'FEMENINO', 'patricia@gmail.com', 84, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comportamiento`
+--
+
+CREATE TABLE `comportamiento` (
+  `Id_Comportamiento` int(6) NOT NULL,
+  `Descripcion_Comportamiento` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `comportamiento`
+--
+
+INSERT INTO `comportamiento` (`Id_Comportamiento`, `Descripcion_Comportamiento`) VALUES
+(1, 'Normal'),
+(2, 'Agresivo'),
+(3, 'Inquieto'),
+(4, 'Muestra Malestar');
 
 -- --------------------------------------------------------
 
@@ -153,19 +146,63 @@ CREATE TABLE `compras` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `condicion_corporal`
+--
+
+CREATE TABLE `condicion_corporal` (
+  `Id_Condicion` int(6) NOT NULL,
+  `Descripcion` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `condicion_corporal`
+--
+
+INSERT INTO `condicion_corporal` (`Id_Condicion`, `Descripcion`) VALUES
+(1, 'Muy Delgado'),
+(2, 'Delgado'),
+(3, 'Peso Ideal'),
+(4, 'Sobrepeso'),
+(5, 'Obesidad');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `consulta`
 --
 
 CREATE TABLE `consulta` (
   `Id_Consulta` int(6) NOT NULL,
-  `Diagnostico_Consulta` varchar(200) NOT NULL,
-  `Fecha_Consulta` date NOT NULL,
+  `Id_Historial` int(6) NOT NULL,
+  `Id_Cliente` int(6) NOT NULL,
   `Id_Cita` int(6) NOT NULL,
   `Id_Mascota` int(6) NOT NULL,
-  `Id_Receta` int(6) NOT NULL,
   `Id_Personal` int(6) NOT NULL,
+  `Id_Receta` int(6) NOT NULL,
+  `Diagnostico_Consulta` varchar(200) NOT NULL,
+  `Fecha_Consulta` date NOT NULL,
   `Baja_Consulta` binary(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `consumo_alimento`
+--
+
+CREATE TABLE `consumo_alimento` (
+  `Id_ConsumoAlimento` int(6) NOT NULL,
+  `Descripcion_ConsumoAlimento` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `consumo_alimento`
+--
+
+INSERT INTO `consumo_alimento` (`Id_ConsumoAlimento`, `Descripcion_ConsumoAlimento`) VALUES
+(1, 'Normal'),
+(2, 'Disminuido'),
+(3, 'No Come');
 
 -- --------------------------------------------------------
 
@@ -237,7 +274,67 @@ CREATE TABLE `estadocitas` (
 INSERT INTO `estadocitas` (`Id_EstadoCita`, `Estado_Cita`, `Descripcion_Cita`) VALUES
 (1, 'Pendiente', 'Cita pendiente de consulta.'),
 (2, 'Realizada', 'Cita con consulta realizada correctamente.'),
-(3, 'Cancelada', 'Cita cancelada.');
+(3, 'Cancelada', 'Cita cancelada.'),
+(4, 'Preclinica', 'Cita con preclínica hecha, pendiente de consulta.');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estado_animal`
+--
+
+CREATE TABLE `estado_animal` (
+  `Id_EstadoAnimal` int(6) NOT NULL,
+  `Descripcion_EstadoAnimal` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `estado_animal`
+--
+
+INSERT INTO `estado_animal` (`Id_EstadoAnimal`, `Descripcion_EstadoAnimal`) VALUES
+(1, 'De Pie'),
+(2, 'Postrado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estado_caminar`
+--
+
+CREATE TABLE `estado_caminar` (
+  `Id_EstadoCaminar` int(6) NOT NULL,
+  `Descripcion_EstadoCaminar` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `estado_caminar`
+--
+
+INSERT INTO `estado_caminar` (`Id_EstadoCaminar`, `Descripcion_EstadoCaminar`) VALUES
+(1, 'Renuente'),
+(2, 'Vacilante'),
+(3, 'Claudicante');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estado_reproductivo`
+--
+
+CREATE TABLE `estado_reproductivo` (
+  `Id_EstadoReproductivo` int(6) NOT NULL,
+  `Descripcion_EstadoReproductivo` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `estado_reproductivo`
+--
+
+INSERT INTO `estado_reproductivo` (`Id_EstadoReproductivo`, `Descripcion_EstadoReproductivo`) VALUES
+(1, 'Normal'),
+(2, 'Gestante'),
+(3, 'Recien Parida');
 
 -- --------------------------------------------------------
 
@@ -258,11 +355,47 @@ CREATE TABLE `fabricantes` (
 
 CREATE TABLE `historial` (
   `Id_Historial` int(6) NOT NULL,
+  `Id_Cita` int(6) NOT NULL,
+  `Id_Cliente` int(6) NOT NULL,
   `Id_Mascota` int(6) NOT NULL,
-  `Baja_Historial` binary(1) NOT NULL DEFAULT '0',
-  `Id_Servicio` int(6) NOT NULL,
-  `Id_Receta` int(6) NOT NULL
+  `Id_Especie` int(6) NOT NULL,
+  `Id_Raza` int(6) NOT NULL,
+  `Id_ConcicionCorporal` int(6) NOT NULL,
+  `Id_EstadoReproductivo` int(6) NOT NULL,
+  `Id_TipoAlimento` int(6) NOT NULL,
+  `Id_ConsumoAlimento` int(6) NOT NULL,
+  `Id_Comportamiento` int(6) NOT NULL,
+  `Id_EstadoAnimal` int(6) NOT NULL,
+  `Id_EstadoCaminar` int(6) DEFAULT NULL,
+  `Id_Pelaje` int(6) NOT NULL,
+  `Nombre_Cliente` varchar(50) NOT NULL,
+  `Nombre_Mascota` varchar(30) NOT NULL,
+  `Sexo_Mascota` varchar(15) NOT NULL,
+  `Edad_Mascota` int(2) NOT NULL,
+  `Temperatura` int(2) NOT NULL,
+  `Pulso` int(2) NOT NULL,
+  `Timpanizado` varchar(2) NOT NULL,
+  `Atonia` varchar(2) NOT NULL,
+  `Mucosa_Ocular` int(6) NOT NULL,
+  `Mucosa_Bucal` int(6) NOT NULL,
+  `Mucosa_Nasal` int(6) NOT NULL,
+  `Observacion_EstadoReproductivo` varchar(100) DEFAULT NULL,
+  `Observacion_Alimentos` varchar(100) DEFAULT NULL,
+  `Comentarios` varchar(100) DEFAULT NULL,
+  `Fecha_Cita` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `historial`
+--
+
+INSERT INTO `historial` (`Id_Historial`, `Id_Cita`, `Id_Cliente`, `Id_Mascota`, `Id_Especie`, `Id_Raza`, `Id_ConcicionCorporal`, `Id_EstadoReproductivo`, `Id_TipoAlimento`, `Id_ConsumoAlimento`, `Id_Comportamiento`, `Id_EstadoAnimal`, `Id_EstadoCaminar`, `Id_Pelaje`, `Nombre_Cliente`, `Nombre_Mascota`, `Sexo_Mascota`, `Edad_Mascota`, `Temperatura`, `Pulso`, `Timpanizado`, `Atonia`, `Mucosa_Ocular`, `Mucosa_Bucal`, `Mucosa_Nasal`, `Observacion_EstadoReproductivo`, `Observacion_Alimentos`, `Comentarios`, `Fecha_Cita`) VALUES
+(3, 58, 48, 80, 2, 19, 3, 1, 1, 1, 1, 1, 1, 1, 'Miguel Roberto Mendoza', 'Peludo', 'Macho', 2, 19, 20, 'SI', 'SI', 1, 1, 1, '', '', 'Sin comentarios.', '2021-09-10'),
+(4, 60, 48, 80, 2, 19, 2, 3, 2, 1, 1, 1, 2, 1, 'Miguel Roberto Mendoza', 'Peludo', 'Macho', 2, 20, 23, 'SI', 'SI', 1, 3, 1, 'Se encuentra delagada por proceso de gestion.', '', 'Sin comentarios.', '2021-10-01'),
+(5, 56, 1, 78, 1, 4, 4, 1, 4, 1, 1, 1, 1, 1, 'Jose Miguel Acosta Carias', 'Cochito', 'Macho', 2, 35, 20, 'SI', 'SI', 1, 1, 1, 'La mascota tiene sobrepeso, favor realizar debido proceso para poder suplantar la alimentacion.', 'Come demasiado', 'Sin comentario.', '2021-09-10'),
+(6, 59, 1, 81, 1, 13, 3, 1, 1, 2, 1, 1, 1, 1, 'Jose Miguel Acosta Carias', 'Tommy', 'Macho', 4, 35, 20, 'SI', 'SI', 4, 4, 4, 'Todo normal.', 'Cliente menciona que mascota ha dejado de comer.', 'Se observa que las mucosas se encuentra de color rojo.', '2021-09-30'),
+(7, 62, 1, 78, 1, 4, 2, 1, 1, 1, 1, 1, 1, 1, 'Jose Miguel Acosta Carias', 'Cochito', 'Macho', 2, 12, 22, 'SI', 'SI', 1, 1, 1, '', '', 'Sin nada de comentarios.', '2021-09-07'),
+(8, 61, 1, 78, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 'Jose Miguel Acosta Carias', 'Cochito', 'Macho', 2, 37, 10, 'SI', 'SI', 1, 1, 1, 'Sin observacion', 'Sin observacion', 'Sin comentarios.', '2021-11-12');
 
 -- --------------------------------------------------------
 
@@ -320,17 +453,30 @@ CREATE TABLE `mascotas` (
 --
 
 INSERT INTO `mascotas` (`Id_Mascota`, `Id_Cliente`, `Nombre_Mascota`, `Fecha_Mascota`, `Sexo`, `Id_Especie`, `Id_Raza`, `Fecha_Registro`) VALUES
-(36, 1, 'Loly', '2021-01-15', 'Hembra', 1, 1, '2021-08-18'),
-(37, 1, 'Tomy', '2020-05-10', 'Macho', 1, 1, '2021-08-18'),
-(38, 1, 'Toty', '2020-03-30', 'Macho', 2, 17, '2021-08-18'),
-(39, 2, 'Pongo', '2019-08-17', 'Machsao', 1, 1, '2021-08-18'),
-(40, 2, 'Bethoven', '2020-07-10', 'Macho', 1, 1, '2021-08-18'),
-(41, 3, 'Negra', '2021-03-15', 'Hembra', 2, 18, '2021-08-18'),
-(42, 4, 'Pelusa', '2020-03-05', 'Hembra', 1, 5, '2021-08-18'),
-(43, 4, 'Marinero', '2020-06-08', 'Macho', 1, 6, '2021-08-18'),
-(56, 48, 'Perla', '2021-08-11', 'hembra', 2, 23, NULL),
-(57, 49, 'Peludo', '2021-07-26', 'macho', 1, 9, NULL),
-(58, 49, 'Jugueton', '2016-01-01', 'macho', 1, 3, NULL);
+(78, 1, 'Cochito', '2019-02-07', 'Macho', 1, 4, '2021-09-02'),
+(80, 48, 'Peludo', '2019-03-02', 'Macho', 2, 19, '2021-09-02'),
+(81, 1, 'Tommy', '2017-07-06', 'Macho', 1, 13, '2021-09-07');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pelaje`
+--
+
+CREATE TABLE `pelaje` (
+  `Id_Pelaje` int(6) NOT NULL,
+  `Descripcion_Pelaje` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `pelaje`
+--
+
+INSERT INTO `pelaje` (`Id_Pelaje`, `Descripcion_Pelaje`) VALUES
+(1, 'Normal'),
+(2, 'Hirsuto'),
+(3, 'Abultamiento/Hinchazones'),
+(4, 'Heridas');
 
 -- --------------------------------------------------------
 
@@ -353,8 +499,10 @@ CREATE TABLE `personal` (
 --
 
 INSERT INTO `personal` (`Id_Personal`, `Identificacion_Personal`, `Nombre`, `Puesto_Trabajo`, `Area`, `Baja_Personal`, `Id_Usuario`) VALUES
-(1, '0801-1987-02355', 'Rodrigo Garcia Velasquez', 'Veterinario', 2, 0x30, 90),
-(4, '0505-1995-02546', 'Julia Madrigal', 'Ayudante', 2, 0x30, 92);
+(1, '0801-1987-02355', 'Rodrigo Garcia Velasquez', 'Veterinario', 2, 0x30, 96),
+(4, '0505-1995-02546', 'Julia Madrigal', 'Auxiliar', 2, 0x30, 90),
+(5, '', 'Jose Acosta', 'Administrador', 3, 0x30, 94),
+(7, '', 'Maria Mendoza', 'Secretaria', 1, 0x00, 98);
 
 -- --------------------------------------------------------
 
@@ -416,30 +564,31 @@ CREATE TABLE `razas` (
 --
 
 INSERT INTO `razas` (`Id_Raza`, `Id_Especie`, `Nombre_Raza`) VALUES
-(1, 1, 'Fr. Bulldogs'),
-(2, 1, 'Bulldogs'),
-(3, 1, 'Poodles '),
-(4, 1, 'Beagles'),
-(5, 1, 'Rottweilers'),
-(6, 1, 'Boxers'),
-(7, 1, 'Gran Danes'),
-(8, 1, 'Husk Siberiano'),
-(9, 1, 'Doberman'),
-(10, 1, 'Schnauzers'),
-(11, 1, 'Terriers'),
-(12, 1, 'Pugs'),
-(13, 1, 'Chihuahuas'),
-(14, 1, 'Pastor Aleman'),
-(15, 1, 'Dalmatas'),
-(16, 1, 'Otros'),
-(17, 2, 'Persa'),
-(18, 2, 'Azul ruso'),
-(19, 2, 'Siamés'),
-(20, 2, 'Angora turco'),
-(21, 2, 'Siberiano'),
-(22, 2, 'Maine Coon'),
-(23, 2, 'Bengalí'),
-(24, 2, 'Otros');
+(1, 1, 'Labrador'),
+(2, 1, 'Fr. Bulldogs'),
+(3, 1, 'Bulldogs'),
+(4, 1, 'Poodles '),
+(5, 1, 'Beagles'),
+(6, 1, 'Rottweilers'),
+(7, 1, 'Boxers'),
+(8, 1, 'Gran Danes'),
+(9, 1, 'Husk Siberiano'),
+(10, 1, 'Doberman'),
+(11, 1, 'Schnauzers'),
+(12, 1, 'Terriers'),
+(13, 1, 'Pugs'),
+(14, 1, 'Chihuahuas'),
+(15, 1, 'Pastor Aleman'),
+(16, 1, 'Dalmatas'),
+(17, 1, 'Otros'),
+(18, 2, 'Persa'),
+(19, 2, 'Azul ruso'),
+(20, 2, 'Siamés'),
+(21, 2, 'Angora turco'),
+(22, 2, 'Siberiano'),
+(23, 2, 'Maine Coon'),
+(24, 2, 'Bengalí'),
+(25, 2, 'Otros');
 
 -- --------------------------------------------------------
 
@@ -475,11 +624,11 @@ CREATE TABLE `roles_usuario` (
 --
 
 CREATE TABLE `servicios` (
-  `Nombre_Servicio` varchar(50) NOT NULL,
-  `Precio_Servicio` int(11) NOT NULL,
+  `Id_Servicio` int(6) NOT NULL,
   `Id_Tipo_Servicio` int(6) NOT NULL,
   `Id_Personal` int(6) NOT NULL,
-  `id_servicio` int(6) NOT NULL
+  `Nombre_Servicio` varchar(50) NOT NULL,
+  `Precio_Servicio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -505,6 +654,27 @@ INSERT INTO `telefonos_clientes` (`Id_Telefono_Cliente`, `Telefono_Cliente`, `Id
 (4, 93546346, 3),
 (5, 99935376, 4),
 (6, 86435765, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_alimento`
+--
+
+CREATE TABLE `tipo_alimento` (
+  `Id_TipoAlimento` int(6) NOT NULL,
+  `Descripcion_TipoAlimento` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipo_alimento`
+--
+
+INSERT INTO `tipo_alimento` (`Id_TipoAlimento`, `Descripcion_TipoAlimento`) VALUES
+(1, 'Pastoreo'),
+(2, 'Concentrado'),
+(3, 'Maiz/Sorgo'),
+(4, 'Pastore/Concentrado');
 
 -- --------------------------------------------------------
 
@@ -555,13 +725,49 @@ INSERT INTO `tipo_especies` (`Id_Especie`, `Tipo_Especie`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipo_mucosa`
+--
+
+CREATE TABLE `tipo_mucosa` (
+  `Id_TipoMucosa` int(6) NOT NULL,
+  `Descripcion_TipoMucosa` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipo_mucosa`
+--
+
+INSERT INTO `tipo_mucosa` (`Id_TipoMucosa`, `Descripcion_TipoMucosa`) VALUES
+(1, 'NORMAL (ROSASEA)'),
+(2, 'ICTERICAS (AMARILLAS)'),
+(3, 'HIPEREMIA (ROJAS)'),
+(4, 'CIANOTICA (ROJAS)'),
+(5, 'PALIDAS (BLANCAS)');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tipo_servicios`
 --
 
 CREATE TABLE `tipo_servicios` (
   `Id_Tipo_Servicio` int(6) NOT NULL,
-  `Tipo_Servicio` varchar(50) NOT NULL
+  `Tipo_Servicio` varchar(50) NOT NULL,
+  `Precio` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo_servicios`
+--
+
+INSERT INTO `tipo_servicios` (`Id_Tipo_Servicio`, `Tipo_Servicio`, `Precio`) VALUES
+(1, 'Consulta General', 600),
+(2, 'Internacion', 800),
+(3, 'Cirugia', 1500),
+(4, 'Analisis', 300),
+(5, 'Odontologia', 750),
+(6, 'Rayos X', 450),
+(7, 'Ecografia', 450);
 
 -- --------------------------------------------------------
 
@@ -582,7 +788,8 @@ INSERT INTO `tipo_usuario` (`id_tipoUsuario`, `Tipo`) VALUES
 (1, 'Cliente'),
 (2, 'Administrador'),
 (3, 'Veterinario'),
-(4, 'Ayudante');
+(4, 'Auxiliar'),
+(6, 'Secretaria');
 
 -- --------------------------------------------------------
 
@@ -611,8 +818,10 @@ INSERT INTO `usuarios` (`Id_Usuario`, `Username`, `Clave`, `Fecha_Registro`, `Id
 (5, 'admn', 'pass123', '2021-08-18', 2, NULL),
 (83, 'mroberto11', 'roberto123', '2021-08-27', 1, NULL),
 (84, 'pcubas123', 'cubas123', '2021-08-27', 1, NULL),
-(90, 'veterinario1', 'pass123', '2021-08-30', 3, NULL),
-(92, 'Secretaria1', 'pass123', '2021-08-30', 4, NULL);
+(90, 'auxiliar1', 'pass123', '2021-08-30', 4, NULL),
+(94, 'Administrador', 'pass123', '0000-00-00', 2, NULL),
+(96, 'veterinario1', 'pass123', '0000-00-00', 3, NULL),
+(98, 'secretaria1', 'pass123', '0000-00-00', 6, NULL);
 
 -- --------------------------------------------------------
 
@@ -666,11 +875,23 @@ ALTER TABLE `clientes`
   ADD KEY `Id_Usuario` (`Id_Usuario`);
 
 --
+-- Indices de la tabla `comportamiento`
+--
+ALTER TABLE `comportamiento`
+  ADD PRIMARY KEY (`Id_Comportamiento`);
+
+--
 -- Indices de la tabla `compras`
 --
 ALTER TABLE `compras`
   ADD PRIMARY KEY (`Id_Compra`),
   ADD KEY `Id_Proveedor` (`Id_Proveedor`);
+
+--
+-- Indices de la tabla `condicion_corporal`
+--
+ALTER TABLE `condicion_corporal`
+  ADD PRIMARY KEY (`Id_Condicion`);
 
 --
 -- Indices de la tabla `consulta`
@@ -680,7 +901,15 @@ ALTER TABLE `consulta`
   ADD KEY `id_paciente` (`Id_Mascota`),
   ADD KEY `id_cita` (`Id_Cita`),
   ADD KEY `id_receta` (`Id_Receta`),
-  ADD KEY `Id_Personal` (`Id_Personal`);
+  ADD KEY `Id_Personal` (`Id_Personal`),
+  ADD KEY `Id_Cliente` (`Id_Cliente`),
+  ADD KEY `Id_Historial` (`Id_Historial`);
+
+--
+-- Indices de la tabla `consumo_alimento`
+--
+ALTER TABLE `consumo_alimento`
+  ADD PRIMARY KEY (`Id_ConsumoAlimento`);
 
 --
 -- Indices de la tabla `contactos_proveedores`
@@ -714,6 +943,24 @@ ALTER TABLE `estadocitas`
   ADD PRIMARY KEY (`Id_EstadoCita`);
 
 --
+-- Indices de la tabla `estado_animal`
+--
+ALTER TABLE `estado_animal`
+  ADD PRIMARY KEY (`Id_EstadoAnimal`);
+
+--
+-- Indices de la tabla `estado_caminar`
+--
+ALTER TABLE `estado_caminar`
+  ADD PRIMARY KEY (`Id_EstadoCaminar`);
+
+--
+-- Indices de la tabla `estado_reproductivo`
+--
+ALTER TABLE `estado_reproductivo`
+  ADD PRIMARY KEY (`Id_EstadoReproductivo`);
+
+--
 -- Indices de la tabla `fabricantes`
 --
 ALTER TABLE `fabricantes`
@@ -725,9 +972,18 @@ ALTER TABLE `fabricantes`
 ALTER TABLE `historial`
   ADD PRIMARY KEY (`Id_Historial`),
   ADD KEY `id_paciente` (`Id_Mascota`),
-  ADD KEY `Id_Consulta` (`Id_Servicio`),
-  ADD KEY `Id_Servicio` (`Id_Servicio`),
-  ADD KEY `Id_Receta` (`Id_Receta`);
+  ADD KEY `Id_Especie` (`Id_Especie`),
+  ADD KEY `Id_Cliente` (`Id_Cliente`),
+  ADD KEY `Id_Raza` (`Id_Raza`),
+  ADD KEY `Id_ConcicionCorporal` (`Id_ConcicionCorporal`),
+  ADD KEY `Id_EstadoReproductivo` (`Id_EstadoReproductivo`),
+  ADD KEY `Id_TipoAlimento` (`Id_TipoAlimento`),
+  ADD KEY `Id_ConsumoAlimento` (`Id_ConsumoAlimento`),
+  ADD KEY `Id_Comportamiento` (`Id_Comportamiento`,`Id_EstadoAnimal`,`Id_EstadoCaminar`,`Id_Pelaje`),
+  ADD KEY `Id_EstadoAnimal` (`Id_EstadoAnimal`),
+  ADD KEY `Id_EstadoCaminar` (`Id_EstadoCaminar`),
+  ADD KEY `Id_Pelaje` (`Id_Pelaje`),
+  ADD KEY `Id_Cita` (`Id_Cita`);
 
 --
 -- Indices de la tabla `hospitalzacion`
@@ -756,6 +1012,12 @@ ALTER TABLE `mascotas`
   ADD KEY `Id_Especie` (`Id_Especie`),
   ADD KEY `Id_Cliente` (`Id_Cliente`),
   ADD KEY `Id_Raza` (`Id_Raza`);
+
+--
+-- Indices de la tabla `pelaje`
+--
+ALTER TABLE `pelaje`
+  ADD PRIMARY KEY (`Id_Pelaje`);
 
 --
 -- Indices de la tabla `personal`
@@ -811,7 +1073,7 @@ ALTER TABLE `roles_usuario`
 -- Indices de la tabla `servicios`
 --
 ALTER TABLE `servicios`
-  ADD PRIMARY KEY (`id_servicio`),
+  ADD PRIMARY KEY (`Id_Servicio`),
   ADD KEY `Id_Tipo_Servicio` (`Id_Tipo_Servicio`),
   ADD KEY `Id_Personal` (`Id_Personal`);
 
@@ -822,10 +1084,22 @@ ALTER TABLE `telefonos_clientes`
   ADD PRIMARY KEY (`Id_Telefono_Cliente`);
 
 --
+-- Indices de la tabla `tipo_alimento`
+--
+ALTER TABLE `tipo_alimento`
+  ADD PRIMARY KEY (`Id_TipoAlimento`);
+
+--
 -- Indices de la tabla `tipo_especies`
 --
 ALTER TABLE `tipo_especies`
   ADD PRIMARY KEY (`Id_Especie`);
+
+--
+-- Indices de la tabla `tipo_mucosa`
+--
+ALTER TABLE `tipo_mucosa`
+  ADD PRIMARY KEY (`Id_TipoMucosa`);
 
 --
 -- Indices de la tabla `tipo_servicios`
@@ -874,7 +1148,7 @@ ALTER TABLE `cirugia`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `Id_Cita` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `Id_Cita` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
@@ -883,16 +1157,34 @@ ALTER TABLE `clientes`
   MODIFY `Id_Cliente` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
+-- AUTO_INCREMENT de la tabla `comportamiento`
+--
+ALTER TABLE `comportamiento`
+  MODIFY `Id_Comportamiento` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
   MODIFY `Id_Compra` int(6) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `condicion_corporal`
+--
+ALTER TABLE `condicion_corporal`
+  MODIFY `Id_Condicion` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `consulta`
 --
 ALTER TABLE `consulta`
   MODIFY `Id_Consulta` int(6) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `consumo_alimento`
+--
+ALTER TABLE `consumo_alimento`
+  MODIFY `Id_ConsumoAlimento` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `contactos_proveedores`
@@ -916,7 +1208,25 @@ ALTER TABLE `detalle_venta`
 -- AUTO_INCREMENT de la tabla `estadocitas`
 --
 ALTER TABLE `estadocitas`
-  MODIFY `Id_EstadoCita` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id_EstadoCita` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `estado_animal`
+--
+ALTER TABLE `estado_animal`
+  MODIFY `Id_EstadoAnimal` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `estado_caminar`
+--
+ALTER TABLE `estado_caminar`
+  MODIFY `Id_EstadoCaminar` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `estado_reproductivo`
+--
+ALTER TABLE `estado_reproductivo`
+  MODIFY `Id_EstadoReproductivo` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `fabricantes`
@@ -928,7 +1238,7 @@ ALTER TABLE `fabricantes`
 -- AUTO_INCREMENT de la tabla `historial`
 --
 ALTER TABLE `historial`
-  MODIFY `Id_Historial` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Historial` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `hospitalzacion`
@@ -946,13 +1256,19 @@ ALTER TABLE `jaulas`
 -- AUTO_INCREMENT de la tabla `mascotas`
 --
 ALTER TABLE `mascotas`
-  MODIFY `Id_Mascota` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `Id_Mascota` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+
+--
+-- AUTO_INCREMENT de la tabla `pelaje`
+--
+ALTER TABLE `pelaje`
+  MODIFY `Id_Pelaje` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `personal`
 --
 ALTER TABLE `personal`
-  MODIFY `Id_Personal` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id_Personal` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `presentaciones_producto`
@@ -976,7 +1292,7 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `razas`
 --
 ALTER TABLE `razas`
-  MODIFY `Id_Raza` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `Id_Raza` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `recetas`
@@ -994,7 +1310,7 @@ ALTER TABLE `roles_usuario`
 -- AUTO_INCREMENT de la tabla `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `id_servicio` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Servicio` int(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `telefonos_clientes`
@@ -1003,28 +1319,40 @@ ALTER TABLE `telefonos_clientes`
   MODIFY `Id_Telefono_Cliente` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de la tabla `tipo_alimento`
+--
+ALTER TABLE `tipo_alimento`
+  MODIFY `Id_TipoAlimento` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `tipo_especies`
 --
 ALTER TABLE `tipo_especies`
   MODIFY `Id_Especie` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
+-- AUTO_INCREMENT de la tabla `tipo_mucosa`
+--
+ALTER TABLE `tipo_mucosa`
+  MODIFY `Id_TipoMucosa` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `tipo_servicios`
 --
 ALTER TABLE `tipo_servicios`
-  MODIFY `Id_Tipo_Servicio` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Tipo_Servicio` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-  MODIFY `id_tipoUsuario` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_tipoUsuario` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `Id_Usuario` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `Id_Usuario` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- Restricciones para tablas volcadas
@@ -1068,7 +1396,9 @@ ALTER TABLE `consulta`
   ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`Id_Personal`) REFERENCES `personal` (`Id_Personal`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `consulta_ibfk_3` FOREIGN KEY (`Id_Cita`) REFERENCES `citas` (`Id_Cita`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `consulta_ibfk_4` FOREIGN KEY (`Id_Receta`) REFERENCES `recetas` (`Id_Receta`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `consulta_ibfk_5` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`Id_Mascota`);
+  ADD CONSTRAINT `consulta_ibfk_5` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`Id_Mascota`),
+  ADD CONSTRAINT `consulta_ibfk_6` FOREIGN KEY (`Id_Cliente`) REFERENCES `clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `consulta_ibfk_7` FOREIGN KEY (`Id_Historial`) REFERENCES `historial` (`Id_Historial`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `contactos_proveedores`
@@ -1096,8 +1426,20 @@ ALTER TABLE `detalle_venta`
 -- Filtros para la tabla `historial`
 --
 ALTER TABLE `historial`
-  ADD CONSTRAINT `historial_ibfk_3` FOREIGN KEY (`Id_Receta`) REFERENCES `recetas` (`Id_Receta`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `historial_ibfk_4` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`Id_Mascota`);
+  ADD CONSTRAINT `historial_ibfk_10` FOREIGN KEY (`Id_EstadoAnimal`) REFERENCES `estado_animal` (`Id_EstadoAnimal`),
+  ADD CONSTRAINT `historial_ibfk_11` FOREIGN KEY (`Id_EstadoCaminar`) REFERENCES `estado_caminar` (`Id_EstadoCaminar`),
+  ADD CONSTRAINT `historial_ibfk_12` FOREIGN KEY (`Id_EstadoReproductivo`) REFERENCES `estado_reproductivo` (`Id_EstadoReproductivo`),
+  ADD CONSTRAINT `historial_ibfk_13` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`Id_Mascota`),
+  ADD CONSTRAINT `historial_ibfk_14` FOREIGN KEY (`Id_Pelaje`) REFERENCES `pelaje` (`Id_Pelaje`),
+  ADD CONSTRAINT `historial_ibfk_15` FOREIGN KEY (`Id_Raza`) REFERENCES `razas` (`Id_Raza`),
+  ADD CONSTRAINT `historial_ibfk_16` FOREIGN KEY (`Id_TipoAlimento`) REFERENCES `tipo_alimento` (`Id_TipoAlimento`),
+  ADD CONSTRAINT `historial_ibfk_17` FOREIGN KEY (`Id_Cita`) REFERENCES `citas` (`Id_Cita`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `historial_ibfk_4` FOREIGN KEY (`Id_Mascota`) REFERENCES `mascotas` (`Id_Mascota`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `historial_ibfk_5` FOREIGN KEY (`Id_Cliente`) REFERENCES `clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `historial_ibfk_6` FOREIGN KEY (`Id_Comportamiento`) REFERENCES `comportamiento` (`Id_Comportamiento`),
+  ADD CONSTRAINT `historial_ibfk_7` FOREIGN KEY (`Id_ConcicionCorporal`) REFERENCES `condicion_corporal` (`Id_Condicion`),
+  ADD CONSTRAINT `historial_ibfk_8` FOREIGN KEY (`Id_ConsumoAlimento`) REFERENCES `consumo_alimento` (`Id_ConsumoAlimento`),
+  ADD CONSTRAINT `historial_ibfk_9` FOREIGN KEY (`Id_Especie`) REFERENCES `tipo_especies` (`Id_Especie`);
 
 --
 -- Filtros para la tabla `hospitalzacion`
