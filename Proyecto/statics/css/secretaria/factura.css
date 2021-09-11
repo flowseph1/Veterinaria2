@@ -1,0 +1,31 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contenedor-factura{
+    padding: 30px;
+    font-weight: 800;
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gowun Dodum', sans-serif;
+
+}
+
+.logo-factura{
+    width: 250px;
+    margin: 20px;
+}
+
+.contenedor-default2{
+    margin: 0;
+}
+
+.contenedor-default2 table{
+}
+
