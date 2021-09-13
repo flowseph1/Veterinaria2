@@ -1817,3 +1817,14 @@ input, select {
 .botones{
     min-height: 50px;
 }
+
+#total{
+    font-size: 15px;
+}
+
+.contenedor-factura{
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+}
+
