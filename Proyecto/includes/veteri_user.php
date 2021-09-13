@@ -17,7 +17,7 @@
         include("../../../modules/conexion/conexion.php");
     }
     $idVeterinario = $_SESSION['idVeterinario'];
-    $query = "SELECT COUNT(Id_Cita) AS numeroCitas FROM citas WHERE Id_Veterinario = $idVeterinario AND Id_EstadoCita = 1";
+    $query = "SELECT COUNT(Id_Cita) AS numeroCitas FROM citas WHERE Id_Veterinario = $idVeterinario AND Id_EstadoCita = 4";
     $resultado = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($resultado);
     ?>
@@ -37,7 +37,7 @@
                     Sin Recordatorios
                 <?php } ?>
                 <?php
-                $query = "SELECT c.Id_Cita, c.Fecha_Cita, m.Nombre_Mascota FROM citas AS c, mascotas AS m WHERE c.Id_Veterinario=$idVeterinario AND c.Id_EstadoCita = 1 AND c.Id_Mascota = m.Id_Mascota ORDER BY c.Fecha_Cita ASC;";
+                $query = "SELECT c.Id_Cita, c.Fecha_Cita, m.Nombre_Mascota FROM citas AS c, mascotas AS m WHERE c.Id_Veterinario=$idVeterinario AND c.Id_EstadoCita = 6 AND c.Id_Mascota = m.Id_Mascota ORDER BY c.Fecha_Cita ASC;";
                 $resultado = mysqli_query($conn, $query);
                 while ($row = mysqli_fetch_array($resultado)) {?>
                     <div class="notificacion"><span class="negrita">CITA # <?php echo $row['Id_Cita']; ?></span>
@@ -73,7 +73,7 @@
 
             <div class="tarjeta-content">
             <?php
-                $query = "SELECT DISTINCT m.Nombre_Mascota, a.Nombre, m.Id_Especie FROM citas AS c, mascotas AS m, clientes AS a WHERE c.Id_Veterinario = $idVeterinario AND c.Id_EstadoCita = 1 AND c.Id_Mascota = m.Id_Mascota And m.Id_Cliente = a.Id_Cliente AND c.Id_Cliente=a.Id_Cliente";
+                $query = "SELECT DISTINCT m.Nombre_Mascota, a.Nombre, m.Id_Especie FROM citas AS c, mascotas AS m, clientes AS a WHERE c.Id_Veterinario = $idVeterinario AND c.Id_EstadoCita = 4 AND c.Id_Mascota = m.Id_Mascota And m.Id_Cliente = a.Id_Cliente AND c.Id_Cliente=a.Id_Cliente";
                 $resultado = mysqli_query($conn, $query);
                 if (!$resultado) { ?>
                     <div class="agregar-mascota">

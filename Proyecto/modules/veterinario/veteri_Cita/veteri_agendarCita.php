@@ -27,6 +27,9 @@
 
             <div class="contenedor">
                 <div class="titulo-opcion">
+                    <?php if($_GET["editar"]=1){ ?>
+                        <div class="motivo">EDITAR CITA</div>
+                        <?php }?>
                     <div class="motivo">AGENDAR CITA</div>
                     <div class="atras" onclick="location.href = '../../veterinario/veteri_Cita/veteri_Cita.php'">
                         ATRAS

@@ -9,8 +9,6 @@ $id = $_POST['id'];
 $usuario = $_POST['usuario'];
 $clave = $_POST['password'];
 
-$_SESSION['nombreVet'] = $nombre;
-
 $query = "UPDATE personal AS p, usuarios AS u
 SET p.Nombre = '$nombre', p.Identificacion_Personal = '$id',
 u.Username = '$usuario', u.Clave = '$clave'

@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="botones">
-                    <div class="boton verde" onclick="location.href = ''">
+                    <div class="boton verde" onclick="location.href = '../perfil/editarUsuario.php'">
                         <div class="image">
                             <i class="far fa-save"></i>
                         </div>
@@ -112,7 +112,7 @@
 
                                             </div>
                                             <div class="values">
-                                                <input type="text" spellcheck="false" readonly name="fechaIngreso" value="<?php echo $fecha ?>">
+                                                <input type="date" spellcheck="false" readonly name="fechaIngreso" value="<?php echo date('d-m-Y', strtotime($fecha))?>">
 
                                             </div>
 

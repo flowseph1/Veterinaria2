@@ -43,7 +43,7 @@
                     <div class="line">
 
                     </div>
-                    <div class="boton" id="editar" onclick="location.href = '../admin_Cita/admin_editarCita.php'">
+                    <div class="boton" id="editar" onclick="location.href = '../veteri_Cita/veteri_agendarCita.php?editar=1'">
                         <div class="image">
                             <i class="fas fa-pen"></i>
                         </div>
@@ -146,6 +146,9 @@
                                             case 'Realizada':
                                                 echo "<div class='realizada'> $estadoCita </div>";
                                                 break;
+                                            case 'Preclinica':
+                                                echo "<div class='consulta-pendiente'> $estadoCita </div>";
+                                                break;
                                             default:
                                                 echo "nada";
                                                 break;
@@ -188,7 +191,7 @@
         </div>
     </div>
 
-    <script src="/Proyecto/statics/js/veterinario/veterinario.js"></script>
+    <script src="/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
     <script src="/Proyecto/statics/js/cliente/cita.js"></script>
     <script src="/Proyecto/statics/js/tabla.js"></script>
 </body>
