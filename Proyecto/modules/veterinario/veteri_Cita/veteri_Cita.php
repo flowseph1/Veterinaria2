@@ -59,6 +59,14 @@
                             CANCELAR CITA
                         </div>
                     </div>
+                    <div class="boton" id="atender" onclick="location.href = '../veteri_Consulta/veteri_Consulta.php'">
+                        <div class="image">
+                        <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="texto">
+                            ATENDER
+                        </div>
+                    </div>
                     <div class="difuminacion">
                     <?php
 
@@ -191,8 +199,7 @@
         </div>
     </div>
 
-    <script src="/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
-    <script src="/Proyecto/statics/js/cliente/cita.js"></script>
+    <script src="/Proyecto/statics/js/veterinario/veteri_citas.js"></script>
     <script src="/Proyecto/statics/js/tabla.js"></script>
 </body>
 

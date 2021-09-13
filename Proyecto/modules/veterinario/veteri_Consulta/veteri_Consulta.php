@@ -26,108 +26,138 @@
 
             <div class="contenedor">
                 <div class="titulo-opcion">
-                    <div class="motivo">Consultas</div>
-                    <div class="atras" onclick="location.href = '../../veterinario/veterinario.php'">
+                    <div class="motivo">AGENDAR CITA</div>
+                    <div class="atras" onclick="location.href = '../citas/citas.php'">
                         ATRAS
                     </div>
                 </div>
                 <div class="botones">
-                    <div class="boton verde" onclick="location.href = '../veteri_Enfermedades/veteri_agregarEnfermedad.php'">
-                        <div class="image">
-                            <i class="fas fa-plus"></i>
+                    <div class="boton verde">
+                        <div class="image save">
+                            <i class="far fa-calendar-plus"></i>
                         </div>
                         <div class="texto">
-                            AGREGAR
+                            AGENDAR
                         </div>
                     </div>
                     <div class="line">
 
                     </div>
-                    <div class="boton" id="editar" onclick="location.href = '../veteri_Enfermedades/veteri_editarEnfermedad.php'">
-                        <div class="image">
-                            <i class="fas fa-pen"></i>
-                        </div>
-                        <div class="texto">
-                            EDITAR
+                    <div class="boton limpiar-button" id="limpiar-button">
+                        <div class="texto-limpiar">
+                            LIMPIAR
                         </div>
                     </div>
-                    <div class="boton rojo" id="eliminar" onclick="accionEliminar()">
-                        <div class="image">
-                            <i class="fas fa-times"></i>
-                        </div>
-                        <div class="texto">
-                            ELIMINAR
-                        </div>
-                    </div>
-                    <div class="difuminacion">
 
-                    </div>
+                    <?php
+
+                    if (isset($_GET["value"])) { ?>
+
+                        <div class="agregar-exitoso">
+                            <i class="fas fa-check"></i> &nbsp; AGENDADO CORRECTAMENTE
+                        </div>
+                    <?php } ?>
+
                 </div>
-                <div class="clientes">
-                    <div class="descripcion">
-                        <div class="herramientas">
-                            <div class="buscador">
-                                <div class="icono-buscar">
-                                    <i class="fas fa-search"></i>
+                <div class="agregar cliente">
+                    <form action="agendar.php">
+                        <div class="forma">
+                            <div class="personal cita">
+                                <div class="informacion-personal">
+                                    AGENDAR CITA
                                 </div>
-                                <div class="cajaTexto-buscar">
-                                    <input type="text" spellcheck="false" placeholder="BUSCAR NOMBRE O ID" id="buscar">
+                                <div class="line-horizontal">
+                                </div>
+                                <div class="info-personal">
+                                    <div class="col">
+                                        <div class="params">ELEGIR MASCOTA
+                                        </div>
+                                        <div class="params">VETERINARIO
+                                        </div>
+                                        <div class="params">FECHA
+                                        </div>
+                                    </div>
+                                    <div class="col inputs">
+                                        <div class="values">
+                                            <select name="mascota" id="" class="selection">
+                                                <option value="" disabled selected value>SELECCIONE</option>
+                                                <?php
+                                                include("../../conexion/conexion.php");
+                                                $idCliente = $_SESSION['idCliente'];
+                                                $query = "SELECT Nombre_Mascota, Id_Mascota FROM mascotas WHERE Id_Cliente  = '$idCliente'";
+                                                $result = mysqli_query($conn, $query);
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $nombreMascota = $row['Nombre_Mascota'];
+                                                    $idMascota = $row['Id_Mascota'];
+                                                    echo "<option value='$idMascota'>$nombreMascota</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                            <div class="params-op">
+                                                OBLIGATORIO
+                                            </div>
+                                        </div>
+                                        <div class="values">
+                                            <select name="veterinario" id="" class="selection" name="genero">
+                                                <option value="" disabled selected value>SELECCIONE</option>
+                                                <?php
+
+                                                $query = "SELECT p.Nombre, p.Id_Personal FROM personal AS p, usuarios AS u WHERE u.Id_TipoUsuario = 3 AND p.Id_Usuario = u.Id_Usuario ";
+                                                $result = mysqli_query($conn, $query);
+                                                while ($row = mysqli_fetch_array($result)) { ?>
+
+                                                    <option value=<?php echo $row['Id_Personal'] ?> value><?php echo $row['Nombre'] ?></option>
+
+                                                <?php  } ?>
+
+                                            </select>
+                                            <div class="params-op">
+                                                OBLIGATORIO
+                                            </div>
+                                        </div>
+                                        <div class="values">
+                                            <input type="date" name="fecha" id="fecha">
+                                            <div class="params-op">
+                                                OBLIGATORIO
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="params">HORARIO
+                                        </div>
+                                        <div class="params textareas">MOTIVO DE CITA
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="values">
+                                            <select name="horario" id="" class="selection" name="genero">
+                                                <option value="" disabled selected value>SELECCIONE</option>
+                                                <option value="8:00">8:00 AM</option>
+                                                <option value="9:00">9:00 AM</option>
+                                                <option value="10:00">10:00 AM</option>
+                                                <option value="11:00">11:00 AM</option>
+                                                <option value="13:00">1:00 PM</option>
+                                                <option value="14:00">2:00 PM</option>
+                                                <option value="15:00">3:00 PM</option>
+                                                <option value="16:00">4:00 PM</option>
+
+                                            </select>
+                                            <div class="params-op">
+                                                OBLIGATORIO
+                                            </div>
+                                        </div>
+                                        <div class="values textareas">
+                                            <textarea name="motivo" id="motivo" cols="30" rows="5" spellcheck="false"></textarea>
+                                            <div class="params-op">
+                                                OBLIGATORIO
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="limpiar" onclick="limpiar()">
-                                LIMPIAR
-                            </div>
+
                         </div>
-                        <div class="total-clientes">
-                            TOTAL &nbsp;<span class="clientesTotales">2</span>
-                        </div>
-                    </div>
-
-                    <div class="tabla-clientes">
-                        <table id="tb-cliente" class="tabla">
-                            <thead>
-                                <th>ID ENFERMEDAD</th>
-                                <th>ENFERMEDAD</th>
-                                <th>TRATAMIENTOS</th>
-                                <th>MEDICAMENTOS</th>
-                               
-
-
-                            </thead>
-                            <tbody>
-                                <tr class="filas" onclick="filas(event)">
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                </tr>
-
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-
-            </div>
-
-        </div>
-
-        <div class="eliminar">
-            <div class="mensaje color-blanco-transparente">
-
-                <div class="eliminar-mensaje">
-                    ¿ESTA SEGURO QUE DESEA ELIMINAR A <span id="nombreClienteEliminado"></span> ?
-                </div>
-
-                <div class="eliminar-buttons">
-                    <div class="default-btn color-rojo-hover">
-                        ELIMINAR
-                    </div>
-                    <div class="default-btn color-secundario-hover" onclick="cancelarEliminar()">
-                        CANCELAR
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
