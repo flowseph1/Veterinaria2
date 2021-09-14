@@ -36,7 +36,7 @@
                     Sin Recordatorios
                 <?php } ?>
                 <?php
-                $query = "SELECT c.Id_Cita, c.Fecha_Cita, m.Nombre_Mascota FROM citas AS c, mascotas AS m WHERE c.Id_Veterinario=$idVeterinario AND c.Id_EstadoCita = 6 AND c.Id_Mascota = m.Id_Mascota ORDER BY c.Fecha_Cita ASC;";
+                $query = "SELECT c.Id_Cita, c.Fecha_Cita, m.Nombre_Mascota FROM citas AS c, mascotas AS m WHERE c.Id_Veterinario=$idVeterinario AND c.Id_EstadoCita = 4 AND c.Id_Mascota = m.Id_Mascota ORDER BY c.Fecha_Cita ASC;";
                 $resultado = mysqli_query($conn, $query);
                 while ($row = mysqli_fetch_array($resultado)) {?>
                     <div class="notificacion"><span class="negrita">CITA # <?php echo $row['Id_Cita']; ?></span>

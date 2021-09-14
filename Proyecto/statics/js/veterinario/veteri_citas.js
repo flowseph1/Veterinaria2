@@ -164,8 +164,3 @@ const accionEliminar = () => {
     mascota.innerHTML = '"' + clienteFilas[numeroDeFila].children[1].textContent.toLocaleUpperCase() + '"';
     idCita.value = clienteFilas[numeroDeFila].children[0].textContent;
 }
-
-const eliminarCliente = () => {
-    const formulario = document.querySelector("#form2");
-    formulario.submit();
-}

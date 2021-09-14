@@ -97,7 +97,6 @@
                                 AND c.Id_EstadoCita = e.Id_EstadoCita
                                 AND c.Id_Mascota = m.Id_Mascota
                                 AND c.Id_EstadoCita = 4
-                                OR c.Id_EstadoCita = 1
                                 ORDER BY c.Fecha_Cita DESC";
                                 $result = mysqli_query($conn, $query);
                                 while ($row = mysqli_fetch_array($result)) {

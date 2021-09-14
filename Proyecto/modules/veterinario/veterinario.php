@@ -56,7 +56,7 @@
               <i class="fas fa-syringe fa-4x"></i>
             </div>
           </div>
-
+<!--
           <div class="opcion medicamento" onclick="location.href = '../veterinario/veteri_Medicamentos/veteri_Medicamento.php'">
             <div class="titulo">
               <div class="tituloPrincipal">MEDICAMENTOS</div>
@@ -65,7 +65,7 @@
               <i class="fas fa-pills fa-4x"></i>
             </div>
           </div>
-
+-->
           <div class="opcion jaula" onclick="location.href = '../veterinario/veteri_Jaulas/veteri_Jaula.php'">
             <div class="titulo">
               <div class="tituloPrincipal">JAULAS</div>
