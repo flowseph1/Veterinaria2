@@ -1,4 +1,3 @@
-
 //Tabla Click
 function filas(event) {
     const filas = document.getElementsByClassName("filas");
@@ -21,9 +20,7 @@ function filas(event) {
     //Guardar ID de cliente en input hidden.
     let citaId = event.currentTarget.children[0].innerHTML;
     const idCita = document.getElementById("idCliente");
-    idCliente.value = citaId;
-    //editar.setAttribute("onclick", "location.href = '../admin_Cliente/admin_editarCliente.php?idCliente=" + clienteId);
-    //eliminar.setAttribute("onclick", "location.href = '../admin_Cliente/admin_eliminarCliente.php?idCliente=" + clienteId);
+    idCita.value = citaId;
 }
 
 const editar = document.querySelector("#editar");
@@ -37,6 +34,7 @@ const limpiar = () => {
     const filas = document.getElementsByClassName("filas");
     const difuminacion = document.getElementsByClassName("difuminacion")[0];
     const editar = document.getElementById("editar");
+    const atender = document.getElementById("atender");
     const eliminar = document.getElementById("eliminar");
     const buscador = document.getElementById("buscar");
 
@@ -47,6 +45,7 @@ const limpiar = () => {
     }
     editar.style.filter = "opacity(0.4)"
     eliminar.style.filter = "opacity(0.4)"
+    atender.style.filter = "opacity(0.4)"
     difuminacion.style.display = "block";
     buscador.value = "";
 }
@@ -95,9 +94,11 @@ document.addEventListener("click", (event) => {
         })
         const difuminacion = document.getElementsByClassName("difuminacion")[0];
         const editar = document.getElementById("editar");
+        const atender = document.getElementById("atender");
         const eliminar = document.getElementById("eliminar");
         difuminacion.style.display = "block";
         editar.style.filter = "opacity(0.4)";
+        atender.style.filter = "opacity(0.4)";
         eliminar.style.filter = "opacity(0.4)";
     }
 })

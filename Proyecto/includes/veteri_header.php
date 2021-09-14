@@ -10,7 +10,7 @@
             <a href="/Proyecto/index.php">INICIO</a>
           </div>
           <div class="content-navbar" onclick="location.href = '/Proyecto/modules/veterinario/perfil/perfil.php'">
-            <a href="">PERFIL</a>
+            <a href="/Proyecto/modules/veterinario/perfil/perfil.php">PERFIL</a>
           </div>
           <div class="content-navbar" onclick="location.href = '/Proyecto/modules/veterinario/veterinario.php'">
             <a href="/Proyecto/modules/veterinario/veterinario.php">PRINCIPAL</a>

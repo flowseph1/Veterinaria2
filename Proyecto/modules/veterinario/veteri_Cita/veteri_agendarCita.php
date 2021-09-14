@@ -98,7 +98,7 @@
                                             </div>
                                         </div>
                                         <div class="values">
-                                            <input type="date" name="fecha" id="fecha" required>
+                                            <input type="date" name= "fecha" id="fecha" required>
                                             <div class="params-op">
                                                 OBLIGATORIO
                                             </div>

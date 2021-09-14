@@ -26,8 +26,8 @@
 
             <div class="contenedor">
                 <div class="titulo-opcion">
-                    <div class="motivo">AGENDAR CITA</div>
-                    <div class="atras" onclick="location.href = '../citas/citas.php'">
+                    <div class="motivo">ATENDER CONSULTA</div>
+                    <div class="atras" onclick="location.href = '../veteri_Cita/veteri_Cita.php'">
                         ATRAS
                     </div>
                 </div>
