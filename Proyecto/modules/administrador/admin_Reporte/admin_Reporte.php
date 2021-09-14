@@ -33,6 +33,7 @@
                 </div>
                 
                 <div class="clientes">
+                  <div class="menu">
 
                     
                     <div class="opcion enfermedades" onclick="location.href = '../admin_Reporte/admin_reportedeperros.php'">
@@ -44,7 +45,16 @@
                         </div>
                     </div>
 
-                    
+                    <div class="opcion enfermedades" onclick="location.href = '../admin_Reporte/admin_reportedegatos.php'">
+                        <div class="titulo">
+                            <div class="tituloPrincipal">Reporte de Gatos</div>
+                        </div>
+                        <div class="icono">
+                            <i class="fas fa-cat fa-4x"></i>
+                        </div>
+                    </div>
+
+                  </div>  
                 </div>
 
 
