@@ -34,7 +34,7 @@
             font-size: 15px;
         }
 
-        .total-clientes {
+        .total-proveedores {
             font-size: 15px;
         }
 
@@ -108,8 +108,8 @@
                                 LIMPIAR
                             </div>
                         </div>
-                        <div class="total-clientes">
-                            TOTAL &nbsp;<span class="clientesTotales">2</span>
+                        <div class="total-proveedores">
+                            TOTAL &nbsp;<span class="ProveedoresTotales">2</span>
                         </div>
                     </div>
 
@@ -152,13 +152,16 @@
             <div class="mensaje color-blanco-transparente">
 
                 <div class="eliminar-mensaje">
-                    ¿ESTA SEGURO QUE DESEA ELIMINAR A <span id="nombreClienteEliminado"></span> ?
+                    ¿ESTA SEGURO QUE DESEA ELIMINAR A <span id="nombreProveedorEliminado"></span> ?
                 </div>
 
                 <div class="eliminar-buttons">
-                    <div class="default-btn color-rojo-hover">
-                        ELIMINAR
-                    </div>
+                <form action="admin_eliminarProveedor.php" method="get" id="form2">
+                        <input type="hidden" name="idProveedor" id="idProveedorEliminado">
+                        <div class="default-btn color-rojo-hover" onclick="eliminarProveedor()">
+                            ELIMINAR
+                        </div>
+                    </form>
                     <div class="default-btn color-secundario-hover" onclick="cancelarEliminar()">
                         CANCELAR
                     </div>
@@ -167,7 +170,7 @@
         </div>
     </div>
 
-    <script src="/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
+    <script src="../../../statics/js/administrador/admin_Proveedor/admin_proveedor.js"></script>
 </body>
 
 </html>
