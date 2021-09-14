@@ -9,17 +9,37 @@
     <link rel="shortcut icon" href="statics/img/Logo1.svg" type="image/x-icon">
     <link rel="stylesheet" href="statics/css/estilo.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
+    
+    <!--Definir un formato y un efecto hover para la barra de navegacion -->
+    <style>
+        nav{
+            height: 30px;
+        }
+        nav a {
+            font-family: Helvetica, sans-serif;
+            font-size: 25px;
+            padding: 8px;
+            margin: 1px;
+            transition: 500ms all;
+            text-align: center;
+            text-transform: uppercase;
+            line-height: 30px;
+        }
+        nav a:hover{
+            background-color: #fff;
+            color:  #7f3b8c ;
+        }
+    </style>
 </head>
 
 <body>
     <header>
       <img src="/Proyecto/statics/img/Logo1.svg" alt="" style="width: 25%;padding-left: 10%;padding-top: 1%;" />
         <nav>
-          
-            <a href="index.php">Inicio </a>
-            <a href="historia.php">Historia</a>
-            <a href="modules/registro.php">Registrarse</a>
-            <a href="modules/login.php">Ingresar</a>
+            <a href="index.php" style="text-decoration: none;">Inicio </a>
+            <a href="historia.php" style="text-decoration: none;">Historia</a>
+            <a href="modules/registro.php" style="text-decoration: none;">Registrarse</a>
+            <a href="modules/login.php" style="text-decoration: none;">Ingresar</a>
         </nav>
         <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
                 style="height: 100%; width: 100%;">
