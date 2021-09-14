@@ -9,16 +9,19 @@
     <link rel="shortcut icon" href="statics/img/Logo1.svg" type="image/x-icon">
     <link rel="stylesheet" href="statics/css/estilo.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
+    
+    <!--Definir un formato y un efecto hover para la barra de navegacion -->
     <style>
+        nav{
+            height: 30px;
+        }
         nav a {
             font-family: Helvetica, sans-serif;
             font-size: 25px;
-            height: 30px;
             padding: 8px;
             margin: 1px;
-            transition: 300ms all;
+            transition: 500ms all;
             text-align: center;
-            text-decoration: none;
             text-transform: uppercase;
             line-height: 30px;
         }
