@@ -120,7 +120,13 @@
                         </div>
                         <div class="mascotaOpciones">
                             <div class="mascota-opciones color-blanco-transparente">
+<<<<<<< Updated upstream
                                 <?php echo $nombreCliente ?>   
+=======
+                                <div class="mascota-opcion color-secundario-hover">
+                                <?php echo $nombreCliente ?>   
+                                </div>
+>>>>>>> Stashed changes
                                 <div class="mascota-opcion color-secundario-hover">
                                 AGENDAR CITA
                                 </div>
