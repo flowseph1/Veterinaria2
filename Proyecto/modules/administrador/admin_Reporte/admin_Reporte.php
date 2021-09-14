@@ -31,76 +31,20 @@
                         ATRAS
                     </div>
                 </div>
-                <div class="botones">
-                    <div class="boton verde" onclick="location.href = '../admin_Reporte/admin_agregarReporte.php'">
-                        <div class="image">
-                            <i class="fas fa-plus"></i>
-                        </div>
-                        <div class="texto">
-                            AGREGAR
-                        </div>
-                    </div>
-                    <div class="line">
-
-                    </div>
-                    <div class="boton" id="editar" onclick="location.href = '../admin_Reporte/admin_editarReporte.php'">
-                        <div class="image">
-                            <i class="fas fa-pen"></i>
-                        </div>
-                        <div class="texto">
-                            EDITAR
-                        </div>
-                    </div>
-                    <div class="boton rojo" id="eliminar" onclick="accionEliminar()">
-                        <div class="image">
-                            <i class="fas fa-times"></i>
-                        </div>
-                        <div class="texto">
-                            ELIMINAR
-                        </div>
-                    </div>
-                    <div class="difuminacion">
-
-                    </div>
-                </div>
+                
                 <div class="clientes">
-                    <div class="descripcion">
-                        <div class="herramientas">
-                            <div class="buscador">
-                                <div class="icono-buscar">
-                                    <i class="fas fa-search"></i>
-                                </div>
-                                <div class="cajaTexto-buscar">
-                                    <input type="text" spellcheck="false" placeholder="BUSCAR NOMBRE O ID" id="buscar">
-                                </div>
-                            </div>
-                            <div class="limpiar" onclick="limpiar()">
-                                LIMPIAR
-                            </div>
+
+                    
+                    <div class="opcion enfermedades" onclick="location.href = '../admin_Reporte/admin_reportedeperros.php'">
+                        <div class="titulo">
+                            <div class="tituloPrincipal">Reporte de Perros</div>
                         </div>
-                        <div class="total-clientes">
-                            TOTAL &nbsp;<span class="clientesTotales">2</span>
+                        <div class="icono">
+                            <i class="fas fa-bone fa-4x"></i>
                         </div>
                     </div>
 
-                    <div class="tabla-clientes">
-                        <table id="tb-cliente" class="tabla">
-                            <thead>
-                                <th>ID</th>
-                                <th>DESCRIPCION</th>
-                                <th>TIPO</th>
-                                <th>FECHA</th>
-                            </thead>
-                            <tbody>
-                                <tr class="filas" onclick="filas(event)">
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    
                 </div>
 
 
@@ -108,23 +52,6 @@
 
         </div>
 
-        <div class="eliminar">
-            <div class="mensaje color-blanco-transparente">
-
-                <div class="eliminar-mensaje">
-                    ¿ESTA SEGURO QUE DESEA ELIMINAR A <span id="nombreClienteEliminado"></span> ?
-                </div>
-
-                <div class="eliminar-buttons">
-                    <div class="default-btn color-rojo-hover">
-                        ELIMINAR
-                    </div>
-                    <div class="default-btn color-secundario-hover" onclick="cancelarEliminar()">
-                        CANCELAR
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script src="/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
