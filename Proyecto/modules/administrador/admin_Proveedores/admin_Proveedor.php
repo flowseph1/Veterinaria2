@@ -13,6 +13,35 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <style>
+        tr {
+            font-size: 15px;
+        }
+
+        .texto {
+            font-size: 15px;
+        }
+
+        .atras {
+            font-size: 15px;
+        }
+
+        .cajaTexto-buscar{
+            font-size: 15px;
+        }
+
+        .limpiar {
+            font-size: 15px;
+        }
+
+        .total-clientes {
+            font-size: 15px;
+        }
+
+        .cajaTexto-buscar {
+            font-size: 15px;
+        }
+    </style>
 </head>
 
 <body>
@@ -57,7 +86,7 @@
                             <i class="fas fa-times"></i>
                         </div>
                         <div class="texto">
-                            ELIMINAR
+                            DAR DE BAJA
                         </div>
                     </div>
                     <div class="difuminacion">
@@ -95,14 +124,23 @@
                                 <th>ESTADO</th>
                             </thead>
                             <tbody>
-                                <tr class="filas" onclick="filas(event)">
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                </tr>
+                            <?php
+                                include('../../conexion/conexion.php');
+
+                                $query = 'SELECT * FROM  proveedores ';
+                                $result = mysqli_query($conn, $query);
+
+                                while ($row = mysqli_fetch_array($result)) { ?>
+
+                                    <tr class="filas" onclick="filas(event)">
+                                        <td><?php echo $row['Id_Proveedor'] ?></td>
+                                        <td><?php echo $row['RTN_Proveedor'] ?></td>
+                                        <td><?php echo $row['Nombre_Legal'] ?></td>
+                                        <td><?php echo $row['Direccion_Proveedor'] ?></td>
+                                        <td><?php echo $row['Telefono_Proveedor'] ?></td>
+                                        <td><?php echo $row['Estado_Proveedor'] ?></td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
