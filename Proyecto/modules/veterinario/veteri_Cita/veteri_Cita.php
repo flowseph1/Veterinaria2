@@ -32,51 +32,24 @@
                     </div>
                 </div>
                 <div class="botones">
-                    <div class="boton verde" onclick="location.href = '../veteri_Cita/veteri_agendarCita.php'">
-                        <div class="image">
-                        <i class="far fa-calendar-plus"></i>
-                        </div>
-                        <div class="texto">
-                            AGENDAR
-                        </div>
-                    </div>
-                    <div class="line">
+                    <form action="../veteri_Consulta/veteri_Consulta.php" method="get" id="form2">
+                        <div class="bloqueo-boton-general">
+                        
+                            <input type="hidden" name="idCita" id="idCita">
+                            <div class="boton" id="atender" onclick="eliminarCliente()">
+                                <div class="image">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <div class="texto">
+                                 ATENDER
+                                </div>
+                            </div>
+                            <div class="bloqueo-boton">
 
-                    </div>
-                    <div class="boton" id="editar" onclick="location.href = '../veteri_Cita/veteri_agendarCita.php?editar=1'">
-                        <div class="image">
-                            <i class="fas fa-pen"></i>
+                            </div>
                         </div>
-                        <div class="texto">
-                            EDITAR
-                        </div>
-                    </div>
-                    <div class="boton rojo" id="eliminar" onclick="accionEliminar()">
-                        <div class="image">
-                            <i class="fas fa-times"></i>
-                        </div>
-                        <div class="texto">
-                            CANCELAR CITA
-                        </div>
-                    </div>
-                    <div class="boton" id="atender" onclick="location.href = '../veteri_Consulta/veteri_Consulta.php'">
-                        <div class="image">
-                        <i class="fas fa-user-md"></i>
-                        </div>
-                        <div class="texto">
-                            ATENDER
-                        </div>
-                    </div>
-                    <div class="difuminacion">
-                    <?php
-
-                        if (isset($_GET["value"])) { ?>
-
-                     <div class="eliminacion-Cliente">
-                     <i class="fas fa-check"></i> &nbsp; CITA CANCELADA
-                     </div>
-                        <?php } ?>
-                    </div>
+                    </form>
+                   
                 </div>
                 <div class="tabla-contenedor">
                     <div class="descripcion">
@@ -123,6 +96,8 @@
                                 AND c.Id_Veterinario = p.Id_Personal
                                 AND c.Id_EstadoCita = e.Id_EstadoCita
                                 AND c.Id_Mascota = m.Id_Mascota
+                                AND c.Id_EstadoCita = 4
+                                OR c.Id_EstadoCita = 1
                                 ORDER BY c.Fecha_Cita DESC";
                                 $result = mysqli_query($conn, $query);
                                 while ($row = mysqli_fetch_array($result)) {
@@ -179,24 +154,9 @@
             </div>
 
         </div>
+        <input type="hidden" name="idCliente" id="IdElemento">
+        
 
-        <div class="eliminar">
-            <div class="mensaje color-blanco-transparente">
-
-                <div class="eliminar-mensaje">
-                    ¿ESTA SEGURO QUE DESEA ELIMINAR A <span id="nombreClienteEliminado"></span> ?
-                </div>
-
-                <div class="eliminar-buttons">
-                    <div class="default-btn color-rojo-hover">
-                        ELIMINAR
-                    </div>
-                    <div class="default-btn color-secundario-hover" onclick="cancelarEliminar()">
-                        CANCELAR
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script src="/Proyecto/statics/js/veterinario/veteri_citas.js"></script>

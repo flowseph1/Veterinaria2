@@ -30,7 +30,6 @@
                     <div class="noti-circulo"><?php echo $row['numeroCitas'] ?></div>
                 <?php } ?>
 
-
             </div>
             <div class="tarjeta-content notificaciones">
                 <?php if ($row['numeroCitas'] == 0) { ?>

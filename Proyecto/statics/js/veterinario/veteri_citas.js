@@ -124,6 +124,12 @@ const accionEliminar = () => {
     idCliente.value = clienteFilas[numeroDeFila].children[0].textContent;
 }
 
+const accionMostrar= () => {
+    const mostrar = document.querySelector(".mostrar");
+
+    mostrar.style.animation = "fadeIn 0.5s ease-out forwards";
+}
+
 var numeroDeFila;
 const clienteFilas = document.querySelectorAll(".filas");
 clienteFilas.forEach((item) => {
@@ -138,6 +144,7 @@ const eliminarCliente = () => {
     const formulario = document.querySelector("#form2");
     formulario.submit();
 }
+
 //Funcion para cancelar cuadro de dialogo para eliminar cliente.
 const cancelarEliminar = () => {
     const eliminar = document.querySelector(".eliminar");
