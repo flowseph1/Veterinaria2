@@ -103,7 +103,7 @@
                                         <?php
                                         switch ($row['Edad_Mascota']) {
                                             case 0:
-                                                echo "- 1 año";
+                                                echo "-1 año";
                                                 break;
                                             case 1:
                                                 echo "1 año";
