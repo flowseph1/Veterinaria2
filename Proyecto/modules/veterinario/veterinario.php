@@ -38,16 +38,7 @@
               <i class="far fa-calendar-alt fa-4x"></i>
             </div>
           </div>
-<!--
-          <div class="opcion enfermedades" onclick="location.href = '../veterinario/veteri_Enfermedades/veteri_Enfermedad.php'">
-            <div class="titulo">
-              <div class="tituloPrincipal">ENFERMEDADES</div>
-            </div>
-            <div class="icono">
-              <i class="fas fa-viruses fa-4x"></i>
-            </div>
-          </div>
--->
+
           <div class="opcion cirugia" onclick="location.href = '../veterinario/veteri_Cirugias/veteri_Cirugia.php'">
             <div class="titulo">
               <div class="tituloPrincipal">CIRUGIAS</div>
@@ -56,16 +47,7 @@
               <i class="fas fa-syringe fa-4x"></i>
             </div>
           </div>
-<!--
-          <div class="opcion medicamento" onclick="location.href = '../veterinario/veteri_Medicamentos/veteri_Medicamento.php'">
-            <div class="titulo">
-              <div class="tituloPrincipal">MEDICAMENTOS</div>
-            </div>
-            <div class="icono">
-              <i class="fas fa-pills fa-4x"></i>
-            </div>
-          </div>
--->
+          
           <div class="opcion jaula" onclick="location.href = '../veterinario/veteri_Jaulas/veteri_Jaula.php'">
             <div class="titulo">
               <div class="tituloPrincipal">JAULAS</div>

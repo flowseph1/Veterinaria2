@@ -15,10 +15,6 @@
 </head>
 
 <body>
-
-
-
-
     <div class="fondo">
 
         <?php include("../../../includes/veteri_header.php") ?>
@@ -39,7 +35,7 @@
                     <div class="" onclick="location.href = ''">
 
                         <div class="texto">
-                            SELECCIONE MASCOTA
+                            SELECCIONE PACIENTE
                         </div>
                     </div>
 
@@ -92,13 +88,7 @@
                             <i class='fas fa-exclamation-circle'></i>
                             SIN HISTORIAL CLINICO </div>";
                         }
-
                         ?>
-
-
-
-
-
 
                 </div>
 
@@ -132,8 +122,6 @@
                                 $cond = true;
                             }
                         }
-
-
                 ?>
                 <?php
 
@@ -643,12 +631,10 @@
                                                 <div class="paciente-value valueBox">
                                                     <?php echo $row['Pulso'] ?>/min
                                                 </div>
-
                                             </div>
                                         </div>
 
                                         <div class="main-col-alteraciones">
-
 
                                             <div class="col-alteraciones">
                                                 <div class="paciente-param2">
@@ -657,7 +643,6 @@
                                                 <div class="paciente-value valueBox">
                                                     <?php echo $row['Timpanizado'] ?>
                                                 </div>
-
                                             </div>
 
                                             <div class="col-alteraciones">
@@ -667,21 +652,13 @@
                                                 <div class="paciente-value valueBox">
                                                     <?php echo $row['Atonia'] ?>
                                                 </div>
-
                                             </div>
-
                                         </div>
                                     </div>
-
-
                                 </div>
-
-
 
                             </div>
                         </div>
-
-
 
                         <div class="anamnesis">
                             <div class="historial-titulo">
@@ -807,23 +784,15 @@
                                         </tr>
                                     </tbody>
                                 </table>
-
-
                             </div>
-
                         </div>
-
                         <div class="anamnesis">
                             <div class="historial-titulo">
                                 5. COMENTARIOS
                             </div>
 
                             <textarea class="historial-comentario" spellcheck="false" name="comentarioPrincipal" disabled><?php echo $row['Comentarios'] ?></textarea>
-
-
-
                         </div>
-
                     </div>
 
                 <?php } else {
@@ -831,17 +800,8 @@
                 ?>
             <?php } ?>
             </div>
-
-
-
         </div>
-
-
-
-
         <script src="/Proyecto/statics/js/veterinario/veteri_historial.js"></script>
-        
-
 </body>
 
 </html>

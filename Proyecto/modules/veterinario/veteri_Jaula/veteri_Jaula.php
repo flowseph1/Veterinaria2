@@ -38,7 +38,7 @@
 
                     $idVeterinario = $_SESSION['idVeterinario'];
                     $cont = 0;
-                    $query = "SELECT DISTINCT m.Nombre_Mascota, m.Sexo, m.Edad_Mascota, m.Fecha_Mascota, m.Id_Mascota, m.Id_Especie , te.Tipo_Especie, m.Fecha_Registro, r.Nombre_Raza FROM mascotas AS m, tipo_especies AS te, razas AS r, citas AS c 
+                    $query = "SELECT m.Nombre_Mascota, m.Sexo, m.Edad_Mascota, m.Fecha_Mascota, m.Id_Mascota, m.Id_Especie , te.Tipo_Especie, m.Fecha_Registro, r.Nombre_Raza FROM mascotas AS m, tipo_especies AS te, razas AS r, citas AS c 
                     WHERE m.Id_Cliente = m.Id_Cliente AND te.Id_Especie = m.Id_Especie AND m.Id_Raza = R.Id_Raza AND c.Id_Mascota=m.Id_Mascota AND c.Id_Veterinario=$idVeterinario;";
                     $resultado = mysqli_query($conn, $query);
                     while ($row = mysqli_fetch_array($resultado)) { ?>
@@ -154,26 +154,17 @@
                                         ?>
                                         <input type="hidden" id="idMascotaEliminar" value="<?php echo $idMascota ?>">
                                     </div>
-
                                 </div>
 
-
                             </div>
-
                             <div class="botones-mascotas">
 
                                 <div class="boton-historial-mascotas color-secundario" onclick="historial(<?php echo $idMascota ?>)">
                                     <i class="fas fa-history"></i> &nbsp; HISTORIAL
                                 </div>
-                                <div class="boton-eliminar-mascotas color-rojo-hover" onclick="accionEliminar(event)">
-                                    <i class="fas fa-times"></i> &nbsp; ELIMINAR
-                                </div>
 
                             </div>
 
-                            <div class="editar-mascota">
-                                <i class="fas fa-pen-square fa-2x"></i>
-                            </div>
                         </div>
 
                     <?php } ?>
@@ -183,30 +174,6 @@
             </div>
 
         </div>
-
-
-        <div class="eliminar">
-            <div class="mensaje color-blanco-transparente">
-
-                <div class="eliminar-mensaje">
-                    ¿Esta seguro que desea eliminar a: <span id="mascotaEliminar"></span>?
-                </div>
-
-                <div class="eliminar-buttons">
-                    <form action="eliminarMascotas.php" method="get" id="form2">
-                        <input type="hidden" name="idMascota" id="idMascota">
-                        <input type="hidden" name="nombreMascota" id="inputNombreMascota">
-                        <div class="default-btn color-rojo-hover" onclick="eliminarCliente()">
-                            ELIMINAR
-                        </div>
-                    </form>
-                    <div class="default-btn color-secundario-hover" onclick="cancelarEliminar()">
-                        CANCELAR
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
 
         <script src="/Proyecto/statics/js/veterinario/veterinario.js"></script>

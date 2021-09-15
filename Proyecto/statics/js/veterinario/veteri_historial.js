@@ -71,3 +71,18 @@ const historial = (idMascota) => {
     location.href = '/Proyecto/modules/veterinario/veteri_historial/historial.php?mascota=' + idMascota + "&historial=last";
 
 }
+//Funcion para cancelar cuadro de dialogo para eliminar cliente.
+const cancelarEliminar = () => {
+    const eliminar = document.querySelector(".eliminar");
+    eliminar.style.display = "none";
+
+}
+const historialMascota = (event) => {
+    //Se agrega idMascota a boton de agregarCita en Mascotas
+    const idMascota = document.querySelectorAll("#idMascota");
+    const tarjetaContent = document.querySelectorAll(".tarjeta-content");
+    const parent = event.currentTarget.parentNode.parentNode.parentNode;
+
+    let index = Array.from(tarjetaContent[1].children).indexOf(parent);
+    location.href = "/Proyecto/modules/veterinario/veteri_historial/historial.php?mascota=" + idMascota[index].value + "&historial=last";
+}

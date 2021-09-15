@@ -682,9 +682,12 @@
 
             <textarea class="historial-comentario" spellcheck="false" name="comentarioPrincipal" disabled><?php echo $row['Comentarios'] ?></textarea>
 
-
-
         </div>
 
+        <div class="eliminar-buttons">
+            <div class="default-btn color-secundario-hover" onclick="cancelarEliminar()">
+                CANCELAR
+            </div>
+         </div>
     </div>
 </div>

@@ -106,12 +106,3 @@ const inputMascota = document.querySelector("#inputMascota").value;
 const option = document.querySelector("option[value='" + inputMascota + "']");
 option.selected = true;
 
-const historialMascota = (event) => {
-    //Se agrega idMascota a boton de agregarCita en Mascotas
-    const idMascota = document.querySelectorAll("#idMascota");
-    const tarjetaContent = document.querySelectorAll(".tarjeta-content");
-    const parent = event.currentTarget.parentNode.parentNode.parentNode;
-
-    let index = Array.from(tarjetaContent[1].children).indexOf(parent);
-    location.href = "/Proyecto/modules/veterinario/veteri_historial/historial.php?mascota=" + idMascota[index].value + "&historial=last";
-}
