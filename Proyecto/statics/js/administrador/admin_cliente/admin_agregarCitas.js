@@ -1,58 +1,10 @@
-
-
-const mascotas = document.querySelectorAll(".mascota-perfil");
-const mascotaOpciones = document.querySelectorAll(".mascota-opciones");
-
-// Seleccion de Mascota / Al hacer click se muestran opciones de mascotas.
-mascotas.forEach((mascota) => {
-    mascota.addEventListener("click", (event) => {
-
-        for (let i = 0; i < mascotaOpciones.length; i++) {
-            mascotaOpciones[i].style.display = "none";
-            mascotas[i].style.backgroundColor = "";
-            mascotas[i].style.color = "";
-        }
-        let hijo = event.currentTarget;
-        let parent = event.currentTarget.parentNode;
-        let abuelo = parent.parentNode;
-        let bisabuelo = abuelo.parentNode;
-        let index = Array.from(bisabuelo.children).indexOf(abuelo);
-        mascotaOpciones[index].style.display = "block";
-        hijo.style.backgroundColor = "#363636a9"
-        hijo.style.color = "#eeeeee"
-    })
+const idCliente = document.querySelector('#idCliente');
+idCliente.addEventListener("keyup", () => {
+    location.href = location.pathname + "?idCliente=" + idCliente.value;
 })
-
-
-// Al hacer click fuera de opcion mascota se quita menu de mascotas.
-document.addEventListener("click", (event) => {
-    let cond = false;
-
-
-    mascotas.forEach((item) => {
-        if (item.contains(event.target)) {
-            cond = true;
-        }
-
-    })
-
-    if (cond) {
-    } else {
-        mascotaOpciones.forEach((item) => {
-            item.style.display = "none";
-
-        })
-        mascotas.forEach((item) => {
-            item.style.backgroundColor = "";
-            item.style.color = "";
-        })
-    }
-
-})
-
 
 //Click en submit formulario
-const form = document.querySelector("form");
+const form = document.querySelector("#formulario1");
 const boton = document.querySelector(".boton.verde");
 
 boton.addEventListener('click', () => {
@@ -61,7 +13,6 @@ boton.addEventListener('click', () => {
 
 
 const inputMascota = document.querySelector("#inputMascota").value;
-
 const option = document.querySelector("option[value='" + inputMascota + "']");
 option.selected = true;
 
@@ -72,7 +23,8 @@ const motivoCita = document.querySelector('textarea');
 
 fecha.addEventListener("change", () => {
 
-    let parameters = "?mascota=" + selectMascota.options[selectMascota.selectedIndex].value +
+    let parameters = "?idCliente=" + idCliente.value +
+        "&mascota=" + selectMascota.options[selectMascota.selectedIndex].value +
         "&veterinario=" + veterinario.options[veterinario.selectedIndex].value +
         "&date=" + fecha.value +
         "&motivo=" + motivoCita.innerHTML;
@@ -81,7 +33,8 @@ fecha.addEventListener("change", () => {
     location.href = parameters;
 })
 
-if (typeof (document.querySelector('#hiddenMascota')) != "undefined" && document.querySelector('#hiddenMascota') != null) {
+if (typeof (document.querySelector('#hiddenIdCliente')) != "undefined" && document.querySelector('#hiddenIdCliente') != null) {
+    const hiddenIdCliente = document.querySelector('#hiddenIdCliente');
     const hiddenMascota = document.querySelector('#hiddenMascota');
     const hiddenVeterinario = document.querySelector('#hiddenVeterinario');
     const hiddenFecha = document.querySelector('#hiddenFecha');
@@ -107,4 +60,6 @@ horariosOcupados.forEach(element => {
 })
 
 
-
+const agendarCita = () => {
+    form.submit();
+}

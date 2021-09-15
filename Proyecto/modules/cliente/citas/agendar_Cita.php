@@ -60,6 +60,21 @@
                     <?php } ?>
 
                 </div>
+
+                <?php
+                if (isset($_GET['mascota'])) {
+                    $mascota = $_GET['mascota'];
+                    $veterinario = $_GET['veterinario'];
+                    $fecha = $_GET['date'];
+                    $motivo = $_GET['motivo'];
+
+                    echo "<input type='hidden' value='$mascota' id='hiddenMascota'>" .
+                        "<input type='hidden' value='$veterinario' id='hiddenVeterinario'>" .
+                        "<input type='hidden' value='$fecha' id='hiddenFecha'>" .
+                        "<input type='hidden' value='$motivo' id='hiddenMotivo'>";
+                }
+                ?>
+
                 <div class="agregar cliente">
                     <form action="agendar.php">
                         <div class="forma">
@@ -103,7 +118,7 @@
                                             </div>
                                         </div>
                                         <div class="values">
-                                            <select name="veterinario" id="" class="selection" name="genero">
+                                            <select name="veterinario" id="veterinario" class="selection" name="genero">
                                                 <option value="" disabled selected value>SELECCIONE</option>
                                                 <?php
 
@@ -122,23 +137,38 @@
                                         </div>
                                         <div class="values">
                                             <input type="date" name="fecha" id="fecha">
+                                            <?php
+                                            if (isset($_GET['mascota'])) {
+
+                                                $date2 = $_GET['date'];
+
+                                                $query = "SELECT * FROM citas WHERE Fecha_Cita = '$date2'";
+                                                $result = mysqli_query($conn, $query);
+                                                while ($rows = mysqli_fetch_array($result)) {
+                                                    $horario = $rows['Hora_Cita'];
+                                                    echo "<input type='hidden' value='$horario' class='horarioOcupado'>";
+                                                }
+                                            }
+                                            ?>
                                             <div class="params-op">
                                                 OBLIGATORIO
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
+
                                         <div class="params">HORARIO
                                         </div>
                                         <div class="params textareas">MOTIVO DE CITA
                                         </div>
                                     </div>
                                     <div class="col">
+
                                         <div class="values">
                                             <select name="horario" id="" class="selection" name="genero">
                                                 <option value="" disabled selected value>SELECCIONE</option>
-                                                <option value="8:00">8:00 AM</option>
-                                                <option value="9:00">9:00 AM</option>
+                                                <option value="08:00">08:00 AM</option>
+                                                <option value="09:00">09:00 AM</option>
                                                 <option value="10:00">10:00 AM</option>
                                                 <option value="11:00">11:00 AM</option>
                                                 <option value="13:00">1:00 PM</option>

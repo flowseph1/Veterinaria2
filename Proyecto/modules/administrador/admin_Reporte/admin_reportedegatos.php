@@ -10,14 +10,13 @@
     <link rel="stylesheet" href="../../../statics/css/administrador/admin_Cliente/cliente.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="fondo">
-        
+
         <?php include("../../../includes/admin_header.php") ?>
 
         <div class="main-user">
@@ -32,20 +31,20 @@
                         ATRAS
                     </div>
                 </div>
-                <div class="agregar cliente">
+                <div class="agregar">
                     <div class="forma">
                         <div class="personal">
-                        
-                                <div class="tabla-clientes">
-                                    <table id="tb-cliente" class="tabla">
-                                        <thead>
-                                            <th>ID</th>
-                                            <th>NOMBRE DE MASCOTA</th>
-                                            <th>ESPECIE</th>
-                                            <th>RAZA</th>
-                                        </thead>
-                                        <tbody>
-                                           
+
+                            <div class="tabla-clientes">
+                                <table id="tb-cliente" class="tabla">
+                                    <thead>
+                                        <th>ID</th>
+                                        <th>NOMBRE DE MASCOTA</th>
+                                        <th>ESPECIE</th>
+                                        <th>RAZA</th>
+                                    </thead>
+                                    <tbody>
+
                                         <?php
                                         include('../../conexion/conexion.php');
 
@@ -73,22 +72,22 @@
                                                     $result2 = mysqli_query($conn, $query2);
                                                     while ($row2 = mysqli_fetch_array($result2)) { ?>
 
-                                                    <?php echo $row2['Nombre_Raza'] ?>
+                                                        <?php echo $row2['Nombre_Raza'] ?>
                                                     <?php } ?>
 
                                                 </td>
-                                                
+
                                                 <td></td>
                                             </tr>
                                         <?php } ?>
 
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    </tbody>
+                                </table>
+                            </div>
 
-                            
+
                         </div>
-                   </div>
+                    </div>
 
                 </div>
             </div>

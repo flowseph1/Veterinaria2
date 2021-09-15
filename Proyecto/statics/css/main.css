@@ -1828,3 +1828,13 @@ input, select {
     padding: 5px;
 }
 
+.select{
+    min-width: 165px;
+    font-family: 'Gowun Dodum', sans-serif;
+    background-color: #f7f7f7bd;
+    outline: none;
+    border-radius: 22px;
+    border: none;
+    height: 30px;
+    font-size: 12px;
+}

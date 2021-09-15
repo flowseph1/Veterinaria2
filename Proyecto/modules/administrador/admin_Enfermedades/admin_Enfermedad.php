@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="../../../statics/css/administrador/admin_Cliente/cliente.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
 
@@ -43,24 +42,19 @@
                     <div class="line">
 
                     </div>
-                    <div class="boton" id="editar" onclick="location.href = '../admin_Enfermedades/admin_editarEnfermedad.php'">
-                        <div class="image">
-                            <i class="fas fa-pen"></i>
-                        </div>
-                        <div class="texto">
-                            EDITAR
-                        </div>
-                    </div>
-                    <div class="boton rojo" id="eliminar" onclick="accionEliminar()">
-                        <div class="image">
-                            <i class="fas fa-times"></i>
-                        </div>
-                        <div class="texto">
-                            ELIMINAR
-                        </div>
-                    </div>
-                    <div class="difuminacion">
 
+                    <div class="bloqueo-boton-general">
+                        <div class="boton rojo" id="eliminar" onclick="accionEliminar()">
+                            <div class="image">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div class="texto">
+                                ELIMINAR
+                            </div>
+                        </div>
+                        <div class="bloqueo-boton">
+
+                        </div>
                     </div>
                 </div>
                 <div class="clientes">
@@ -74,7 +68,7 @@
                                     <input type="text" spellcheck="false" placeholder="BUSCAR NOMBRE O ID" id="buscar">
                                 </div>
                             </div>
-                            <div class="limpiar" onclick="limpiar()">
+                            <div class="limpiar" onclick="limpiarTabla()">
                                 LIMPIAR
                             </div>
                         </div>
@@ -87,22 +81,29 @@
                         <table id="tb-cliente" class="tabla">
                             <thead>
                                 <th>ID ENFERMEDAD</th>
-                                <th>ENFERMEDAD</th>
+                                <th>NOMBRE ENFERMEDAD</th>
                                 <th>TRATAMIENTOS</th>
                                 <th>MEDICAMENTOS</th>
-                               
-
 
                             </thead>
                             <tbody>
-                                <tr class="filas" onclick="filas(event)">
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                    <td>BASE DE DATOS</td>
-                                </tr>
+                                <?php
 
+                                include("../../conexion/conexion.php");
 
+                                $query = "SELECT e.Id_Enfermedad, e.Descripcion_Enfermedad, t.Descripcion, m.Descripcion_Medicamento FROM enfermedades AS e, tratamientos AS t, medicamentos AS m
+                                    WHERE t.Id_Tratamiento = e.Tratamiento_Enfermedad
+                                    AND m.Id_Medicamento = e.Medicamento_Enfermedad";
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_array($result)) { ?>
+                                    <tr class="filas" onclick="filas(event)">
+                                        <td><?php echo $row['Id_Enfermedad'] ?></td>
+                                        <td><?php echo $row['Descripcion_Enfermedad'] ?></td>
+                                        <td><?php echo $row['Descripcion'] ?></td>
+                                        <td><?php echo $row['Descripcion_Medicamento'] ?></td>
+                                    </tr>
+
+                                <?php } ?>
 
                             </tbody>
                         </table>
@@ -113,6 +114,8 @@
             </div>
 
         </div>
+
+        <input type="hidden" name="idElemento" id="IdElemento">
 
         <div class="eliminar">
             <div class="mensaje color-blanco-transparente">
@@ -133,7 +136,7 @@
         </div>
     </div>
 
-    <script src="/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
+    <script src="/Proyecto/statics/js/administrador/admin_enfermedades/tablaEnfermedades.js"></script>
 </body>
 
 </html>

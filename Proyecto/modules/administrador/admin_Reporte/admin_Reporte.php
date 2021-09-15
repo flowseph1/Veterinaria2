@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="../../../statics/css/administrador/admin_Cliente/cliente.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
 
@@ -31,11 +30,10 @@
                         ATRAS
                     </div>
                 </div>
-                
-                <div class="clientes">
-                  <div class="menu">
 
-                    
+                <div class="menu">
+
+
                     <div class="opcion enfermedades" onclick="location.href = '../admin_Reporte/admin_reportedeperros.php'">
                         <div class="titulo">
                             <div class="tituloPrincipal">Reporte de Perros</div>
@@ -54,9 +52,7 @@
                         </div>
                     </div>
 
-                  </div>  
                 </div>
-
 
             </div>
 
