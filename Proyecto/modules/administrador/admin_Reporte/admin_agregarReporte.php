@@ -103,6 +103,26 @@
                                 </div>
                                     
                                 </div>
+
+                                <div class="tabla-clientes">
+                                    <table id="tb-cliente" class="tabla">
+                                        <thead>
+                                            <th>ID</th>
+                                            <th>DESCRIPCION</th>
+                                            <th>TIPO</th>
+                                            <th>FECHA</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="filas" onclick="filas(event)">
+                                            <td>BASE DE DATOS</td>
+                                            <td>BASE DE DATOS</td>
+                                            <td>BASE DE DATOS</td>
+                                            <td>BASE DE DATOS</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
                         </div>
                        
