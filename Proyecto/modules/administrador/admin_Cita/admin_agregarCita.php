@@ -93,8 +93,13 @@
                                         </div>
                                         <div class="params">VETERINARIO
                                         </div>
-                                        <div class="params">FECHA
-                                        </div>
+
+                                    </div>
+                                    <div class="values">
+                                        <input type="text" spellcheck="false" name="prueba">
+                                        <div class="params-op">
+                                            OBLIGATORIO
+                                       
                                     </div>
                                     <div class="col inputs">
                                         <div class="values">

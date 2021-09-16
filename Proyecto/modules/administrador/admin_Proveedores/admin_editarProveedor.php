@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8" />
@@ -24,10 +24,25 @@
 
             <?php include("../../../includes/admin_user.php") ?>
 
+            <?php
+                include("../../conexion/conexion.php");
+                //Obteniendo informacion de proveedor.
+                $idProveedor = $_GET['idProveedor'];
+                $query = "SELECT * FROM proveedores where Id_Proveedor = '$idProveedor'";
+                $result = mysqli_query($conn, $query);
 
+                //INFORMACION SOBRE PROVEEDOR
+                while ($row = mysqli_fetch_array($result)) {
+                    $rtn = $row['RTN_Proveedor'];
+                    $Nombre_Legal = $row['Nombre_Legal'];
+                    $Direccion_Proveedor = $row['Direccion_Proveedor'];
+                    $Telefono_Proveedor = $row['Telefono_Proveedor'];
+                    $estado = $row['Estado_Proveedor'];
+                }
+            ?>
             <div class="contenedor">
                 <div class="titulo-opcion">
-                    <div class="motivo">EDITAR PRoveedores</div>
+                    <div class="motivo">EDITAR PROVEEDOR</div>
                     <div class="atras" onclick="location.href = '../admin_Proveedores/admin_Proveedor.php'">
                         ATRAS
                     </div>
@@ -38,85 +53,72 @@
                             <i class="fas fa-save"></i>
                         </div>
                         <div class="texto">
-                            GUARDAR
+                            <label for="submit-form">GUARDAR</label>
                         </div>
                     </div>
-                    <div class="line">
-
-                    </div>
-                    <div class="boton limpiar-button" id="limpiar-button">
-                        <div class="texto-limpiar">
-                            LIMPIAR
-                        </div>
-                    </div>
-
                 </div>
-                <div class="agregar cliente">
+                <div class="agregar cliente" style="height: 420px; width: 550px;">
                     <div class="forma">
-                    <div class="personal">
-                            <div class="informacion-personal">
-                                INFORMACION PERSONAL
-                            </div>
-                            <div class="line-horizontal">
-                            </div>
-                            <div class="info-personal">
-                                <div class="col">
-                                    <div class="params">ID PROVEEDOR
-                                    </div>
-                                    <div class="params">RTN PROVEEDOR
-                                    </div>
-                                    <div class="params">NOMBRE
-                                    </div>
+                        <div class="personal">
+
+                            <!--Inicio del formulario-->
+                            <form action="editarProveedor.php" id="formularioEditar" method="POST">
+                                <div class="informacion-personal">
+                                    INFORMACION DE PROVEEDOR
                                 </div>
-                                <div class="col inputs">
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="nombre">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
-                                    </div>
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
-                                    </div>
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
-                                    </div>
+                                <div class="line-horizontal">
                                 </div>
-                                <div class="col">
-                                    <div class="params">DIRECCION
-                                    </div>
-                                    <div class="params">TELEFONO
-                                    </div>
-                                    <div class="params">ESTADO
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="usuario">
-                                        <div class="params-op">
-                                            OBLIGATORIO
+                                <div class="info-personal">
+                                    <div class="col">
+                                        <div class="params">ID DE PROVEEDOR
+                                        </div> 
+                                        <div class="params">RTN DE LA EMPRESA
                                         </div>
-                                    </div>
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
+                                        <div class="params">NOMBRE LEGAL
                                         </div>
+                                        <div class="params">DIRECCION FISCAL
+                                        </div>
+                                        <div class="params">TELEFONO
+                                        </div>
+                                        <div class="params">ESTADO DE PROVEEDOR
+                                        </div>                                        
                                     </div>
+                                    <div class="col inputs" style="margin-left: 100px;">
                                     <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
+                                            <input type="text" readonly style="width: 250px;" spellcheck="false" name="IdProveedor" id="IdProveedor" title="El ID de Proveedor no puede ser modificado" value="<?php echo $idProveedor ?>">
+                                        </div>
+                                    
+                                        <div class="values">
+                                            <input type="text" readonly style="width: 250px;" spellcheck="false" name="rtn" id="rtn" title="El RTN no puede ser modificado en esta pantalla" value="<?php echo $rtn ?>">
+                                        </div>
+                                        <div class="values">
+                                            <input type="text" style="width: 250px;" spellcheck="false" required name="nombre" id="nombre" value="<?php echo $Nombre_Legal ?>">
+                                        </div>
+                                        <div class="values">
+                                            <input type="text" style="width: 250px;" spellcheck="false" required name="direccion" id="direccion" value="<?php echo $Direccion_Proveedor ?>">
+                                        </div>
+                                        <div class="values">
+                                            <input type="text" style="width: 250px;" spellcheck="false" required name="telefono" id="telefono" title="Ingresar solo numeros - Ejemplo: 22556633" pattern="[0-9]+" maxlength="8" value="<?php echo $Telefono_Proveedor ?>">
+                                        </div>
+                                        <div class="values" style="width: 100%;">
+                                            <select style="width: 100%; height:30px;" name="estadoProveedor" id="estadoProveedor">
+                                                <?php 
+                                                    if($estado == 1){
+                                                        echo "<option value='1'>Activo</option>";
+                                                        echo '<option value="0">Inactivo</option>';
+                                                    } 
+                                                    else {
+                                                        echo '<option value="0">Inactivo</option>';
+                                                        echo "<option value='1'>Activo</option>";
+                                                    }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <input type="submit" id="submit-form" style="display: none;">
+                            </form>
+                            <!--FIN DEL FORMULARIO-->
                         </div>
                     </div>
 
@@ -127,8 +129,8 @@
             </div>
         </div>
     </div>
-    <script src="/Veterinaria/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
-    <script src="/Veterinaria/Proyecto/statics/js/administrador/admin_cliente/admin_agregarCliente.js"></script>
+    <!--<script src="/Veterinaria/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
+    //<script src="/Veterinaria/Proyecto/statics/js/administrador/admin_cliente/admin_agregarCliente.js"></script>-->
 </body>
 
 </html>

@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>ADMINISTRADOR</title>
   <link rel="stylesheet" href="../../statics/css/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -89,6 +89,15 @@
             </div>
             <div class="icono">
               <i class="fas fa-truck-loading fa-4x"></i>
+            </div>
+          </div>
+
+          <div class="opcion pedidos" onclick="location.href = '../administrador/admin_Pedidos/admin_Pedidos.php'">
+            <div class="titulo">
+              <div class="tituloPrincipal">PEDIDOS</div>
+            </div>
+            <div class="icono">
+              <i class="fas fa-shopping-cart fa-4x"></i>
             </div>
           </div>
 
