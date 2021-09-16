@@ -27,8 +27,8 @@
 
             <div class="contenedor">
                 <div class="titulo-opcion">
-                    <div class="motivo">AGREGAR FACTURA</div>
-                    <div class="atras" onclick="location.href = '../admin_Facturas/admin_Factura.php'">
+                    <div class="motivo">AGREGAR PEDIDOS</div>
+                    <div class="atras" onclick="location.href = '../admin_Pedidos/admin_Pedidos.php'">
                         ATRAS
                     </div>
                 </div>
@@ -55,15 +55,15 @@
                     <div class="forma">
                         <div class="personal">
                             <div class="informacion-personal">
-                                INFORMACION PERSONAL
+                                INFORMACION DE PEDIDOS
                             </div>
                             <div class="line-horizontal">
                             </div>
                             <div class="info-personal">
                                 <div class="col">
-                                    <div class="params">ID DE DETALLE DE VENTA
+                                    <div class="params">ID DETALLE DE COMPRA
                                     </div>
-                                    <div class="params">ID DE VENTA
+                                    <div class="params">ID DE COMPRA
                                     </div>
                                     <div class="params">ID DEL PRODUCTO
                                     </div>
@@ -75,78 +75,48 @@
                                 <div class="col inputs">
                                     <div class="values">
                                         <input type="text" spellcheck="false" name="nombre">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
                                     </div>
                                     <div class="values">
                                         <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
                                     </div>
                                     <div class="values">
                                         <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
                                     </div>
                                     <div class="values">
                                         <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
                                     </div>
                                     <div class="values">
                                         <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="params">SUBTOTAL
                                     </div>
-                                    <div class="params">IVA VENTA
+                                    <div class="params">IVA COMPRA
                                     </div>
                                     <div class="params">TOTAL
                                     </div>
                                     <div class="params">EXENTO IVA
                                     </div>
-                                    <div class="params">FECHA DE VENTA
+                                    <div class="params">FECHA DE COMPRA
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="values">
                                         <input type="text" spellcheck="false" name="usuario">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
                                     </div>
                                     <div class="values">
                                         <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
                                     </div>
                                     <div class="values">
                                         <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
                                     </div>
                                     <div class="values">
                                         <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
                                     </div>
                                     <div class="values">
-                                                <input type="date" spellcheck="false" id="date" class="entrada">
-                                                <div class="params-op">
-                                                    OBLIGATORIO
-                                                </div>
-                                            </div>
+                                        <input type="date" spellcheck="false" id="date" class="entrada">
+                                    </div>
                                 </div>
                                 </div>
                             </div>
@@ -164,8 +134,7 @@
                 </div>
             </div>
         </div>
-        <script src="/Veterinaria/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
-        <script src="/Veterinaria/Proyecto/statics/js/administrador/admin_cliente/admin_agregarCliente.js"></script>
+        <script src="../../../statics/js/administrador/admin_Proveedor/admin_agregarPedidos.js"></script>
 </body>
 
 </html>

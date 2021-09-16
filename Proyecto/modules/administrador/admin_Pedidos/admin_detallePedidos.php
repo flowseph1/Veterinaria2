@@ -27,7 +27,7 @@
             <div class="contenedor">
                 <div class="titulo-opcion">
                     <div class="motivo">DETALLE DE PEDIDOS</div>
-                    <div class="atras" onclick="location.href = '../admin_Facturas/admin_Factura.php'">
+                    <div class="atras" onclick="location.href = '../admin_Pedidos/admin_Pedidos.php'">
                         ATRAS
                     </div>
                 </div>
