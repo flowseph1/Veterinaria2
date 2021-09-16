@@ -1817,3 +1817,24 @@ input, select {
 .botones{
     min-height: 50px;
 }
+
+#total{
+    font-size: 15px;
+}
+
+.contenedor-factura{
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+}
+
+.select{
+    min-width: 165px;
+    font-family: 'Gowun Dodum', sans-serif;
+    background-color: #f7f7f7bd;
+    outline: none;
+    border-radius: 22px;
+    border: none;
+    height: 30px;
+    font-size: 12px;
+}

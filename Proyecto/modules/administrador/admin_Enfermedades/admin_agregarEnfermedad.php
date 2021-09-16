@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="../../../statics/css/administrador/admin_Cliente/cliente.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
 
@@ -33,7 +32,7 @@
                     </div>
                 </div>
                 <div class="botones">
-                    <div class="boton verde">
+                    <div class="boton verde" onclick="guardar()">
                         <div class="image save">
                             <i class="fas fa-save"></i>
                         </div>
@@ -50,75 +49,116 @@
                         </div>
                     </div>
 
+                    <?php
+
+                    if (isset($_GET["value"])) { ?>
+
+                        <div class="alerta-exito">
+                            <i class="fas fa-check"></i>&nbsp; ENFERMEDAD AGREGADA SATISFACTORIAMENTE
+                        </div>
+                    <?php } ?>
+
                 </div>
-                <div class="agregar cliente">
-                    <div class="forma">
-                        <div class="personal">
-                            <div class="informacion-personal">
-                                INFORMACION PERSONAL
-                            </div>
-                            <div class="line-horizontal">
-                            </div>
-                            <div class="info-personal">
-                                <div class="col">
-                                    <div class="params">ID ENFERMEDAD
-                                    </div>
-                                    <div class="params">ENFERMEDAD
-                                    </div>
+                <form action="agregarEnfermeda.php" id="formulario1">
+                    <div class="agregar cliente">
+                        <div class="forma">
+                            <div class="personal">
+                                <div class="informacion-personal">
+                                    INFORMACION PERSONAL
                                 </div>
-                                <div class="col inputs">
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="nombre">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
-                                    </div>
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
-                                    </div>
+                                <div class="line-horizontal">
+                                </div>
+                                <div class="info-personal">
+                                    <div class="col">
 
-                                </div>
-                                <div class="col">
-                                    <div class="params">TRATAMIENTOS
-                                    </div>
-                                    <div class="params">MEDICAMENTOS
-                                    </div>
-
-                                </div>
-                                <div class="col">
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="usuario">
-                                        <div class="params-op">
-                                            OBLIGATORIO
+                                        <div class="params">ENFERMEDAD
+                                        </div>
+                                        <div class="params">TRATAMIENTOS
                                         </div>
                                     </div>
-                                    <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
-                                        <div class="params-op">
-                                            OBLIGATORIO
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>   
-                                            
+                                    <div class="col inputs">
+                                        <div class="values">
+                                            <input type="text" spellcheck="false" name="enfermedad">
+                                            <div class="params-op">
+                                                OBLIGATORIO
                                             </div>
-                                        
+                                        </div>
+                                        <div class="values">
+
+
+                                            <select name="tratamientos" id="tratamientos" class="select">
+                                                <option value=""></option>
+                                                <?php
+                                                include('../../conexion/conexion.php');
+                                                $query = "SELECT * FROM tratamientos";
+                                                $result = mysqli_query($conn, $query);
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $idTratamiento = $row['Id_Tratamiento'];
+                                                    $descripcion = $row['Descripcion'];
+
+                                                ?>
+
+                                                    <option value="<?php echo $idTratamiento ?>"><?php echo $descripcion ?></option>
+
+                                                <?php } ?>
+
+
+
+                                            </select>
+                                            <div class="params-op">
+                                                OPCIONAL
+                                            </div>
+                                        </div>
+
                                     </div>
+                                    <div class="col">
 
+                                        <div class="params">MEDICAMENTOS
+                                        </div>
+
+                                    </div>
+                                    <div class="col">
+                                        <div class="values">
+                                            <select name="medicamentos" id="medicamentos" class="select">
+                                                <option value=""></option>
+                                                <?php
+                                                include('../../conexion/conexion.php');
+                                                $query = "SELECT * FROM medicamentos";
+                                                $result = mysqli_query($conn, $query);
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $idMedicamento = $row['Id_Medicamento'];
+                                                    $descripcionMedicamento = $row['Descripcion_Medicamento'];
+
+                                                ?>
+
+                                                    <option value="<?php echo $idMedicamento ?>"><?php echo $descripcionMedicamento ?></option>
+
+                                                <?php } ?>
+
+
+
+                                            </select>
+                                            <div class="params-op">
+                                                OPCIONAL
+                                            </div>
+                                        </div>
+
+
+                                    </div>
                                 </div>
-                              
-
                             </div>
+
                         </div>
 
+                    </div>
+                </form>
+            </div>
 
-        <script src="/Veterinaria/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
-        <script src="/Veterinaria/Proyecto/statics/js/administrador/admin_cliente/admin_agregarCliente.js"></script>
+
+        </div>
+    </div>
+
+    <script src="/Proyecto/statics/js/administrador/admin_enfermedades/admin_enfermedades.js"></script>
 </body>
 
 </html>

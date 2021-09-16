@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-09-2021 a las 05:27:46
+-- Tiempo de generación: 16-09-2021 a las 02:39:00
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.5
 
@@ -79,7 +79,9 @@ INSERT INTO `citas` (`Id_Cita`, `Id_Cliente`, `Id_Mascota`, `Id_Veterinario`, `F
 (59, 1, 81, 1, '2021-09-30', '13:00:00', 'Problemas Respiratorios', 4),
 (60, 48, 80, 1, '2021-10-01', '09:00:00', 'Revision General', 4),
 (61, 1, 78, 1, '2021-11-12', '09:00:00', 'Consulta General', 4),
-(62, 1, 78, 1, '2021-09-07', '15:00:00', 'Mordida de perro.', 4);
+(62, 1, 78, 1, '2021-09-07', '15:00:00', 'Mordida de perro.', 4),
+(63, 1, 78, 1, '2021-09-10', '11:00:00', 'Consulta General.', 1),
+(64, 48, 80, 1, '2021-09-10', '13:00:00', 'Dolor ', 1);
 
 -- --------------------------------------------------------
 
@@ -107,7 +109,8 @@ INSERT INTO `clientes` (`Id_Cliente`, `Nombre`, `Genero`, `Correo_Electronico`, 
 (4, 'Josue Zelaya', 'MASCULINO', 'josuezelaya0010@gmail.com', 4, 0),
 (14, 'Katherine Gabriela Meza', 'FEMENINO', 'Kath@safari.com', 5, 0),
 (48, 'Miguel Roberto Mendoza', 'MASCULINO', 'miguel@gmail.com', 83, 0),
-(49, 'Patricia Cubas', 'FEMENINO', 'patricia@gmail.com', 84, 0);
+(49, 'Patricia Cubas', 'FEMENINO', 'patricia@gmail.com', 84, 0),
+(53, 'Andrea ReaÃ±os', 'FEMENINO', 'andrea@gmail.com', 100, 0);
 
 -- --------------------------------------------------------
 
@@ -254,6 +257,41 @@ CREATE TABLE `detalle_venta` (
   `Total_Venta` int(11) NOT NULL,
   `Exento_IVA` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `enfermedades`
+--
+
+CREATE TABLE `enfermedades` (
+  `Id_Enfermedad` int(6) NOT NULL,
+  `Descripcion_Enfermedad` varchar(50) NOT NULL,
+  `Tratamiento_Enfermedad` int(6) DEFAULT NULL,
+  `Medicamento_Enfermedad` int(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `enfermedades`
+--
+
+INSERT INTO `enfermedades` (`Id_Enfermedad`, `Descripcion_Enfermedad`, `Tratamiento_Enfermedad`, `Medicamento_Enfermedad`) VALUES
+(1, 'Hongos', 7, 62),
+(2, 'Virosis', 7, 62),
+(3, 'Parvovirosis', 7, 62),
+(4, 'Moquillo', 7, 62),
+(5, 'Hepatitis', 7, 62),
+(6, 'Laringotraqueitis', 7, 62),
+(7, 'Gastroenteritis', 7, 62),
+(8, 'Rabia', 7, 62),
+(9, 'Leptospirosis', 7, 62),
+(10, 'Tos de las Perreras', 7, 62),
+(11, 'Parasitos', 7, 62),
+(12, 'Leishmania', 7, 62),
+(13, 'Filarias', 7, 62),
+(14, 'Prueba Enfermedad', 7, 62),
+(15, 'Prueba Enfermedad 2', 0, 0),
+(16, 'Prueba Enfermedad 3', 7, 49);
 
 -- --------------------------------------------------------
 
@@ -455,7 +493,87 @@ CREATE TABLE `mascotas` (
 INSERT INTO `mascotas` (`Id_Mascota`, `Id_Cliente`, `Nombre_Mascota`, `Fecha_Mascota`, `Sexo`, `Id_Especie`, `Id_Raza`, `Fecha_Registro`) VALUES
 (78, 1, 'Cochito', '2019-02-07', 'Macho', 1, 4, '2021-09-02'),
 (80, 48, 'Peludo', '2019-03-02', 'Macho', 2, 19, '2021-09-02'),
-(81, 1, 'Tommy', '2017-07-06', 'Macho', 1, 13, '2021-09-07');
+(81, 1, 'Tommy', '2017-07-06', 'Macho', 1, 13, '2021-09-07'),
+(82, 53, 'Preciosa', '2018-07-16', 'hembra', 1, 9, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `medicamentos`
+--
+
+CREATE TABLE `medicamentos` (
+  `Id_Medicamento` int(6) NOT NULL,
+  `Descripcion_Medicamento` varchar(30) NOT NULL,
+  `Id_TipoMedicamento` int(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `medicamentos`
+--
+
+INSERT INTO `medicamentos` (`Id_Medicamento`, `Descripcion_Medicamento`, `Id_TipoMedicamento`) VALUES
+(1, 'tetraciclina', 1),
+(2, 'tobramicina', 1),
+(3, 'enrofloxacino', 1),
+(4, 'aciclovir', 2),
+(5, 'ganciclovir', 2),
+(6, 'dexametasona', 3),
+(7, 'prednisolona', 3),
+(8, 'AINE', 4),
+(9, 'diclofenaco', 4),
+(10, 'betaxolol', 5),
+(11, 'dorzolamida', 5),
+(12, 'vitamina A', 6),
+(13, 'ranitidina', 7),
+(14, 'famotidina', 7),
+(15, 'omeprazol', 7),
+(16, 'antineoplasicos', 8),
+(17, 'ciclofosfamida', 8),
+(18, 'lomustina', 8),
+(19, 'metotrexato', 8),
+(20, 'clorambucilo', 8),
+(21, 'asparaginasa', 9),
+(22, 'citarabina', 9),
+(23, 'ciclofosfamida', 10),
+(24, 'doxorubicina', 10),
+(25, 'citarabina', 11),
+(26, 'actinomicina B', 12),
+(27, 'cisplatino', 12),
+(28, 'carboplatino', 12),
+(29, 'estreptozocina', 12),
+(30, 'manitol', 14),
+(31, 'expansores plasmaticos', 15),
+(32, 'misoprostol', 16),
+(33, 'fludrocortisona', 17),
+(34, 'estreptozocina', 18),
+(35, 'midazolam', 19),
+(36, 'dopamina', 20),
+(37, 'dobutamina', 20),
+(38, 'procainamida', 20),
+(39, 'amiodarona', 20),
+(40, 'fenilefrina', 20),
+(41, 'efedrina', 20),
+(42, 'isoprenalina', 20),
+(43, 'vasopresina', 20),
+(44, 'bupivacaina', 21),
+(45, 'mepivacaina', 21),
+(46, 'morfina', 22),
+(47, 'petidina', 22),
+(48, 'dihidrocodeina', 22),
+(49, 'atropina', 23),
+(50, 'escopolamina', 23),
+(51, 'glicopirrolato', 23),
+(52, 'naloxona', 24),
+(53, 'valproato', 25),
+(54, 'antihistaminicos', 26),
+(55, 'buparvacuona', 27),
+(56, 'Laxante', 25),
+(57, 'etomidato', 26),
+(58, 'paracetamol', 27),
+(59, 'gabapentina', 28),
+(60, 'benzodiacepinas', 29),
+(62, 'Sin especificar', 59);
 
 -- --------------------------------------------------------
 
@@ -725,6 +843,53 @@ INSERT INTO `tipo_especies` (`Id_Especie`, `Tipo_Especie`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipo_medicamento`
+--
+
+CREATE TABLE `tipo_medicamento` (
+  `Id_TipoMedicamento` int(6) NOT NULL,
+  `Descripcion_TipoMedicamento` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipo_medicamento`
+--
+
+INSERT INTO `tipo_medicamento` (`Id_TipoMedicamento`, `Descripcion_TipoMedicamento`) VALUES
+(1, 'Antimicrobianos'),
+(2, 'Antivirales'),
+(3, 'Corticoides'),
+(4, 'Antiinflamatorios no esteroide'),
+(5, 'Antiglaucomatosos'),
+(6, 'Cicatrizantes'),
+(7, 'Medicamentos para procesos del aparato digestivo'),
+(8, 'Antineoplásicos Orales'),
+(9, 'Antineoplásicos Subcutáneos'),
+(10, 'Antineoplásicos Intravenoso'),
+(11, 'Diuréticos'),
+(12, 'Sustitutivos del plasma'),
+(13, 'Medicamentos para procesos del aparato reproductor'),
+(14, 'Medicamentos para enfermedades endocrinas'),
+(15, 'Acromegalia e insulinoma'),
+(16, 'Medicamentos psicótropos'),
+(17, 'Cardiotónicos'),
+(18, 'Anestésicos locales'),
+(19, 'Estupefacientes'),
+(20, 'Antimuscarínicos'),
+(21, 'Antagonistas de la morfina'),
+(22, 'Antiepilépticos'),
+(23, 'Medicamentos para tratamientos de alergias cutáneas'),
+(24, 'Antiprotozoarios'),
+(25, 'Laxantes de administración oral y por vía rectal'),
+(26, 'Anestésicos generales'),
+(27, 'Analgésicos no opioides'),
+(28, 'Analgésicos en procesos neuropáticos'),
+(29, 'Psicótropos para el manejo del \"miedo\"'),
+(59, 'Sin especificar');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tipo_mucosa`
 --
 
@@ -761,7 +926,7 @@ CREATE TABLE `tipo_servicios` (
 --
 
 INSERT INTO `tipo_servicios` (`Id_Tipo_Servicio`, `Tipo_Servicio`, `Precio`) VALUES
-(1, 'Consulta General', 600),
+(1, 'Medicina General', 600),
 (2, 'Internacion', 800),
 (3, 'Cirugia', 1500),
 (4, 'Analisis', 300),
@@ -794,6 +959,30 @@ INSERT INTO `tipo_usuario` (`id_tipoUsuario`, `Tipo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tratamientos`
+--
+
+CREATE TABLE `tratamientos` (
+  `Id_Tratamiento` int(6) NOT NULL,
+  `Descripcion` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tratamientos`
+--
+
+INSERT INTO `tratamientos` (`Id_Tratamiento`, `Descripcion`) VALUES
+(1, 'Tratamiento alopatico o convencional'),
+(2, 'Tratamiento homeopatico'),
+(3, 'Flores de Bach'),
+(4, 'Reiki'),
+(5, 'Alimentacion saludable'),
+(6, 'Crema antimicotica'),
+(7, 'Sin especificar');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -821,7 +1010,8 @@ INSERT INTO `usuarios` (`Id_Usuario`, `Username`, `Clave`, `Fecha_Registro`, `Id
 (90, 'auxiliar1', 'pass123', '2021-08-30', 4, NULL),
 (94, 'Administrador', 'pass123', '0000-00-00', 2, NULL),
 (96, 'veterinario1', 'pass123', '0000-00-00', 3, NULL),
-(98, 'secretaria1', 'pass123', '0000-00-00', 6, NULL);
+(98, 'secretaria1', 'pass123', '0000-00-00', 6, NULL),
+(100, 'andrea1', 'pass123', '2021-09-14', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -937,6 +1127,12 @@ ALTER TABLE `detalle_venta`
   ADD KEY `Id_Servicio` (`Id_Servicio`);
 
 --
+-- Indices de la tabla `enfermedades`
+--
+ALTER TABLE `enfermedades`
+  ADD PRIMARY KEY (`Id_Enfermedad`);
+
+--
 -- Indices de la tabla `estadocitas`
 --
 ALTER TABLE `estadocitas`
@@ -1012,6 +1208,13 @@ ALTER TABLE `mascotas`
   ADD KEY `Id_Especie` (`Id_Especie`),
   ADD KEY `Id_Cliente` (`Id_Cliente`),
   ADD KEY `Id_Raza` (`Id_Raza`);
+
+--
+-- Indices de la tabla `medicamentos`
+--
+ALTER TABLE `medicamentos`
+  ADD PRIMARY KEY (`Id_Medicamento`),
+  ADD KEY `Id_TipoMedicamento` (`Id_TipoMedicamento`);
 
 --
 -- Indices de la tabla `pelaje`
@@ -1096,6 +1299,12 @@ ALTER TABLE `tipo_especies`
   ADD PRIMARY KEY (`Id_Especie`);
 
 --
+-- Indices de la tabla `tipo_medicamento`
+--
+ALTER TABLE `tipo_medicamento`
+  ADD PRIMARY KEY (`Id_TipoMedicamento`);
+
+--
 -- Indices de la tabla `tipo_mucosa`
 --
 ALTER TABLE `tipo_mucosa`
@@ -1112,6 +1321,12 @@ ALTER TABLE `tipo_servicios`
 --
 ALTER TABLE `tipo_usuario`
   ADD PRIMARY KEY (`id_tipoUsuario`);
+
+--
+-- Indices de la tabla `tratamientos`
+--
+ALTER TABLE `tratamientos`
+  ADD PRIMARY KEY (`Id_Tratamiento`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -1148,13 +1363,13 @@ ALTER TABLE `cirugia`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `Id_Cita` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `Id_Cita` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `Id_Cliente` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `Id_Cliente` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT de la tabla `comportamiento`
@@ -1203,6 +1418,12 @@ ALTER TABLE `detalle de compra`
 --
 ALTER TABLE `detalle_venta`
   MODIFY `Id_Detalle_Venta` int(6) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `enfermedades`
+--
+ALTER TABLE `enfermedades`
+  MODIFY `Id_Enfermedad` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `estadocitas`
@@ -1256,7 +1477,13 @@ ALTER TABLE `jaulas`
 -- AUTO_INCREMENT de la tabla `mascotas`
 --
 ALTER TABLE `mascotas`
-  MODIFY `Id_Mascota` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `Id_Mascota` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+
+--
+-- AUTO_INCREMENT de la tabla `medicamentos`
+--
+ALTER TABLE `medicamentos`
+  MODIFY `Id_Medicamento` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT de la tabla `pelaje`
@@ -1331,6 +1558,12 @@ ALTER TABLE `tipo_especies`
   MODIFY `Id_Especie` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
+-- AUTO_INCREMENT de la tabla `tipo_medicamento`
+--
+ALTER TABLE `tipo_medicamento`
+  MODIFY `Id_TipoMedicamento` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+
+--
 -- AUTO_INCREMENT de la tabla `tipo_mucosa`
 --
 ALTER TABLE `tipo_mucosa`
@@ -1349,10 +1582,16 @@ ALTER TABLE `tipo_usuario`
   MODIFY `id_tipoUsuario` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT de la tabla `tratamientos`
+--
+ALTER TABLE `tratamientos`
+  MODIFY `Id_Tratamiento` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `Id_Usuario` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `Id_Usuario` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- Restricciones para tablas volcadas
@@ -1458,6 +1697,12 @@ ALTER TABLE `mascotas`
   ADD CONSTRAINT `mascotas_ibfk_3` FOREIGN KEY (`Id_Especie`) REFERENCES `tipo_especies` (`Id_Especie`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `mascotas_ibfk_4` FOREIGN KEY (`Id_Cliente`) REFERENCES `clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `mascotas_ibfk_5` FOREIGN KEY (`Id_Raza`) REFERENCES `razas` (`Id_Raza`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `medicamentos`
+--
+ALTER TABLE `medicamentos`
+  ADD CONSTRAINT `medicamentos_ibfk_1` FOREIGN KEY (`Id_TipoMedicamento`) REFERENCES `tipo_medicamento` (`Id_TipoMedicamento`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `personal`
