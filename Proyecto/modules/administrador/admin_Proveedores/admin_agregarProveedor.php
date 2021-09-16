@@ -50,7 +50,7 @@
                     </div>               
 
                 </div>
-                <div class="agregar proveedor" style="height: 310px; width: 500px">
+                <div class="agregar proveedor" style="height: 310px; width: 500px;">
                     <div class="forma">
                         <div class="personal">
 

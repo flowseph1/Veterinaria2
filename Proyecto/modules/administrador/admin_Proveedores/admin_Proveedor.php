@@ -13,35 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-    <style>
-        tr {
-            font-size: 15px;
-        }
 
-        .texto {
-            font-size: 15px;
-        }
-
-        .atras {
-            font-size: 15px;
-        }
-
-        .cajaTexto-buscar{
-            font-size: 15px;
-        }
-
-        .limpiar {
-            font-size: 15px;
-        }
-
-        .total-proveedores {
-            font-size: 15px;
-        }
-
-        .cajaTexto-buscar {
-            font-size: 15px;
-        }
-    </style>
 </head>
 
 <body>
@@ -73,20 +45,22 @@
                     <div class="line">
 
                     </div>
-                    <div class="boton" id="editar" onclick="location.href = '../admin_Proveedores/admin_editarProveedor.php'">
-                        <div class="image">
-                            <i class="fas fa-pen"></i>
+                    <form action="admin_editarProveedor.php" method="get" id="form1">
+                        <div class="boton" id="editar">
+                            <div class="image">
+                                <i class="fas fa-pen"></i>
+                            </div>
+                            <div class="texto">
+                                EDITAR
+                            </div>
                         </div>
-                        <div class="texto">
-                            EDITAR
-                        </div>
-                    </div>
-                    <div class="boton rojo" id="eliminar" onclick="accionEliminar()">
+                        <input type="hidden" name="idProveedor" id="idProveedor">
+                    </form>
+                    <div class="boton rojo" id="eliminar" onclick="accionEliminar()" style="display: none;">
                         <div class="image">
                             <i class="fas fa-times"></i>
                         </div>
                         <div class="texto">
-                            DAR DE BAJA
                         </div>
                     </div>
                     <div class="difuminacion">

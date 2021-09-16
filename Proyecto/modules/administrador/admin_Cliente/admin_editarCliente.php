@@ -394,10 +394,6 @@
             </div>
         </div>
     </div>
-
-    <script src="../../../statics/js/administrador/admin_cliente/admin_agregarCliente.js"></script>
-    <script src="../../../statics/js/administrador/admin_cliente/admin_cliente.js"></script>
-    <script src="../../../statics/js/administrador/admin_cliente/admin_editarCliente.js"></script>
 </body>
 
 </html>
