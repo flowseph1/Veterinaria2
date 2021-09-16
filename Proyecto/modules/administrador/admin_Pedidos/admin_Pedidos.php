@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administrador | Proveedor</title>
+    <title>Administrador | Facturas</title>
     <link rel="stylesheet" href="../../../statics/css/main.css" />
     <link rel="stylesheet" href="../../../statics/css/administrador/admin_Cliente/cliente.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
@@ -27,14 +26,13 @@
 
             <div class="contenedor">
                 <div class="titulo-opcion">
-                    <div class="motivo">PROVEEDORES</div>
+                    <div class="motivo">PEDIDOS</div>
                     <div class="atras" onclick="location.href = '../../administrador/administrador.php'">
                         ATRAS
                     </div>
                 </div>
                 <div class="botones">
-                    <div class="boton verde"
-                        onclick="location.href = '../admin_Proveedores/admin_agregarProveedor.php'">
+                    <div class="boton verde" onclick="location.href = '../admin_Facturas/admin_agregarFactura.php'">
                         <div class="image">
                             <i class="fas fa-plus"></i>
                         </div>
@@ -45,22 +43,20 @@
                     <div class="line">
 
                     </div>
-                    <form action="admin_editarProveedor.php" method="get" id="form1">
-                        <div class="boton" id="editar">
-                            <div class="image">
-                                <i class="fas fa-pen"></i>
-                            </div>
-                            <div class="texto">
-                                EDITAR
-                            </div>
+                    <div class="boton" id="editar" onclick="location.href = '../admin_Facturas/admin_editarFactura.php'">
+                        <div class="image">
+                            <i class="fas fa-pen"></i>
                         </div>
-                        <input type="hidden" name="idProveedor" id="idProveedor">
-                    </form>
-                    <div class="boton rojo" id="eliminar" onclick="accionEliminar()" style="display: none;">
+                        <div class="texto">
+                            EDITAR
+                        </div>
+                    </div>
+                    <div class="boton rojo" id="eliminar" onclick="accionEliminar()">
                         <div class="image">
                             <i class="fas fa-times"></i>
                         </div>
                         <div class="texto">
+                            ELIMINAR
                         </div>
                     </div>
                     <div class="difuminacion">
@@ -82,60 +78,49 @@
                                 LIMPIAR
                             </div>
                         </div>
-                        <div class="total-proveedores">
-                            TOTAL &nbsp;<span class="ProveedoresTotales">2</span>
+                        <div class="total-clientes">
+                            TOTAL &nbsp;<span class="clientesTotales">2</span>
                         </div>
                     </div>
 
                     <div class="tabla-clientes">
                         <table id="tb-cliente" class="tabla">
                             <thead>
-                                <th>ID PROVEEDOR</th>
-                                <th>RTN PROVEEDOR</th>
-                                <th>NOMBRE</th>
-                                <th>DIRECCION</th>
-                                <th>TELEFONO</th>
-                                <th>ESTADO</th>
+                                <th>ID FACTURA</th>
+                                <th>FECHA</th>
+                                <th>ID CLIENTE</th>
+                                <th>TOTAL VENTA</th>
+                                <th></th>
                             </thead>
                             <tbody>
-                            <?php
-                                include('../../conexion/conexion.php');
-
-                                $query = 'SELECT * FROM  proveedores ';
-                                $result = mysqli_query($conn, $query);
-
-                                while ($row = mysqli_fetch_array($result)) { ?>
-
-                                    <tr class="filas" onclick="filas(event)">
-                                        <td><?php echo $row['Id_Proveedor'] ?></td>
-                                        <td><?php echo $row['RTN_Proveedor'] ?></td>
-                                        <td><?php echo $row['Nombre_Legal'] ?></td>
-                                        <td><?php echo $row['Direccion_Proveedor'] ?></td>
-                                        <td><?php echo $row['Telefono_Proveedor'] ?></td>
-                                        <td><?php echo $row['Estado_Proveedor']?></td>
-                                    </tr>
-                                <?php } ?>
+                                <tr class="filas" onclick="filas(event)">
+                                    <td>BASE DE DATOS</td>
+                                    <td>BASE DE DATOS</td>
+                                    <td>BASE DE DATOS</td>
+                                    <td>BASE DE DATOS</td>
+                                    <td><button class="default-buton" onclick="location.href = '../admin_Facturas/admin_detalleFactura.php'">DETALLE</button></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
+
+
             </div>
+
         </div>
 
         <div class="eliminar">
             <div class="mensaje color-blanco-transparente">
 
                 <div class="eliminar-mensaje">
-                    ¿ESTA SEGURO QUE DESEA ELIMINAR A <span id="nombreProveedorEliminado"></span> ?
+                    ¿ESTA SEGURO QUE DESEA ELIMINAR A <span id="nombreClienteEliminado"></span> ?
                 </div>
 
                 <div class="eliminar-buttons">
-                <form action="admin_eliminarProveedor.php" method="get" id="form2">
-                        <input type="hidden" name="idProveedor" id="idProveedorEliminado">
-                        <div class="default-btn color-rojo-hover" onclick="eliminarProveedor()">
-                            ELIMINAR
-                        </div>
-                    </form>
+                    <div class="default-btn color-rojo-hover">
+                        ELIMINAR
+                    </div>
                     <div class="default-btn color-secundario-hover" onclick="cancelarEliminar()">
                         CANCELAR
                     </div>
@@ -144,7 +129,7 @@
         </div>
     </div>
 
-    <script src="../../../statics/js/administrador/admin_Proveedor/admin_proveedor.js"></script>
+    <script src="/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
 </body>
 
 </html>

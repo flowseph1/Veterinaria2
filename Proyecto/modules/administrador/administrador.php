@@ -92,6 +92,15 @@
             </div>
           </div>
 
+          <div class="opcion pedidos" onclick="location.href = '../administrador/admin_Pedidos/admin_Pedidos.php'">
+            <div class="titulo">
+              <div class="tituloPrincipal">PEDIDOS</div>
+            </div>
+            <div class="icono">
+              <i class="fas fa-shopping-cart fa-4x"></i>
+            </div>
+          </div>
+
           <div class="opcion equipo-medico" onclick="location.href = '../administrador/admin_Equipo/admin_Equipo.php'">
             <div class="titulo">
               <div class="tituloPrincipal">EQUIPO MEDICO</div>
