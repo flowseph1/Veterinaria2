@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administrador | Facturas</title>
+    <title>Administrador | Detalles de Factura</title>
     <link rel="stylesheet" href="../../../statics/css/main.css" />
     <link rel="stylesheet" href="../../../statics/css/administrador/admin_Cliente/cliente.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,13 +26,13 @@
 
             <div class="contenedor">
                 <div class="titulo-opcion">
-                    <div class="motivo">PEDIDOS</div>
-                    <div class="atras" onclick="location.href = '../../administrador/administrador.php'">
+                    <div class="motivo">DETALLE DE PEDIDOS</div>
+                    <div class="atras" onclick="location.href = '../admin_Facturas/admin_Factura.php'">
                         ATRAS
                     </div>
                 </div>
                 <div class="botones">
-                    <div class="boton verde" onclick="location.href = '../admin_Pedidos/admin_agregarPedidos.php'">
+                    <div class="boton verde" onclick="location.href = '../admin_Facturas/admin_agregarFactura.php'">
                         <div class="image">
                             <i class="fas fa-plus"></i>
                         </div>
@@ -43,7 +43,7 @@
                     <div class="line">
 
                     </div>
-                    <div class="boton" id="editar" onclick="location.href = '../admin_Pedidos/admin_editarPedidos.php'">
+                    <div class="boton" id="editar" onclick="location.href = '../admin_Facturas/admin_editarFactura.php'">
                         <div class="image">
                             <i class="fas fa-pen"></i>
                         </div>
@@ -51,7 +51,7 @@
                             EDITAR
                         </div>
                     </div>
-                    <div class="boton rojo" id="eliminar" onclick="accionEliminar()" style="display: none;">
+                    <div class="boton rojo" id="eliminar" onclick="accionEliminar()">
                         <div class="image">
                             <i class="fas fa-times"></i>
                         </div>
@@ -71,7 +71,7 @@
                                     <i class="fas fa-search"></i>
                                 </div>
                                 <div class="cajaTexto-buscar">
-                                    <input type="text" spellcheck="false" placeholder="BUSCAR POR ID PEDIDO" id="buscar">
+                                    <input type="text" spellcheck="false" placeholder="BUSCAR NOMBRE O ID" id="buscar">
                                 </div>
                             </div>
                             <div class="limpiar" onclick="limpiar()">
@@ -79,36 +79,38 @@
                             </div>
                         </div>
                         <div class="total-clientes">
-                            TOTAL &nbsp;<span class="pedidosTotales">2</span>
+                            TOTAL &nbsp;<span class="clientesTotales">2</span>
                         </div>
                     </div>
 
                     <div class="tabla-clientes">
                         <table id="tb-cliente" class="tabla">
                             <thead>
-                                <th>ID PEDIDO</th>
-                                <th>FECHA</th>
-                                <th>ID PROVEEDOR</th>
-                                <th>TOTAL COMPRA</th>
+                                <th>ID DETALLE COMPRA</th>
+                                <th>ID DE COMPRA</th>
+                                <th>ID DEL PRODUCTO</th>
+                                <th>ID DEL SERVICIO</th>
+                                <th>CANTIDAD DE PRODUCTOS</th>
+                                <th>SUBTOTAL</th>
+                                <th>IVA VENTA</th>
+                                <th>TOTAL</th>
+                                <th>EXENTO IVA</th>
+                                <th>FECHA DE VENTA</th>
                                 <th></th>
                             </thead>
                             <tbody>
-                            <?php
-                                include('../../conexion/conexion.php');
-
-                                $query = 'SELECT * FROM  compras';
-                                $result = mysqli_query($conn, $query);
-
-                                while ($row = mysqli_fetch_array($result)) { ?>
-
-                                    <tr class="filas" onclick="filas(event)">
-                                        <td><?php echo $row['Id_Compra'] ?></td>
-                                        <td><?php echo $row['Fecha_Compra'] ?></td>
-                                        <td><?php echo $row['Id_Proveedor'] ?></td>
-                                        <td><?php echo $row['Total_Compra'] ?></td>
-                                        <td><button class="default-buton" onclick="location.href = '../admin_Pedidos/admin_detallePedidos.php'">DETALLE</button></td>
-                                    </tr>
-                                <?php } ?>
+                                <tr class="filas" onclick="filas(event)">
+                                    <td>BASE DE DATOS</td>
+                                    <td>BASE DE DATOS</td>
+                                    <td>BASE DE DATOS</td>
+                                    <td>BASE DE DATOS</td>
+                                    <td>BASE DE DATOS</td>
+                                    <td>BASE DE DATOS</td>
+                                    <td>BASE DE DATOS</td>
+                                    <td>BASE DE DATOS</td>
+                                    <td>BASE DE DATOS</td>
+                                    <td>BASE DE DATOS</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -138,7 +140,7 @@
         </div>
     </div>
 
-    <script src="../../../statics/js/administrador/admin_Proveedor/admin_Pedidos.js"></script>
+    <script src="/Proyecto/statics/js/administrador/admin_cliente/admin_cliente.js"></script>
 </body>
 
 </html>
