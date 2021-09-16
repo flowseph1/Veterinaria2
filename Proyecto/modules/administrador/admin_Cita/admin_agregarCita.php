@@ -90,7 +90,7 @@
                                         </div>
                                     </div>
                                     <div class="values">
-                                        <input type="text" spellcheck="false" name="prueba">
+                                        <input type="date" spellcheck="false" name="prueba">
                                         <div class="params-op">
                                             OBLIGATORIO
                                         </div>
