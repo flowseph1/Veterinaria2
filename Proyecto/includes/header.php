@@ -34,8 +34,7 @@
 
 <body>
     <header>
-      <img src="static/img/Logo1.svg" alt="" />
-      <img src="/Veterinaria/Proyecto/statics/img/Logo1.svg" alt="" style="width: 25%;padding-left: 10%;padding-top: 1%;" />
+      <img src="/Proyecto/statics/img/Logo1.svg" alt="" style="width: 25%;padding-left: 10%;padding-top: 1%;" />
         <nav>
             <a href="index.php" style="text-decoration: none;">Inicio </a>
             <a href="historia.php" style="text-decoration: none;">Historia</a>

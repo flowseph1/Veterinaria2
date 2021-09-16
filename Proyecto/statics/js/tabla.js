@@ -72,6 +72,7 @@ const todasFilas = document.querySelectorAll(".filas");
 document.addEventListener("click", (event) => {
     const bloqueoBoton = document.querySelector(".bloqueo-boton");
     const botonRojo = document.querySelector(".boton.rojo");
+
     var cond;
     todasFilas.forEach((item) => {
         if (item.contains(event.target)) {

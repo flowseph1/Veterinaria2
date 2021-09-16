@@ -59,6 +59,16 @@ if ($row == 1) { // Si hay una fila, existe el usuario y contra.
         $idAdmin = $row['Id_Personal'];
     }
 
+    if ($tipoUsuario == 3) {
+         //Consulta para obtener informacion del veterinario.
+        $query = "SELECT * FROM personal WHERE Id_Usuario =$idUsuario AND Puesto_Trabajo='Veterinario'";
+        $result = mysqli_query($conn, $query); // Ejecucion de Query.
+        $row = mysqli_fetch_array($result); // Obteniendo resultados de query.
+         //Almacenando informacion del veterinario.
+        $idVeterinario = $row['Id_Personal'];
+        $nombre = $row['Nombre'];
+    }
+
     if ($tipoUsuario == 4) {
         //Obtener informacion de personal.
         $query = "SELECT Id_Personal, Nombre FROM personal WHERE Id_Usuario = $idUsuario";
@@ -99,6 +109,14 @@ if ($row == 1) { // Si hay una fila, existe el usuario y contra.
             header("Location: administrador/administrador.php");
             break;
 
+        case '3':
+            session_start();
+            $_SESSION['idVeterinario'] = $idVeterinario;
+            $_SESSION['nombreVet'] = $nombre;
+            $_SESSION['idUsuario'] = $idUsuario;
+            header("Location: veterinario/veterinario.php");
+            break;    
+
         case '4':
             session_start();
             $_SESSION['nombre'] = $nombre;
@@ -120,5 +138,5 @@ if ($row == 1) { // Si hay una fila, existe el usuario y contra.
 
     echo $tipoUsuario;
 } else {
-    header("Location: login.php?value=1");
+    header("Location: logout.php");
 }
