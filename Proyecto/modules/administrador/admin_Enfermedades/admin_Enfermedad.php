@@ -137,6 +137,7 @@
     </div>
 
     <script src="/Proyecto/statics/js/administrador/admin_enfermedades/tablaEnfermedades.js"></script>
+    <script src="/Proyecto/statics/js/administrador/admin_enfermedades/mostrarVentanaEliminacion.js"></script>
 </body>
 
 </html>
